@@ -10,4 +10,20 @@ export const ProductSchema = new Schema({
     type: String,
     require: true,
   },
+  destinationData: {
+    type: String,
+    require: true,
+  },
+  packageData: {
+    type: Object,
+    require: true,
+  },
+  status: {
+    type: String,
+    require: true,
+  },
+  ownerId: {
+    type: String,
+    require: true,
+  },
 });
