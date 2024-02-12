@@ -1,4 +1,5 @@
 import './App.css'
+import Image from './components/Image'
 
 function App() {
 
@@ -6,9 +7,9 @@ function App() {
   return (
     <>
       <div>
-       Hola!
+        Hola!
       </div>
-   
+      <Image />
     </>
   )
 }
