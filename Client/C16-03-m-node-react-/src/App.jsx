@@ -1,5 +1,5 @@
 import './App.css'
-import TextInput from './components/TextInput'
+import TextInput from './components/TextInput/TextInput'
 function App() {
 
 
