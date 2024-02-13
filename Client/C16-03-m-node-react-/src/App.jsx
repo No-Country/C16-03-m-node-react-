@@ -1,15 +1,16 @@
 import './App.css'
+import MainContainer from './components/mainContainer/mainContainer'
 import Button from './components/button'
 
 function App() {
 
-
   return (
     <>
       <div>
-       Hola!
+        <MainContainer />
+        <Button text={"Registrate"} />
       </div>
-      <Button text={"Registrate"} />
+
     </>
   )
 }
