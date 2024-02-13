@@ -7,7 +7,7 @@ const User = mongoose.model('User', UsersSchema);
 
 const SECRET_KEY = process.env.JWT_SECRET;
 
-const createUser = async (req, res, next) => {
+async function createUser(req, res, next) {
   try {
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
@@ -49,7 +49,7 @@ const createUser = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
+async function login(req, res, next) {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email }).select('+password');
@@ -73,6 +73,6 @@ const login = async (req, res, next) => {
     const statusCode = err.status || 500;
     return res.status(statusCode).json({ message: errorMessage });
   }
-};
+}
 
 export { createUser, login };

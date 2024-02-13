@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 const SECRET_KEY = process.env.JWT_SECRET;
 
-const authMiddleware = (req, res, next) => {
+function authMiddleware(req, res, next) {
   const token = req.headers.authorization
     ? req.headers.authorization.split(' ')[1]
     : null;
@@ -22,6 +22,6 @@ const authMiddleware = (req, res, next) => {
       .status(403)
       .json({ message: 'Access forbidden. Invalid or expired token' });
   }
-};
+}
 
 export default authMiddleware;
