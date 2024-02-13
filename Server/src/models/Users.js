@@ -3,7 +3,7 @@ import validator from 'validator';
 
 const Schema = mongoose.Schema;
 
-export const usersSchema = new Schema({
+export const UsersSchema = new Schema({
   name: {
     type: String,
     required: true,
