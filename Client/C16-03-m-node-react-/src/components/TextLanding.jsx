@@ -1,6 +1,6 @@
 function TextLanding() {
   return (
-    <div className="gap-2 sm:">
+    <div className="gap-2 w-full h-auto ">
       <h1 className="text-lg sm:text-xl text-center ms:text-left">
         Un titulo pegadizo
       </h1>
