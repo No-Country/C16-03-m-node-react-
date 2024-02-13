@@ -1,16 +1,14 @@
-import './App.css'
+import "./App.css";
+import TextLanding from "./components/TextLanding";
 
 function App() {
-
-
   return (
     <>
       <div>
-       Hola!
+        <TextLanding />
       </div>
-   
     </>
-  )
+  );
 }
 
-export default App
+export default App;
