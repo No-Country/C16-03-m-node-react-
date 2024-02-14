@@ -2,7 +2,7 @@ function TextLanding() {
   return (
     <div className="gap-2 w-full h-auto ">
       <h1 className=" font-bold text-lg sm:text-xl text-center ms:text-left text-white">
-        Un titulo pegadizo
+        Envios rapidos como un click
       </h1>
       <p className="text-sm sm:text-md text-center ms:text-left text-white">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut modi

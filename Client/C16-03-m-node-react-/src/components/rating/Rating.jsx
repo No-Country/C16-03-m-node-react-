@@ -12,9 +12,9 @@ const Rating = () => {
                 <img className="w-10 h-10 relative left-[-50px] " src={user3} alt="usuario 3" />
             </div>
             <div>
-                <h2 className='text-3xl font-bold'>Nuestros clientes sastisfechos</h2>
+                <h2 className='text-3xl font-bold text-white'>Nuestros clientes sastisfechos</h2>
                 <div className='flex gap-2'>
-                <FaStar/><p className='font-semibold'>4.8 (100.000 reseñas)</p>
+                <FaStar/><p className='font-semibold text-white'>4.8 (100.000 reseñas)</p>
                 </div>
             </div>
         </div>
