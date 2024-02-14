@@ -3,6 +3,7 @@ import routes from './src/routes/test.route.js';
 import mongoose from 'mongoose';
 import config from './src/config/config.js';
 import authRoutes from './src/routes/auth.routes.js';
+import baseRoutes from './src/routes/base.routes.js'
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,7 @@ mongoose.connect(config.db.mongodbUri).then(function () {
   });
 
   app.use('/auth', authRoutes);
+  app.use('/base', baseRoutes);
   app.listen(3000, function () {
     console.log('🔥 Server is running at port 3000');
   });
