@@ -27,5 +27,8 @@ export const BaseSchema = new Schema({
     type: String,
     require: true,
   },
-  products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
+  products: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'Product' 
+  }],
 });

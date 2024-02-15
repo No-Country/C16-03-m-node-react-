@@ -22,8 +22,12 @@ export const ProductSchema = new Schema({
     type: String,
     require: true,
   },
+  // ownerId: {
+  //   type: String,
+  //   require: true,
+  // },
   ownerId: {
-    type: String,
-    require: true,
-  },
+    type: Schema.Types.ObjectId,
+    ref: 'Users' 
+  }
 });

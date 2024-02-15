@@ -7,43 +7,28 @@ const Users = mongoose.model('Users', UsersSchema);
 
 async function getProductById(req, res) {
   try {
-    if (!req.body._id || !req.body._id.$oid) {
-      return res
-        .status(400)
-        .json({ mensaje: 'ID not provided in the correct format.' });
+
+    if (!req.body._id ) {
+      return res.status(400).json({ mensaje: 'ID not provided in the correct format.' });
     }
-    const id = req.body._id.$oid;
+    const id = req.body._id;
     // if (req.user.role !== 'userBase') {
     //   return res.status(403).json({ mensaje: 'Access denied.' });
     // }
 
-    const product = await Product.findById(id);
+    const product = await Product.findById(id)
+    // .populate('ownerId');
+    // const product = await Product.find({})
+      .populate({
+        path: 'ownerId',
+        select: '_id name lastName'
+      });
 
     if (!product) {
       return res.status(404).json({ mensaje: 'Product not found.' });
     }
 
-    const owner = await Users.findById(product.ownerId);
-    if (!owner) {
-      return res.status(404).json({ mensaje: 'Owner not found.' });
-    }
-
-    // return res.status(200).json(product);
-    return res.status(200).json({
-      _id: product._id,
-      description: product.description,
-      originData: product.originData,
-      destinationData: product.destinationData,
-      packageData: product.packageData,
-      status: product.status,
-      owner: {
-        name: owner.name,
-        lastName: owner.lastName,
-      },
-      sentAt: product.sentAt || null,
-      receivedAt: product.receivedAt || null,
-      // __v: product.__v
-    });
+    return res.status(200).json(product);
   } catch (error) {
     return res.status(500).json(error.message);
   }
