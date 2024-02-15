@@ -1,4 +1,4 @@
-import React from "react";
+
 
 function noAction() {
   console.log("Button no recibe parámetro para onClick");
