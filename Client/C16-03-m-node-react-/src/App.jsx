@@ -1,16 +1,11 @@
 import './App.css'
 import Login from './components/login/Login'
+import Landing from "./views/Landing";
 
-function App() {
-
+function MainContainer() {
   return (
-    <>
-      <div>
-       Hola!
-      </div>
-      <Login />
-    </>
-  )
+    <Landing />
+    ) 
 }
 
-export default App
+export default MainContainer;
