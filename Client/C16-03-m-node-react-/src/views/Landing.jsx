@@ -33,7 +33,10 @@ function Landing() {
         </div>
       </section>
       <section className="w-full p-[25px] gap-3 flex  items-center">
-        <TextInput />
+        <TextInput
+          placeholdertext={"ingresa el codigo de envio"}
+          type={"text"}
+        />
         <Button text="buscar" bgcolor="bg-green" />
       </section>
       <footer className="w-full p-[25px] flex justify-start items-center">
