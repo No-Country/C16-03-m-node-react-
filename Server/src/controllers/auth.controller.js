@@ -20,7 +20,7 @@ async function validateUser(req, res) {
   ) {
     return {
       error:
-        'The password must be at least 5 characters long and contain at least 1 special character',
+        'The password must be at least 8 characters long and contain at least 1 special character',
     };
   }
   return null;
