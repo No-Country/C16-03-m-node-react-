@@ -12,6 +12,7 @@ export default {
       xl: "60px",
     },
     colors: {
+      bgForm: "rgba(0,0,0,.5)",
       Amethyst: "#916ACC",
       black: "#000000",
       white: "#FFFFFF",

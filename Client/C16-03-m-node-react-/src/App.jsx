@@ -1,15 +1,9 @@
-import './App.css'
+import Landing from "./views/Landing";
 
-function App() {
-
+function MainContainer() {
   return (
-    <>
-      <div>
-       Hola!
-      </div>
-   
-    </>
-  )
+    <Landing />
+    ) 
 }
 
-export default App
+export default MainContainer;
