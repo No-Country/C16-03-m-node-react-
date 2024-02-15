@@ -15,7 +15,7 @@ async function validateUser(req, res) {
 
   const specialCharRegex = /[!@#$%^&*()_+\-=()[\]{};':"\\|,.<>/?]+/;
   if (
-    req.body.password.length < 5 ||
+    req.body.password.length < 8 ||
     !specialCharRegex.test(req.body.password)
   ) {
     return {
