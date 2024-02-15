@@ -3,9 +3,11 @@ import routes from './src/routes/test.route.js';
 import mongoose from 'mongoose';
 import config from './src/config/config.js';
 import authRoutes from './src/routes/auth.routes.js';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(config.db.mongodbUri).then(function () {
   console.log('connection to database successful!');
