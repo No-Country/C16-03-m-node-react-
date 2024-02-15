@@ -1,9 +1,9 @@
 import { ProductSchema } from '../models/Product.js';
-import { usersSchema } from '../models/Users.js';
+import { UsersSchema } from '../models/Users.js';
 import mongoose from 'mongoose';
 
 const Product = mongoose.model('product', ProductSchema);
-mongoose.model('users', usersSchema);
+mongoose.model('users', UsersSchema);
 
 async function createProduct(req, res) {
   try {
