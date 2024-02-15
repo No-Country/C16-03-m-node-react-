@@ -18,7 +18,11 @@ function Landing() {
     <main className="w-full h-full lg:h-[100vh] flex justify-between items-center bg-purple flex-wrap">
       <header className="w-full p-[25px] flex justify-between items-center">
         <Logo />
-        <Button text="Clientes" bgcolor="bg-green" />
+        <Button
+          text="Clientes"
+          bgcolor="bg-green"
+          onClick={() => handleActive()}
+        />
       </header>
       <section className="w-full  sm:flex sm:flex-row flex flex-col p-[25px] gap-2 justify-between items-center ">
         <div className=" p-2 sm:w-1/2 flex justify-center">
@@ -30,11 +34,7 @@ function Landing() {
       </section>
       <section className="w-full p-[25px] gap-3 flex  items-center">
         <TextInput />
-        <Button
-          text="buscar"
-          bgcolor="bg-green"
-          onClick={() => handleActive()}
-        />
+        <Button text="buscar" bgcolor="bg-green" />
       </section>
       <footer className="w-full p-[25px] flex justify-start items-center">
         <Rating />
