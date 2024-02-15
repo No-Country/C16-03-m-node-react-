@@ -17,8 +17,6 @@ async function getProductById(req, res) {
     // }
 
     const product = await Product.findById(id)
-    // .populate('ownerId');
-    // const product = await Product.find({})
       .populate({
         path: 'ownerId',
         select: '_id name lastName'
