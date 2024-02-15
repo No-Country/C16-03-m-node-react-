@@ -15,15 +15,43 @@ export const ProductSchema = new Schema({
     require: true,
   },
   packageData: {
-    type: Object,
+    type: {
+      weightKg: {
+        type: Number,
+        require: false,
+      },
+      heightCm: {
+        type: Number,
+        require: false,
+      },
+      widthCm: {
+        type: Number,
+        require: false,
+      },
+      lengthCm: {
+        type: Number,
+        require: false,
+      },
+    },
     require: true,
   },
   status: {
     type: String,
     require: true,
+    default: null,
   },
   ownerId: {
-    type: String,
-    require: true,
+    type: Schema.Types.ObjectId,
+    ref: 'users',
+  },
+  sentAt: {
+    type: Date,
+    require: false,
+    default: null,
+  },
+  receivedAt: {
+    type: Date,
+    require: false,
+    default: null,
   },
 });
