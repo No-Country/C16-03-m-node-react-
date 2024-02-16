@@ -134,4 +134,22 @@ async function login(req, res, next) {
   }
 }
 
-export { createUserWithUserRole, createUserWithBaseRole, login };
+async function deleteAccount(req, res) {
+  const userId = req.params.id;
+  try {
+    if (userId !== req.user._id) {
+      return res.status(403).json({
+        message: 'Access forbidden. You are not allowed to delete this user',
+      });
+    }
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    return res.status(200).json({ message: 'User deleted successfully' });
+  } catch (error) {
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+}
+
+export { createUserWithUserRole, createUserWithBaseRole, login, deleteAccount };
