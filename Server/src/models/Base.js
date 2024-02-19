@@ -6,19 +6,25 @@ export const BaseSchema = new Schema({
     type: String,
     require: true,
     minlength: 2,
-    maxlength: 50,
+    maxlength: 30,
   },
   address: {
     type: String,
     require: true,
+    minlength: 2,
+    maxlength: 30,
   },
   postalCode: {
     type: String,
     require: true,
+    minlength: 3,
+    maxlength: 15,
   },
   city: {
     type: String,
     require: true,
+    minlength: 3,
+    maxlength: 20,
   },
   phone: {
     type: String,
@@ -26,6 +32,8 @@ export const BaseSchema = new Schema({
   description: {
     type: String,
     require: true,
+    minlength: 2,
+    maxlength: 50,
   },
   products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 });
