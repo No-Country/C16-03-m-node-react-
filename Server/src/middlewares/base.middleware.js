@@ -1,21 +1,14 @@
-import jwt from 'jsonwebtoken';
-import config from '../config/config.js';
 import mongoose from 'mongoose';
 import { BaseSchema } from '../models/Base.js';
 
 const Base = mongoose.model('Base', BaseSchema);
 
 class BaseMiddlewares {
-  validateToken(req, res, next) {
-    const token = req.headers.authorization?.slice(7) || null;
-    if (!token) {
-      return res.status(401).json({ message: 'no token provided' });
-    }
-    const decodedToken = jwt.verify(token, config.app.secretKey);
-    if (decodedToken.role !== 'userBase') {
+  validateUser(req, res, next) {
+    const user = req.user;
+    if (user.role !== 'userBase') {
       return res.status(401).json({ message: 'Insufficient privileges' });
     }
-    req.user = decodedToken;
     next();
   }
 

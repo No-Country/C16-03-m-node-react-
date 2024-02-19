@@ -1,18 +1,20 @@
 import baseController from '../controllers/base.controller.js';
 import baseMiddleware from '../middlewares/base.middleware.js';
+import authMiddleware from '../middlewares/auth.middleware.js';
 import { Router } from 'express';
 
 const baseRoutes = Router();
 
 baseRoutes.post(
   '/create',
-  [baseMiddleware.validateToken, baseMiddleware.validateData],
+  [authMiddleware, baseMiddleware.validateUser, baseMiddleware.validateData],
   baseController.create,
 );
 baseRoutes.put(
   '/edit/:id',
   [
-    baseMiddleware.validateToken,
+    authMiddleware,
+    baseMiddleware.validateUser,
     baseMiddleware.validateData,
     baseMiddleware.validateBaseId,
   ],
@@ -20,7 +22,7 @@ baseRoutes.put(
 );
 baseRoutes.delete(
   '/delete/:id',
-  [baseMiddleware.validateToken, baseMiddleware.validateBaseId],
+  [authMiddleware, baseMiddleware.validateUser, baseMiddleware.validateBaseId],
   baseController.delete,
 );
 
