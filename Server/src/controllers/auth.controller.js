@@ -135,18 +135,25 @@ async function login(req, res, next) {
 }
 
 async function deleteAccount(req, res) {
-  const userId = req.params.id;
+  const userIdToDelete = req.params.id;
+  const requestingUserId = req.user._id;
+  const requestingUserRole = req.user.role;
   try {
-    if (userId !== req.user._id) {
+    const userToDelete = await User.findById(userIdToDelete);
+    if (!userToDelete) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    if (requestingUserRole === 'userAdmin' && userToDelete.role !== 'userAdmin') {
+      await User.findByIdAndDelete(userIdToDelete);
+      return res.status(200).json({ message: 'User deleted successfully' });
+    } else if (requestingUserRole === 'user' && userIdToDelete === requestingUserId) {
+      await User.findByIdAndDelete(userIdToDelete);
+      return res.status(200).json({ message: 'User deleted successfully' });
+    } else {
       return res.status(403).json({
         message: 'Access forbidden. You are not allowed to delete this user',
       });
     }
-    const deletedUser = await User.findByIdAndDelete(userId);
-    if (!deletedUser) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-    return res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
     return res.status(500).json({ message: 'Internal server error' });
   }
