@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-const { MONGODB_URI, PORT } = process.env;
+const { MONGODB_URI, PORT, JWT_SECRET } = process.env;
 
 const config = {
   db: {
@@ -9,6 +9,7 @@ const config = {
   },
   app: {
     port: PORT || 3000,
+    secretKey: JWT_SECRET,
   },
 };
 
