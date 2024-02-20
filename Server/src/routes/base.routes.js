@@ -6,7 +6,7 @@ import { Router } from 'express';
 const baseRoutes = Router();
 
 baseRoutes.get('/', baseController.getAll);
-baseRoutes.get('/', baseMiddleware.validateBaseId, baseController.getOne);
+baseRoutes.get('/:id', baseMiddleware.validateBaseId, baseController.getOne);
 baseRoutes.post(
   '/create',
   [authMiddleware, baseMiddleware.validateUser, baseMiddleware.validateData],
