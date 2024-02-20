@@ -108,7 +108,6 @@ const OrderStatus = ({ initialStatus }) => {
           <span className="text-xs md:text-sm lg:text-base xl:text-lg text-center">Entregado</span>
         </div>
       </div>
-      <p className="mt-4 text-sm md:text-base lg:text-lg xl:text-xl">Estado del Pedido: {orderStatus}</p>
     </div>
   );
 };
