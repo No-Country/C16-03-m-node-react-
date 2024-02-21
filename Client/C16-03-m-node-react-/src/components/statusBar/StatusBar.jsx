@@ -39,7 +39,7 @@ const OrderStatus = ({ initialStatus }) => {
   };
 
   return (
-    <div className="p-4 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto">
+    <div className="p-4 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto min-w-[360px]">
       
       <div className="w-full relative">
         <ProgressBar percent={getProgress()} filledBackground="#916ACC" height={10}>
