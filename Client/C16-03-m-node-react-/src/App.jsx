@@ -6,7 +6,6 @@ function MainContainer() {
   return (
     <>
       <Landing />
-      <Login />
     </>
   );
 }

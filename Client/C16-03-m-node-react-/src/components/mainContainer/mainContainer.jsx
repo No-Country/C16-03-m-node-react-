@@ -8,7 +8,7 @@ import Rating from "../rating/Rating"
 
 function MainContainer() {
     return (
-        <main className="w-full h-full lg:h-[100vh] flex justify-between items-center bg-purple flex-wrap">
+        <main className="w-full h-full lg:h-screen flex justify-between items-center bg-purple flex-wrap min-w-[360px] flex-1">
             <header className="w-full p-[25px] flex justify-between items-center">
                 <Logo />
                 <Button text="Clientes" bgcolor="bg-green" />
@@ -25,7 +25,7 @@ function MainContainer() {
                 <TextInput />
                 <Button text="buscar" bgcolor="bg-green" />
             </section>
-            <footer className="w-full p-[25px] flex justify-end items-center">
+            <footer className="w-full p-[25px] flex justify-end items-center min-w-[360px]">
                 <Rating />
             </footer>
         </main>

@@ -10,7 +10,7 @@ function Login({ onClose }) {
   };
 
   return (
-    <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[450px]">
+    <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
       <div className="flex flex-col items-center gap-10 p-4 py-8">
         <Logo />
         <h1 className="text-lg font-bold">Log in</h1>
