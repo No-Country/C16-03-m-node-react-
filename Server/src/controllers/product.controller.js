@@ -8,14 +8,15 @@ import {
 } from '../config/utilities.js';
 
 const Product = mongoose.model('product', ProductSchema);
-mongoose.model('users', UsersSchema);
+const User = mongoose.model('users', UsersSchema);
 
 async function createProduct(req, res) {
   try {
     const { description, originData, destinationData, packageData, ownerId } =
       req.body;
 
-    if (ownerId) {
+    const existingUser = await User.findOne({ _id: ownerId });
+    if (existingUser) {
       if (
         !isNaN(packageData.weightKg) &&
         !isNaN(packageData.heightCm) &&
@@ -45,6 +46,11 @@ async function createProduct(req, res) {
           message: 'The packageData is not a number',
         });
       }
+    } else {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message: 'This user does not exist',
+      });
     }
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_ERROR).json({
