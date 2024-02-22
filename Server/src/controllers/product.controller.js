@@ -67,8 +67,8 @@ async function getProductById(req, res) {
       path: 'ownerId',
       select: '_id name lastName',
     });
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The product has been found',
       product: product,
     });
@@ -85,8 +85,8 @@ async function findClientProducts(req, res) {
     const { ownerId } = req.body;
     const products = new Product.find({ ownerId: ownerId });
 
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been found',
       product: products,
     });
@@ -112,8 +112,8 @@ async function updateProduct(req, res) {
         packageData: packageData,
       },
     );
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been updated',
     });
   } catch (error) {
@@ -135,8 +135,8 @@ async function sendProduct(req, res) {
         sentAt: sentAt,
       },
     );
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been sent',
     });
   } catch (error) {
@@ -158,8 +158,8 @@ async function receiveProduct(req, res) {
         receivedAt: receivedAt,
       },
     );
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been received',
     });
   } catch (error) {
