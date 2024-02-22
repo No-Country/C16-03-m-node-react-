@@ -55,4 +55,10 @@ export const ProductSchema = new Schema({
     require: false,
     default: null,
   },
+  price: {
+    type: Number,
+    require: true, 
+    default: null,
+    min:0
+  },
 });
