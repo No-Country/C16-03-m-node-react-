@@ -6,7 +6,7 @@ import Header from '../components/header/Header'
 
 function DashboardClient() {
   return (
-    <div className="">
+    <div className="flex flex-col p-2">
       <Header />
 
       <div className="flex flex-col sm:flex-row gap-5">
