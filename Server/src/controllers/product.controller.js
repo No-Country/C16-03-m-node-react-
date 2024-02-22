@@ -1,6 +1,11 @@
 import { ProductSchema } from '../models/Product.js';
 import { UsersSchema } from '../models/Users.js';
 import mongoose from 'mongoose';
+import {
+  COD_RESPONSE_HTTP_OK,
+  COD_RESPONSE_HTTP_ERROR,
+  COD_RESPONSE_HTTP_BAD_REQUEST,
+} from '../config/utilities.js';
 
 const Product = mongoose.model('product', ProductSchema);
 mongoose.model('users', UsersSchema);
@@ -9,28 +14,41 @@ async function createProduct(req, res) {
   try {
     const { description, originData, destinationData, packageData, ownerId } =
       req.body;
-    const product = new Product({
-      description: description,
-      originData: originData,
-      destinationData: destinationData,
-      packageData: {
-        weightKg: packageData.weightKg,
-        heightCm: packageData.heightCm,
-        widthCm: packageData.widthCm,
-        lengthCm: packageData.lengthCm,
-      },
-      ownerId: ownerId,
-    });
-    const saveProduct = await product.save();
 
-    return res.status(200).json({
-      status: 200,
-      message: 'The product has been stored correctly',
-      saveProduct: saveProduct,
-    });
+    if (ownerId) {
+      if (
+        !isNaN(packageData.weightKg) &&
+        !isNaN(packageData.heightCm) &&
+        !isNaN(packageData.widthCm) &&
+        !isNaN(packageData.lengthCm)
+      ) {
+        const product = new Product({
+          description: description,
+          originData: originData,
+          destinationData: destinationData,
+          packageData: {
+            weightKg: packageData.weightKg,
+            heightCm: packageData.heightCm,
+            widthCm: packageData.widthCm,
+            lengthCm: packageData.lengthCm,
+          },
+          ownerId: ownerId,
+        });
+        await product.save();
+        res.status(COD_RESPONSE_HTTP_OK).json({
+          status: COD_RESPONSE_HTTP_OK,
+          message: 'The product has been stored correctly',
+        });
+      } else {
+        return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+          status: COD_RESPONSE_HTTP_BAD_REQUEST,
+          message: 'The packageData is not a number',
+        });
+      }
+    }
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_ERROR).json({
+      status: COD_RESPONSE_HTTP_ERROR,
       message: 'Error creating product',
     });
   }
@@ -49,8 +67,8 @@ async function getProductById(req, res) {
       product: product,
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error finding this product',
     });
   }
@@ -67,8 +85,8 @@ async function findClientProducts(req, res) {
       product: products,
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error finding products of this client',
     });
   }
@@ -93,8 +111,8 @@ async function updateProduct(req, res) {
       message: 'The products has been updated',
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error to update this product',
     });
   }
@@ -116,8 +134,8 @@ async function sendProduct(req, res) {
       message: 'The products has been sent',
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error to send this product',
     });
   }
@@ -139,8 +157,8 @@ async function receiveProduct(req, res) {
       message: 'The products has been received',
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error to received this product',
     });
   }
