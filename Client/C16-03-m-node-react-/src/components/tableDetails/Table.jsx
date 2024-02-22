@@ -37,14 +37,19 @@ const states = [
 
 const Table = () => {
     return (
-        <div className="w-full h-auto p-3 bg-gray rounded-lg flex flex-col items-center justify-center ">
+        <div className="w-full  min-[320px]:h-screen lg:h-auto   p-3 bg-gray rounded-lg flex flex-col items-center justify-center ">
             <div className="w-full h-full flex flex-col items-center justify-between">
-                <div className=" flex flex-col items-start p-3 text-black w-full">
-                    <h2 className="text-xl font-bold ">Detalles del Envio</h2>
+                <div className=" flex flex-col lg:items-start sm:items-center p-3 text-black w-full">
+                    <h2 className="lg:text-xl sm:text-lg font-bold ">Detalles del Envio</h2>
                 </div>
-                <div className=" w-full h-1/2 flex flex-col items-center justify-between ">
-                    <TableCategory columns={columns} />
-                    <TableItems items={items} states={states}/>
+                <div className=" lg:w-full sm:w-full lg:h-full sm:h-full flex lg:flex-col sm:flex-row ">
+                    <div className="min-[320px]:w-1/2 sm:w-1/2 lg:w-full h-full ">
+                        <TableCategory columns={columns} />
+                    </div>
+                    <div className="min-[320px]:w-1/2 sm:w-1/2 lg:w-full h-full ">
+                        <TableItems items={items} states={states} />
+                    </div>
+
                 </div>
             </div>
         </div>

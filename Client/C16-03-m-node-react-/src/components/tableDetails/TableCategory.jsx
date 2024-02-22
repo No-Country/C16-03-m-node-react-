@@ -1,9 +1,9 @@
 
 const TableCategory = ({ columns }) => {
     return (
-        <div className="w-full  flex items-center justify-around gap-3 text-lg text-black font-bold">
+        <div className="w-full h-full flex lg:flex-row sm:flex-col min-[320px]:flex-col items-center justify-center lg:text-lg gap-20 sm:text-sm text-black font-bold   ">
             {columns.map((label, index) => (
-                <div key={index} className="w-1/2 h-auto p-2  flex items-center justify-center">
+                <div key={index} className="w-full p-2 flex lg:flex-row sm:flex-col items-center justify-center">
                     {label}
                 </div>
             ))}
