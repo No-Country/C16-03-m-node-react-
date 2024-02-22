@@ -15,7 +15,7 @@ function DashboardClient() {
         <div>
           <MyShipments />
         </div>
-        <div className="flex ms:flex-col gap-5">
+        <div className="flex-col gap-5 w-full">
           <StatusBar />
           <Table />
         </div>
