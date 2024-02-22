@@ -5,6 +5,8 @@ import { Router } from 'express';
 
 const baseRoutes = Router();
 
+baseRoutes.get('/', baseController.getAll);
+baseRoutes.get('/:id', baseMiddleware.validateBaseId, baseController.getOne);
 baseRoutes.post(
   '/create',
   [authMiddleware, baseMiddleware.validateUser, baseMiddleware.validateData],
@@ -23,7 +25,7 @@ baseRoutes.put(
 baseRoutes.delete(
   '/delete/:id',
   [authMiddleware, baseMiddleware.validateUser, baseMiddleware.validateBaseId],
-  baseController.delete,
+  baseController.deleteOne,
 );
 
 export default baseRoutes;
