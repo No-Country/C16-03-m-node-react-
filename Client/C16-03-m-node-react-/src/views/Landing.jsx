@@ -8,7 +8,7 @@ import InitSesion from "../components/InitSesion/InitSesion";
 import React, { useState } from "react";
 
 function Landing() {
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
 
   const handleActive = () => {
     setActive(!active);

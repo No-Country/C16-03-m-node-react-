@@ -4,7 +4,7 @@ import Button from "../button/button";
 
 function MyShipments() {
   return (
-    <div className="flex flex-col py-8 px-11 w-full sm:max-w-[361px] h-screen gap-5 border bg-purple text-white">
+    <div className="flex flex-col py-8 px-11 w-full sm:min-w-[361px] h-screen gap-5 bg-purple text-white">
       <h1 className="flex justify-center text-[32px]">Mis envios</h1>
       <div className="flex flex-col items-start mb-16">
         <div className="flex gap-2">
