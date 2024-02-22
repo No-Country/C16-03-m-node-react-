@@ -38,6 +38,7 @@ export const ProductSchema = new Schema({
   status: {
     type: String,
     require: true,
+    enum: ['Canceled', 'In Warehouse', 'In Progress', 'In Transit', 'Delivered'],
     default: null,
   },
   ownerId: {
