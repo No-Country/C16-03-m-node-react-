@@ -6,13 +6,13 @@ import {
   sendProduct,
   receiveProduct,
 } from '../controllers/product.controller.js';
-
+import authMiddleware from '../middlewares/auth.middleware.js';
 const router = express.Router();
 
-router.post('/createProduct', createProduct);
-router.get('/getOneProduct', getProductById);
-router.put('/updateProduct', updateProduct);
-router.put('/sendProduct', sendProduct);
-router.put('/receiveProduct', receiveProduct);
+router.post('/createProduct', authMiddleware, createProduct);
+router.get('/getOneProduct',authMiddleware, getProductById);
+router.put('/updateProduct', authMiddleware, updateProduct);
+router.put('/sendProduct',authMiddleware, sendProduct);
+router.put('/receiveProduct',authMiddleware, receiveProduct);
 
 export default router;
