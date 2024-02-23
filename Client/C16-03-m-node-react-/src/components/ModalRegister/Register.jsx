@@ -5,18 +5,18 @@ import TextInput from "../TextInput/TextInput";
 import TextLanding from "../textLanding/TextLanding";
 import { IoMdArrowBack } from "react-icons/io";
 
-function RegistrationModal({ onClose }) {
+function RegistrationModal({ onClose}) {
     const handleRegister = () => {
         
     };
 
     return (
-        <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[450px]">
+        <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
             
-            <div className="flex flex-col items-center gap-10 p-4 py-8">
+            <div className="flex flex-col items-center gap-7 p-4 py-8">
 
                 <Logo />
-
+                
                 <TextLanding
                     titulo="Registro"
                     parrafo="Introduzca sus datos para crear su cuenta"
@@ -24,25 +24,23 @@ function RegistrationModal({ onClose }) {
                     variant="form"
                 />
                 <button onClick={onClose} className="py-2 px-4 bg-green rounded"><IoMdArrowBack /></button>
-                <div className="mb-1">
+                <div className="">
                     <TextInput
-                    placeholdertext={"Ingresa tu nombre"}
-                    type={"text"}
+                        placeholdertext={"Ingresa tu nombre"}
+                        type={"text"}
                     />
                 </div>
-                <div className="mb-1">
+                <div className="">
                     <TextInput
-                    placeholdertext={"Ingresa tu email"}
-                    type={"email"}
+                        placeholdertext={"Ingresa tu email"}
+                        type={"email"}
                     />
                 </div>
-                <div>
+                <div className="">
                     <TextInput
-                    className="mb-1"
-                    placeholdertext={"Ingresa tu contraseña"}
-                    type={"password"}
+                        placeholdertext={"Ingresa tu contraseña"}
+                        type={"password"}
                     />
-                
                 </div>
                 <Button text="Registrate" onClick={handleRegister} bgcolor="bg-green" />
                 </div>
