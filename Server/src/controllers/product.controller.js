@@ -1,36 +1,60 @@
 import { ProductSchema } from '../models/Product.js';
 import { UsersSchema } from '../models/User.js';
 import mongoose from 'mongoose';
+import {
+  COD_RESPONSE_HTTP_OK,
+  COD_RESPONSE_HTTP_ERROR,
+  COD_RESPONSE_HTTP_BAD_REQUEST,
+} from '../config/utilities.js';
 
 const Product = mongoose.model('product', ProductSchema);
-mongoose.model('users', UsersSchema);
+const User = mongoose.model('users', UsersSchema);
 
 async function createProduct(req, res) {
   try {
     const { description, originData, destinationData, packageData, ownerId } =
       req.body;
-    const product = new Product({
-      description: description,
-      originData: originData,
-      destinationData: destinationData,
-      packageData: {
-        weightKg: packageData.weightKg,
-        heightCm: packageData.heightCm,
-        widthCm: packageData.widthCm,
-        lengthCm: packageData.lengthCm,
-      },
-      ownerId: ownerId,
-    });
-    const saveProduct = await product.save();
 
-    return res.status(200).json({
-      status: 200,
-      message: 'The product has been stored correctly',
-      saveProduct: saveProduct,
-    });
+    const existingUser = await User.findOne({ _id: ownerId });
+    if (existingUser) {
+      if (
+        !isNaN(packageData.weightKg) &&
+        !isNaN(packageData.heightCm) &&
+        !isNaN(packageData.widthCm) &&
+        !isNaN(packageData.lengthCm)
+      ) {
+        const product = new Product({
+          description: description,
+          originData: originData,
+          destinationData: destinationData,
+          packageData: {
+            weightKg: packageData.weightKg,
+            heightCm: packageData.heightCm,
+            widthCm: packageData.widthCm,
+            lengthCm: packageData.lengthCm,
+          },
+          ownerId: ownerId,
+        });
+        await product.save();
+        res.status(COD_RESPONSE_HTTP_OK).json({
+          status: COD_RESPONSE_HTTP_OK,
+          message: 'The product has been stored correctly',
+        });
+      } else {
+        return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+          status: COD_RESPONSE_HTTP_BAD_REQUEST,
+          message: 'The packageData is not a number',
+        });
+      }
+    } else {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message: 'This user does not exist',
+      });
+    }
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_ERROR).json({
+      status: COD_RESPONSE_HTTP_ERROR,
       message: 'Error creating product',
     });
   }
@@ -43,14 +67,14 @@ async function getProductById(req, res) {
       path: 'ownerId',
       select: '_id name lastName',
     });
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The product has been found',
       product: product,
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error finding this product',
     });
   }
@@ -61,14 +85,14 @@ async function findClientProducts(req, res) {
     const { ownerId } = req.body;
     const products = new Product.find({ ownerId: ownerId });
 
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been found',
       product: products,
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error finding products of this client',
     });
   }
@@ -88,13 +112,13 @@ async function updateProduct(req, res) {
         packageData: packageData,
       },
     );
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been updated',
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error to update this product',
     });
   }
@@ -111,13 +135,13 @@ async function sendProduct(req, res) {
         sentAt: sentAt,
       },
     );
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been sent',
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error to send this product',
     });
   }
@@ -134,13 +158,13 @@ async function receiveProduct(req, res) {
         receivedAt: receivedAt,
       },
     );
-    return res.status(200).json({
-      status: 200,
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been received',
     });
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error to received this product',
     });
   }
