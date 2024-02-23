@@ -41,7 +41,7 @@ const StatusBar = ({ initialStatus }) => {
   };
 
   return (
-    <div className="p-4 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto min-w-[360px]">
+    <div className="p-4 md:w-2/3 lg:w-full xl:w-1/3 mx-auto min-w-[360px] bg-Amethyst rounded-lg">
       <div className="w-full relative">
         <ProgressBar
           percent={getProgress()}

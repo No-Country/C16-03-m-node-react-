@@ -6,7 +6,7 @@ import Landing from "./views/Landing";
 function MainContainer() {
   return (
     <>
-      <Landing />
+      {/* <Landing /> */}
       <DashboardClient />
     </>
   );
