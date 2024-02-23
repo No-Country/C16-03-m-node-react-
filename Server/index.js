@@ -3,7 +3,7 @@ import routes from './src/routes/test.route.js';
 import mongoose from 'mongoose';
 import config from './src/config/config.js';
 import authRoutes from './src/routes/auth.routes.js';
-import productRoutes from './src/routes/product.route.js';
+import productRoutes from './src/routes/product.routes.js';
 import baseRoutes from './src/routes/base.routes.js';
 import cors from 'cors';
 
