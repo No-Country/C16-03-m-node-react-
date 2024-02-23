@@ -65,7 +65,7 @@ async function createUserWithUserRole(req, res) {
 
 async function createUserWithBaseRole(req, res) {
   try {
-    if (req.user.role !== 'userBase') {
+    if (req.user.role !== 'userAdmin') {
       return res
         .status(403)
         .send({ message: 'Access forbidden. Insufficient privileges.' });
