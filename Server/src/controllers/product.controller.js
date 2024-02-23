@@ -12,8 +12,15 @@ const User = mongoose.model('users', UsersSchema);
 
 async function createProduct(req, res) {
   try {
-    const { description, originData, destinationData, packageData, ownerId } =
+    const { description, originData, destinationData, packageData, ownerId, price } =
       req.body;
+      
+    if (isNaN(price) || price <= 0) {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message: 'The price must be a positive number',
+      });
+    }
 
     const existingUser = await User.findOne({ _id: ownerId });
     if (existingUser) {
@@ -21,7 +28,11 @@ async function createProduct(req, res) {
         !isNaN(packageData.weightKg) &&
         !isNaN(packageData.heightCm) &&
         !isNaN(packageData.widthCm) &&
-        !isNaN(packageData.lengthCm)
+        !isNaN(packageData.lengthCm) &&
+        packageData.weightKg > 0 &&
+        packageData.heightCm > 0 &&
+        packageData.widthCm > 0 &&
+        packageData.lengthCm > 0
       ) {
         const product = new Product({
           description: description,
@@ -34,6 +45,7 @@ async function createProduct(req, res) {
             lengthCm: packageData.lengthCm,
           },
           ownerId: ownerId,
+          price: price,
         });
         await product.save();
         res.status(COD_RESPONSE_HTTP_OK).json({
@@ -43,7 +55,7 @@ async function createProduct(req, res) {
       } else {
         return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
           status: COD_RESPONSE_HTTP_BAD_REQUEST,
-          message: 'The packageData is not a number',
+          message: 'The packageData must be numbers and positive',
         });
       }
     } else {
