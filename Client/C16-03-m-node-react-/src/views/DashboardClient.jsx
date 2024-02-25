@@ -15,15 +15,15 @@ function DashboardClient() {
           <Button text="Nuevo envío" bgcolor="bg-green" />
           <Button text="Nuevo envío" bgcolor="bg-green" />
         </div>
-        <div className="w-full h-full flex flex-col sm:flex-row gap-5">
+        <div className="w-full h-full flex flex-col sm:flex-row gap-3">
           <div className="lg:w-1/4 sm:w-1/2 h-full min-[360px]:w-full">
             <MyShipments />
           </div>
           <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full h-full justify-around bg-Amethyst rounded-lg  ">
             <div className=" w-full h-auto lg:flex sm:flex items-start justify-center gap-5 p-5 min-[360px]:hidden ">
               <Button text="Nuevo envío" bgcolor="bg-green" />
-              <Button text="Nuevo envío" bgcolor="bg-green" />
-              <Button text="Nuevo envío" bgcolor="bg-green" />
+              <Button text="Editar envío" bgcolor="bg-green" />
+              <Button text="Cancelar envío" bgcolor="bg-green" />
             </div>
             <div className="w-full h-full flex flex-col justify-around rounded-lg">
               <StatusBar />

@@ -8,12 +8,13 @@ const TableItems = ({ items, states }) => {
         >
           {Object.entries(item).map(([key, value]) => {
             const stateColor = states[0][value];
-            const backgroundColor = stateColor || "transparent";
+            // const backgroundColor = stateColor || "transparent ";
             return (
               <div
                 key={key}
-                className="lg:w-1/2 min-[320px]:w-auto h-auto p-2 rounded-lg bg-white flex lg:flex-col sm:flex-row items-center justify-center"
-                style={{ backgroundColor }}
+                className="lg:w-1/2 min-[320px]:w-auto h-auto p-2 rounded-lg text-white flex lg:flex-col sm:flex-row items-center justify-center"
+                style={{ color : stateColor }}
+                // style={{ backgroundColor }}
               >
                 {value}
               </div>
