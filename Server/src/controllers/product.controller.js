@@ -5,6 +5,7 @@ import {
   COD_RESPONSE_HTTP_OK,
   COD_RESPONSE_HTTP_ERROR,
   COD_RESPONSE_HTTP_BAD_REQUEST,
+  COD_RESPONSE_HTTP_NOT_FOUND,
 } from '../config/utilities.js';
 
 const Product = mongoose.model('product', ProductSchema);
@@ -12,8 +13,21 @@ const User = mongoose.model('users', UsersSchema);
 
 async function createProduct(req, res) {
   try {
-    const { description, originData, destinationData, packageData, ownerId } =
-      req.body;
+    const {
+      description,
+      originData,
+      destinationData,
+      packageData,
+      ownerId,
+      price,
+    } = req.body;
+
+    if (isNaN(price) || price <= 0) {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message: 'The price must be a positive number',
+      });
+    }
 
     const existingUser = await User.findOne({ _id: ownerId });
     if (existingUser) {
@@ -21,7 +35,11 @@ async function createProduct(req, res) {
         !isNaN(packageData.weightKg) &&
         !isNaN(packageData.heightCm) &&
         !isNaN(packageData.widthCm) &&
-        !isNaN(packageData.lengthCm)
+        !isNaN(packageData.lengthCm) &&
+        packageData.weightKg > 0 &&
+        packageData.heightCm > 0 &&
+        packageData.widthCm > 0 &&
+        packageData.lengthCm > 0
       ) {
         const product = new Product({
           description: description,
@@ -34,6 +52,7 @@ async function createProduct(req, res) {
             lengthCm: packageData.lengthCm,
           },
           ownerId: ownerId,
+          price: price,
         });
         await product.save();
         res.status(COD_RESPONSE_HTTP_OK).json({
@@ -43,7 +62,7 @@ async function createProduct(req, res) {
       } else {
         return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
           status: COD_RESPONSE_HTTP_BAD_REQUEST,
-          message: 'The packageData is not a number',
+          message: 'The packageData must be numbers and positive',
         });
       }
     } else {
@@ -126,38 +145,86 @@ async function updateProduct(req, res) {
 
 async function sendProduct(req, res) {
   try {
-    const { status, sentAt, productId } = req.body;
+    if (req.user.role !== 'userBase') {
+      return res
+        .status(403)
+        .send({ message: 'Access forbidden. Insufficient privileges.' });
+    }
 
-    await Product.updateOne(
-      { _id: productId },
-      {
-        status: status,
-        sentAt: sentAt,
-      },
-    );
+    const { status, productId } = req.body;
+    const sentAt = new Date();
+    sentAt.setHours(sentAt.getHours() - 3);
+
+    if (status === 'Delivered') {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message:
+          'Invalid status value. "Delivered" status cannot be set using sendProduct.',
+      });
+    }
+
+    const existingProduct = await Product.findById(productId);
+    if (!existingProduct) {
+      return res.status(COD_RESPONSE_HTTP_NOT_FOUND).json({
+        status: COD_RESPONSE_HTTP_NOT_FOUND,
+        message: 'Product not found',
+      });
+    }
+
+    existingProduct.status = status;
+    existingProduct.sentAt = sentAt;
+    await existingProduct.save();
+
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The products has been sent',
+      message: 'The product has been sent',
     });
   } catch (error) {
+    if (error.name === 'ValidationError' && error.errors['status']) {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message:
+          'Invalid status value. Must be one of: Canceled, In Warehouse, In Progress, In Transit',
+      });
+    }
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error to send this product',
+      message: 'Error sending this product',
     });
   }
 }
 
 async function receiveProduct(req, res) {
   try {
-    const { status, receivedAt, productId } = req.body;
+    if (req.user.role !== 'userBase') {
+      return res
+        .status(403)
+        .send({ message: 'Access forbidden. Insufficient privileges.' });
+    }
 
-    await Product.updateOne(
-      { _id: productId },
-      {
-        status: status,
-        receivedAt: receivedAt,
-      },
-    );
+    const { status, productId } = req.body;
+    const receivedAt = new Date();
+    receivedAt.setHours(receivedAt.getHours() - 3);
+
+    if (status !== 'Delivered') {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message: 'Only Delivered is allowed',
+      });
+    }
+
+    const existingProduct = await Product.findById(productId);
+    if (!existingProduct) {
+      return res.status(COD_RESPONSE_HTTP_NOT_FOUND).json({
+        status: COD_RESPONSE_HTTP_NOT_FOUND,
+        message: 'Product not found',
+      });
+    }
+
+    existingProduct.status = status;
+    existingProduct.receivedAt = receivedAt;
+    await existingProduct.save();
+
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been received',
