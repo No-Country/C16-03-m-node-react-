@@ -5,6 +5,7 @@ import {
   COD_RESPONSE_HTTP_OK,
   COD_RESPONSE_HTTP_ERROR,
   COD_RESPONSE_HTTP_BAD_REQUEST,
+  COD_RESPONSE_HTTP_NOT_FOUND,
 } from '../config/utilities.js';
 
 const Product = mongoose.model('product', ProductSchema);
@@ -12,9 +13,15 @@ const User = mongoose.model('users', UsersSchema);
 
 async function createProduct(req, res) {
   try {
-    const { description, originData, destinationData, packageData, ownerId, price } =
-      req.body;
-      
+    const {
+      description,
+      originData,
+      destinationData,
+      packageData,
+      ownerId,
+      price,
+    } = req.body;
+
     if (isNaN(price) || price <= 0) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
@@ -138,23 +145,45 @@ async function updateProduct(req, res) {
 
 async function sendProduct(req, res) {
   try {
-    const { status, sentAt, productId } = req.body;
+    const { status, productId } = req.body;
+    const sentAt = new Date();
+    sentAt.setHours(sentAt.getHours() - 3);
 
-    await Product.updateOne(
-      { _id: productId },
-      {
-        status: status,
-        sentAt: sentAt,
-      },
-    );
+    if (status === 'Delivered') {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message:
+          'Invalid status value. "Delivered" status cannot be set using sendProduct.',
+      });
+    }
+
+    const existingProduct = await Product.findById(productId);
+    if (!existingProduct) {
+      return res.status(COD_RESPONSE_HTTP_NOT_FOUND).json({
+        status: COD_RESPONSE_HTTP_NOT_FOUND,
+        message: 'Product not found',
+      });
+    }
+
+    existingProduct.status = status;
+    existingProduct.sentAt = sentAt;
+    await existingProduct.save();
+
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The products has been sent',
+      message: 'The product has been sent',
     });
   } catch (error) {
+    if (error.name === 'ValidationError' && error.errors['status']) {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message:
+          'Invalid status value. Must be one of: Canceled, In Warehouse, In Progress, In Transit',
+      });
+    }
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error to send this product',
+      message: 'Error sending this product',
     });
   }
 }
