@@ -190,15 +190,29 @@ async function sendProduct(req, res) {
 
 async function receiveProduct(req, res) {
   try {
-    const { status, receivedAt, productId } = req.body;
+    const { status, productId } = req.body;
+    const receivedAt = new Date();
+    receivedAt.setHours(receivedAt.getHours() - 3);
 
-    await Product.updateOne(
-      { _id: productId },
-      {
-        status: status,
-        receivedAt: receivedAt,
-      },
-    );
+    if (status !== 'Delivered') {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message: 'Only Delivered is allowed',
+      });
+    }
+
+    const existingProduct = await Product.findById(productId);
+    if (!existingProduct) {
+      return res.status(COD_RESPONSE_HTTP_NOT_FOUND).json({
+        status: COD_RESPONSE_HTTP_NOT_FOUND,
+        message: 'Product not found',
+      });
+    }
+
+    existingProduct.status = status;
+    existingProduct.receivedAt = receivedAt;
+    await existingProduct.save();
+
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
       message: 'The products has been received',
