@@ -145,6 +145,12 @@ async function updateProduct(req, res) {
 
 async function sendProduct(req, res) {
   try {
+    if (req.user.role !== 'userBase') {
+      return res
+        .status(403)
+        .send({ message: 'Access forbidden. Insufficient privileges.' });
+    }
+
     const { status, productId } = req.body;
     const sentAt = new Date();
     sentAt.setHours(sentAt.getHours() - 3);
@@ -190,6 +196,12 @@ async function sendProduct(req, res) {
 
 async function receiveProduct(req, res) {
   try {
+    if (req.user.role !== 'userBase') {
+      return res
+        .status(403)
+        .send({ message: 'Access forbidden. Insufficient privileges.' });
+    }
+
     const { status, productId } = req.body;
     const receivedAt = new Date();
     receivedAt.setHours(receivedAt.getHours() - 3);
