@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+
 import { ProgressBar, Step } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
 
-const StatusBar = ({ initialStatus }) => {
+const StatusBar = ({ initialStatus={} }) => {
 
 console.log(initialStatus);
 
 
   const getProgress = () => {
-    switch (initialStatus.products?.status) {
+    switch (initialStatus.product?.status) {
       case  'In Warehouse':
         return 0;
       case  'In Progress':
@@ -29,7 +29,7 @@ console.log(initialStatus);
       <div className="w-full relative">
         <ProgressBar
           percent={getProgress()}
-          filledBackground="#ffffff"
+          filledBackground="#F08898"
           height={15}
         >
           <Step>
