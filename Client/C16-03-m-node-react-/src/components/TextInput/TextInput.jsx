@@ -1,4 +1,4 @@
-function TextInput({ placeholdertext, type }) {
+function TextInput({ placeholdertext, type, name }) {
   const handleKeyDown = (event) => {
     if (type === "number" && event.key === "-") {
       event.preventDefault();
@@ -27,6 +27,7 @@ function TextInput({ placeholdertext, type }) {
         {...(isNumberType ? { min: "0" } : {})}
         onKeyDown={handleKeyDown}
         readOnly={isReadOnly}
+        name={name}
       />
     </>
   );

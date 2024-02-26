@@ -5,8 +5,8 @@ import TextInput from "../components/TextInput/TextInput";
 import Button from "../components/button/button";
 import Rating from "../components/rating/Rating";
 import InitSesion from "../components/InitSesion/InitSesion";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import SearchId from "../components/searchId/SearchId";
 
 function Landing() {
   const [active, setActive] = useState(false);
@@ -34,11 +34,7 @@ function Landing() {
         </div>
       </section>
       <section className="w-full p-[25px] gap-3 flex  items-center">
-        <TextInput
-          placeholdertext={"ingresa el codigo de envio"}
-          type={"text"}
-        />
-        <Button text="buscar" bgcolor="bg-green" to={"/dashboard-user"} />
+        <SearchId />
       </section>
       <footer className="w-full p-[25px] flex justify-start items-center">
         <Rating />

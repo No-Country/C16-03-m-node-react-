@@ -7,14 +7,12 @@ import PageNotFound from "../components/404/PageNotFound";
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },
   { path: "/dashboard-client", element: <DashboardClient /> },
-  { path: "/dashboard-user", element: <DashboardVisitor /> },
+  { path: "/dashboard-user/:id", element: <DashboardVisitor /> },
   { path: "*", element: <PageNotFound /> },
 ]);
 
 const MyRoutes = () => {
-  return (
-   <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default MyRoutes;

@@ -1,9 +1,12 @@
-
 import Header from "../components/header/Header";
 import StatusBar from "../components/statusBar/StatusBar";
 import Table from "../components/tableDetails/Table";
 
+import { useParams } from "react-router-dom";
+
 function DashboardVisitor() {
+  const { id } = useParams();
+  console.log(id);
   return (
     <div className="h-[100vh]  flex flex-col p-2 gap-2 md:gap-4 bg-purpleDark">
       <Header />
