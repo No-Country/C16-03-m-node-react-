@@ -2,12 +2,12 @@ import TableCategory from "./TableCategory";
 import TableItems from "./TableItems";
 
 // Datos del paquete
-function dataPackage(products) {
+function dataPackage(products = {}) {
   return [
     {
       id: products._id,
       descrption: products.description,
-      peso:products.packageData.weightKg,
+      peso: products.packageData?.weightKg,
       despacho: products.originData,
       destino: products.destinationData,
       estado: products.status,
@@ -30,15 +30,15 @@ const columns = ["Id", "Descripcion", "Peso", "Despacho", "Destino", "Estado"];
 
 const states = [
   {
-    Entregado: "#1DBA23",
-    Almacen: "#FFF500",
-    Progreso: "#97A1FF",
-    Transito: "#0038FF",
-    Cancelado: "#FF0000",
+    'Delivered': "#1DBA23",
+    'In Warehouse': "#FFF500",
+    'In Progress': "#97A1FF",
+    'In Transit': "#0038FF",
+    'Canceled': "#FF0000",
   },
 ];
 
-const Table = ({ products={} }) => {
+const Table = ({ products = {} }) => {
   const items = dataPackage(products?.product);
   console.log(products);
   return (

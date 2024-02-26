@@ -23,7 +23,7 @@ const [products, setProducts] = useState();
       <Header />
       <div className="flex flex-col mt-2 h-full sm:flex-row gap-5 rounded-[24px] bg-Amethyst">
         <div className="flex flex-col justify-center gap-5 w-full">
-          <StatusBar />
+          <StatusBar initialStatus= {products}  />
           <Table products={products} />
         </div>
       </div>
