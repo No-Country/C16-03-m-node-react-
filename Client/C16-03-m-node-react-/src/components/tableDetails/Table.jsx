@@ -1,39 +1,30 @@
-import TableCategory from "./TableCategory"
-import TableItems from "./TableItems"
-
+import TableCategory from "./TableCategory";
+import TableItems from "./TableItems";
 
 // Datos del paquete
 
 const items = [
-    {
-        id: "1",
-        peso: "10 kg",
-        despacho: "Sucursal A",
-        destino: "Sucursal B",
-        precio: "$505",
-        estado: "Almacen",
-    },
+  {
+    id: "1",
+    peso: "10 kg",
+    despacho: "Sucursal A",
+    destino: "Sucursal B",
+    precio: "$505",
+    estado: "Almacen",
+  },
 ];
 
-const columns = [
-    "Id",
-    "Peso",
-    "Despacho",
-    "Destino",
-    "Precio",
-    "Estado",
-];
+const columns = ["Id", "Peso", "Despacho", "Destino", "Precio", "Estado"];
 
 const states = [
-    {
-        Entregado: "#1DBA23",
-        Almacen: "#FFF500",
-        Progreso: "#97A1FF",
-        Transito: "#0038FF",
-        Cancelado: "#FF0000",
-    }
-]
-
+  {
+    Entregado: "#1DBA23",
+    Almacen: "#FFF500",
+    Progreso: "#97A1FF",
+    Transito: "#0038FF",
+    Cancelado: "#FF0000",
+  },
+];
 
 const Table = () => {
     return (

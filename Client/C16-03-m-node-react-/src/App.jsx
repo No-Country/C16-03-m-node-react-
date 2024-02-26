@@ -1,15 +1,8 @@
 import "./App.css";
-
-import DashboardClient from "./views/DashboardClient";
-import Landing from "./views/Landing";
+import Routes from "./routes";
 
 function MainContainer() {
-  return (
-    <>
-      {/* <Landing /> */}
-      <DashboardClient />
-    </>
-  );
+  return <Routes />;
 }
 
 export default MainContainer;

@@ -6,6 +6,7 @@ import Button from "../components/button/button";
 import Rating from "../components/rating/Rating";
 import InitSesion from "../components/InitSesion/InitSesion";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Landing() {
   const [active, setActive] = useState(false);
@@ -37,7 +38,7 @@ function Landing() {
           placeholdertext={"ingresa el codigo de envio"}
           type={"text"}
         />
-        <Button text="buscar" bgcolor="bg-green" />
+        <Button text="buscar" bgcolor="bg-green" to={"/dashboard-user"} />
       </section>
       <footer className="w-full p-[25px] flex justify-start items-center">
         <Rating />
