@@ -22,6 +22,7 @@ export default {
       gray: "#8e8e8e",
       bgDashboard: "#421A80",
       bgDetailDashboard: "#73599C",
+      purpleDark: "#221633",
     },
     screens: {
       sm: "600px",

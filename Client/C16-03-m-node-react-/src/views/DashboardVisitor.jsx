@@ -1,14 +1,14 @@
-import React from "react";
+
 import Header from "../components/header/Header";
 import StatusBar from "../components/statusBar/StatusBar";
 import Table from "../components/tableDetails/Table";
 
 function DashboardVisitor() {
   return (
-    <div className="flex flex-col p-2 gap-2 md:gap-4">
+    <div className="h-[100vh]  flex flex-col p-2 gap-2 md:gap-4 bg-purpleDark">
       <Header />
-      <div className="flex flex-col sm:flex-row gap-5">
-        <div className="flex-col gap-5 w-full">
+      <div className="flex flex-col mt-2 h-full sm:flex-row gap-5 rounded-[24px] bg-Amethyst">
+        <div className="flex flex-col justify-center gap-5 w-full">
           <StatusBar />
           <Table />
         </div>
