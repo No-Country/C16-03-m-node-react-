@@ -42,22 +42,34 @@
 
 <h3>Front-End</h3>
 
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/></code>
+ <img width="220" src="https://skillicons.dev/icons?i=react,tailwind,vite" />
+<!-- <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/></code>
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" alt="Redux" title="Redux"/></code>
 <code><img width="55" src="https://github.com/marwin1991/profile-technology-icons/assets/62091613/b40892ef-efb8-4b0e-a6b5-d1cfc2f3fc35" alt="Vite" title="Vite"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS"/></code>
+<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS"/></code> -->
+
+
 
 <h3>Back-End</h3>
 
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/></code>
+ <img width="220" src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
+
+<!-- <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/></code>
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" alt="Express" title="Express"/></code>
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png" alt="mongoDB" title="mongoDB"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman" title="Postman"/></code>
+<code><img width="55" src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman" title="Postman"/></code> -->
 
 <h3>UX/UI</h3>
-<code><img width="50" src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma" title="Figma"/></code>
-<br />
+ <img width="60" src="https://skillicons.dev/icons?i=figma" />
+<!-- 
+<code><img width="50" src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma" title="Figma"/></code> -->
 
+<br />
+<h2 id="built-with">🛠️ Herramientas & Organización</h2>
+
+ <img width="180" src="https://skillicons.dev/icons?i=discord,postman,git" />
+
+<br />
 <h2 id="visualization">Project Visualization </h2>
 <br />
 
@@ -152,7 +164,7 @@
      <td>
       <div align="center">
         <img width="70" src="https://media.licdn.com/dms/image/C4E03AQGWYSsqJF2iRA/profile-displayphoto-shrink_200_200/0/1636639276171?e=2147483647&v=beta&t=OGEzWUuYSD0Uv-M2jDBbZPEQTa0M9iZWQzGQDLBrREQ"/>
-          <h4 style="margin-top: 1rem;">Carlos Conav</h4>
+          <h4 style="margin-top: 1rem;">Carlos Escobar</h4>
           <h4 style="margin-top: 1rem;">Backend Developer</h4>
         <a href="https://www.linkedin.com/in/carlosesconav/" target="_blank">
           <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
