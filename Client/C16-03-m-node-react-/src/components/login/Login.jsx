@@ -5,9 +5,7 @@ import TextInput from "../TextInput/TextInput";
 import { IoMdArrowBack } from "react-icons/io";
 
 function Login({ onClose }) {
-  const handleLogin = () => {
-    
-  };
+  const handleLogin = () => {};
 
   return (
     <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
