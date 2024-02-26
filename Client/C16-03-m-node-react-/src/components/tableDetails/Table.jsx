@@ -28,7 +28,7 @@ const states = [
 
 const Table = () => {
     return (
-        <div className="w-full  min-[320px]:h-auto lg:h-auto  p-3 bg-gray rounded-lg flex flex-col items-center justify-center ">
+        <div className="w-full  min-[320px]:h-auto lg:h-auto  p-3 bg-Amethyst rounded-lg flex flex-col items-center justify-center ">
             <div className="w-full h-full flex flex-col ">
                 <div className=" flex flex-col lg:items-start sm:items-center min-[320px]:items-center p-3 text-white w-full">
                     <h2 className="lg:text-xl sm:text-lg font-bold ">Detalles del Envio</h2>
