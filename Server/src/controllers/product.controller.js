@@ -6,6 +6,7 @@ import {
   COD_RESPONSE_HTTP_ERROR,
   COD_RESPONSE_HTTP_BAD_REQUEST,
   COD_RESPONSE_HTTP_NOT_FOUND,
+  COD_RESPONSE_HTTP_FORBIDDEN,
 } from '../config/utilities.js';
 
 const Product = mongoose.model('product', ProductSchema);
@@ -147,19 +148,16 @@ async function sendProduct(req, res) {
   try {
     if (req.user.role !== 'userBase') {
       return res
-        .status(403)
+        .status(COD_RESPONSE_HTTP_FORBIDDEN)
         .send({ message: 'Access forbidden. Insufficient privileges.' });
     }
 
     const { status, productId } = req.body;
-    const sentAt = new Date();
-    sentAt.setHours(sentAt.getHours() - 3);
-
-    if (status === 'Delivered') {
+    if (status !== 'In Warehouse') {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
         message:
-          'Invalid status value. "Delivered" status cannot be set using sendProduct.',
+          'Invalid status value. Only "In Warehouse" status can be set using sendProduct.',
       });
     }
 
@@ -170,6 +168,16 @@ async function sendProduct(req, res) {
         message: 'Product not found',
       });
     }
+
+    if (existingProduct.sentAt) {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        status: COD_RESPONSE_HTTP_BAD_REQUEST,
+        message:
+          'The product has already been sent and sentAt date is already set.',
+      });
+    }
+    const sentAt = existingProduct.sentAt || new Date();
+    sentAt.setHours(sentAt.getHours() - 3);
 
     existingProduct.status = status;
     existingProduct.sentAt = sentAt;
@@ -183,8 +191,7 @@ async function sendProduct(req, res) {
     if (error.name === 'ValidationError' && error.errors['status']) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
-        message:
-          'Invalid status value. Must be one of: Canceled, In Warehouse, In Progress, In Transit',
+        message: 'Invalid status value. Must be one of: In Warehouse',
       });
     }
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
@@ -196,43 +203,95 @@ async function sendProduct(req, res) {
 
 async function receiveProduct(req, res) {
   try {
-    if (req.user.role !== 'userBase') {
+    const { user, body } = req;
+    const { role } = user;
+    const { status, productId } = body;
+
+    if (role !== 'userBase') {
       return res
-        .status(403)
-        .send({ message: 'Access forbidden. Insufficient privileges.' });
-    }
-
-    const { status, productId } = req.body;
-    const receivedAt = new Date();
-    receivedAt.setHours(receivedAt.getHours() - 3);
-
-    if (status !== 'Delivered') {
-      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
-        status: COD_RESPONSE_HTTP_BAD_REQUEST,
-        message: 'Only Delivered is allowed',
-      });
+        .status(COD_RESPONSE_HTTP_FORBIDDEN)
+        .json({ message: 'Access forbidden. Insufficient privileges.' });
     }
 
     const existingProduct = await Product.findById(productId);
     if (!existingProduct) {
-      return res.status(COD_RESPONSE_HTTP_NOT_FOUND).json({
-        status: COD_RESPONSE_HTTP_NOT_FOUND,
-        message: 'Product not found',
+      return res
+        .status(COD_RESPONSE_HTTP_NOT_FOUND)
+        .json({ message: 'Product not found' });
+    }
+
+    if (!existingProduct.sentAt) {
+      return res
+        .status(COD_RESPONSE_HTTP_BAD_REQUEST)
+        .json({ message: 'The product has not been sent yet.' });
+    }
+
+    const validStatuses = [
+      'Canceled',
+      'In Progress',
+      'In Transit',
+      'Delivered',
+    ];
+    if (!validStatuses.includes(status)) {
+      return res
+        .status(COD_RESPONSE_HTTP_BAD_REQUEST)
+        .json({ message: 'Invalid status' });
+    }
+
+    if (existingProduct.status === status) {
+      return res
+        .status(COD_RESPONSE_HTTP_BAD_REQUEST)
+        .json({ message: `Product is already ${status}.` });
+    }
+
+    const invalidTransitions = {
+      Canceled: ['Canceled'],
+      'In Progress': ['In Progress'],
+      'In Transit': ['In Transit', 'In Progress', 'Canceled'],
+      Delivered: ['Delivered', 'In Transit', 'In Progress', 'Canceled'],
+    };
+
+    if (
+      invalidTransitions[existingProduct.status] &&
+      invalidTransitions[existingProduct.status].includes(status)
+    ) {
+      return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        message: `Product cannot transition from ${existingProduct.status} to ${status}.`,
       });
     }
 
+    const receivedAt = new Date();
+    receivedAt.setHours(receivedAt.getHours() - 3);
     existingProduct.status = status;
     existingProduct.receivedAt = receivedAt;
     await existingProduct.save();
 
+    let successMessage = '';
+    switch (status) {
+      case 'Canceled':
+        successMessage = 'The product has been successfully canceled.';
+        break;
+      case 'In Progress':
+        successMessage = 'The product is in progress.';
+        break;
+      case 'In Transit':
+        successMessage = 'The product is in transit.';
+        break;
+      case 'Delivered':
+        successMessage = 'The product has been delivered.';
+        break;
+      default:
+        successMessage = 'The product has been received.';
+    }
+
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The products has been received',
+      message: successMessage,
     });
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error to received this product',
+      message: 'Error receiving this product',
     });
   }
 }
