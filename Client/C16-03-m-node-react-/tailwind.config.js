@@ -19,7 +19,9 @@ export default {
       pink: "#F08898",
       green: "#8BEA00",
       purple: "#421A80",
-      gray:"#8e8e8e",
+      gray: "#8e8e8e",
+      bgDashboard: "#421A80",
+      bgDetailDashboard: "#73599C",
     },
     screens: {
       sm: "600px",

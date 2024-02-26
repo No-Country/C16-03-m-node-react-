@@ -1,8 +1,10 @@
 import logo from "../../assets/logo.png"; // Importar la imagen
 
-const Logo = () => {
+const Logo = ({ variant }) => {
+  const logoStyle = variant === 'dashboard' ? 'w-72px' : 'w-[72px] h-auto sm:w-[100px] sm:h-[100px]';
+
   return (
-    <div className="w-[50px] h-[50px] sm:w-[100px] sm:h-[100px]">
+    <div className={logoStyle}>
       <img src={logo} alt="Logo" />
     </div>
   );
