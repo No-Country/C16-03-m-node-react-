@@ -61,8 +61,8 @@
 <h2 id="visualization">Project Visualization </h2>
 <br />
 
-<!--
-<p align="right">(<a href="#readme-top"> △ </a>)</p> -->
+
+<!-- <p align="right"><a href="#readme-top"> ⬆ </a></p> -->
 
 <!-- ROADMAP -->
 <h2 id="roadmap">🎯 Links</h2>
@@ -77,7 +77,119 @@
 
 <!-- CONTACT US-->
 <h2 id="developers">💻 Developers</h2>
+<table>
+  <tr>
+    <td>
+      <div align="center">
+        <img width="70" src="https://avatars.githubusercontent.com/u/110847258?v=4"/>
+          <h4 style="margin-top: 1rem;">Clay Martinez</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+        <a href="https://www.linkedin.com/in/clay-martinez" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/claymartinez" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+          <img width="70" src="https://media.licdn.com/dms/image/D4D03AQEy0kfOYLpD7Q/profile-displayphoto-shrink_200_200/0/1704303980751?e=2147483647&v=beta&t=j72Or8K3xCnDr12BTyr_aFJ8HvYuLGME6mSZq9ELIq0"/>
+          <h4 style="margin-top: 1rem;">Facundo Contreras</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+        <a href="https://www.linkedin.com/in/facundo-ignacio-contreras/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/facundocont" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+   <td>
+      <div align="center">
+        <img width="70" src="https://media.licdn.com/dms/image/D5603AQFMjI8VTh2IGA/profile-displayphoto-shrink_200_200/0/1684004578529?e=2147483647&v=beta&t=Vj8T4gAX2bVHj50NI_M62PrLngl-5hBycvrsRgu2HnA"/>
+          <h4 style="margin-top: 1rem;">German Ravarotto</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+        <a href="https://www.linkedin.com/in/german-ravarotto/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/German44" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img width="70" src="https://media.licdn.com/dms/image/D4D03AQFgz-EGZEp8oA/profile-displayphoto-shrink_200_200/0/1685048054794?e=2147483647&v=beta&t=GbLuRXDcNkPewRXW4k9xX_Rzlht0fu2gHBqpe5b3c8c"/>
+          <h4 style="margin-top: 1rem;">Maximo Valfre</h4>
+          <h4 style="margin-top: 1rem;">Frontend Developer</h4>
+        <a href="https://www.linkedin.com/in/maxivalfre/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/MaxiValfre" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+  </tr>
+</table>
 
+<table>
+  <tr>
+    <td>
+      <div align="center">
+        <img width="70" src="https://avatars.githubusercontent.com/u/102445616?v=4"/>
+          <h4 style="margin-top: 1rem;">Esteban Sayago</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer</h4>
+          <a href="https://www.linkedin.com/in/esteban-sayago-a80796241" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/Puchinn" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+     <td>
+      <div align="center">
+        <img width="70" src="https://media.licdn.com/dms/image/C4E03AQGWYSsqJF2iRA/profile-displayphoto-shrink_200_200/0/1636639276171?e=2147483647&v=beta&t=OGEzWUuYSD0Uv-M2jDBbZPEQTa0M9iZWQzGQDLBrREQ"/>
+          <h4 style="margin-top: 1rem;">Carlos Conav</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer</h4>
+        <a href="https://www.linkedin.com/in/carlosesconav/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/carlosesconav" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+   <td>
+      <div align="center">
+        <img width="70" src="https://avatars.githubusercontent.com/u/121452437?v=4"/>
+          <h4 style="margin-top: 1rem;">Jordan Esquivel</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer</h4>
+        <a href="https://www.linkedin.com/in/jordan-joel-esquivel-silva/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/JordanEsquivelS" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+    <td>
+      <div align="center">
+        <img width="70" src="https://avatars.githubusercontent.com/u/72227893?s=400&u=84afafc01dbfe8cce748db81ce3650f389c1d82a&v=4"/>
+          <h4 style="margin-top: 1rem;">Micaela Ortiz</h4>
+          <h4 style="margin-top: 1rem;">Backend Developer</h4>
+        <a href="https://www.linkedin.com/in/micaela-a-ortiz/" target="_blank">
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+        </a>
+          <a href="https://github.com/micaortiz" target="_blank">
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          </a>
+      </div>
+    </td>
+  </tr>
+</table>
 <!-- ACKNOWLEDGMENTS -->
 <!-- <div align='center'>
 <h3>Agradecimientos</h3>
