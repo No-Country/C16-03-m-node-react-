@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "https://c16-03-m-node-react.onrender.com";
 
 async function signUp({ formData }) {
   try {
