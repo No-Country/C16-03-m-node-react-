@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png"; // Importar la imagen
 
 const Logo = ({ variant }) => {
@@ -5,7 +6,7 @@ const Logo = ({ variant }) => {
 
   return (
     <div className={logoStyle}>
-      <img src={logo} alt="Logo" />
+      <Link to={"/"}><img src={logo} alt="Logo" /></Link>
     </div>
   );
 };
