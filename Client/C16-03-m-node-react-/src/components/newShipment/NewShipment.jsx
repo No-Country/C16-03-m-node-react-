@@ -12,7 +12,7 @@ function NewShipment({ handleActive }) {
         <div className="absolute top-0 right-0 mr-4 mt-2">
           <button onClick={() => handleActive()}>x</button>
         </div>
-        <div className="flex flex-col items-center gap-16 p-4 py-8">
+        <div className="flex flex-col items-center gap-4 p-4 py-8">
           <div>
             <Logo />
           </div>
@@ -24,13 +24,15 @@ function NewShipment({ handleActive }) {
               variant="form"
             />
           </div>
-          <div className="flex flex-col gap-6 items-center">
+          <div className="flex flex-col gap-4 items-center">
             <TextInput type="text" placeholdertext="Tipo de envío" />
             <TextInput type="number" placeholdertext="Peso" />
-            <TextInput type="text" placeholdertext="Despacho" />
+            <TextInput type="number" placeholdertext="Alto" />
+            <TextInput type="number" placeholdertext="Ancho" />
+            <TextInput type="number" placeholdertext="Largo" />
+            <TextInput type="text" placeholdertext="Origen" />
             <TextInput type="text" placeholdertext="Destino" />
-            <TextInput type="text" placeholdertext="Nombre del destinatario" />
-            <TextInput type="number" placeholdertext="Precio" />
+            <TextInput type="precio" placeholdertext="Precio" />
             <Button
               text="Listo"
               bgcolor="bg-green"
