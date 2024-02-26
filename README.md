@@ -31,19 +31,16 @@
 <h2 id="features">🚀 Features</h2>
 </br>
 <ul>
-  <li><strong>✔ Authentication and Security:</strong> Secure local and third-party authentication with Google and Facebook integration for user login.</br></br>
-  <li><strong>✔ Real-time Notifications:</strong> Nodemailer-based system for email notifications on registrations and purchases, enhancing user engagement.</br></br>
-  <li><strong>✔ Comprehensive User Profiles:</strong> User profiles for easy management of information, purchase history, and product reviews.</br></br>
-  <li><strong>✔ Efficient Dashboard for Administrators:</strong> Dashboard for streamlined product and user management, and order tracking.</br></br>
-  <li><strong>✔ Intuitive Search and Filtering:</strong> Powerful search and intuitive filters for smooth browsing experiences.</br></br>
+  <li><strong>✔ Autenticación y Seguridad:</strong> Se proporciona un proceso confiable de registro y autenticación a nivel local, garantizando la seguridad y privacidad  de los usuarios.</br></br>
+  <li><strong>✔ Seguimiento de envíos:</strong> Los usuarios pueden rastrear el estado y la ubicación de sus paquetes en tiempo real, lo que proporciona transparencia y tranquilidad durante el proceso de envío.</br></br>
+  <li><strong>✔ Envíos locales y nacionales:</strong> Se proporciona un servicio integral que cubre tanto envíos locales como nacionales, lo que permite a los usuarios enviar paquetes a diferentes destinos dentro del país.</br></br>
   <li><strong>✔ Diseño Adaptable:</strong> Diseño web totalmente adaptable para una experiencia de navegación fluida en todos los dispositivos.</br></br>
+  <!-- agregar dashboard -->
 </ul>
 
 <h2 id="built-with">🛠️ Tecnologías</h2>
 
 <h3>Front-End</h3>
-
-<!-- [![React][React-badge]][react-url] [![Redux][Redux-badge]][redux-url] [![Vite Badge][Vite-badge]][vite-url] -->
 
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/></code>
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" alt="Redux" title="Redux"/></code>
@@ -51,8 +48,6 @@
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS"/></code>
 
 <h3>Back-End</h3>
-
-<!-- <div align="center"> -->
 
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/></code>
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" alt="Express" title="Express"/></code>
