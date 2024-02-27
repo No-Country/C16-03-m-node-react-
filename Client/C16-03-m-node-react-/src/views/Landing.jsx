@@ -35,7 +35,7 @@ function Landing() {
       </section>
       <section className="w-full p-[25px] gap-3 flex  items-center">
         <TextInput
-          placeholdertext={"ingresa el codigo de envio"}
+          placeholdertext={"Ingresa el código de envío"}
           type={"text"}
         />
         <Button text="buscar" bgcolor="bg-green" to={"/dashboard-user"} />
