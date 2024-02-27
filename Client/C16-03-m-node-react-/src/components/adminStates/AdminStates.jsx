@@ -9,11 +9,11 @@ function AdminStates() {
             <p className="flex justify-center text-center text-[24px]">ingrese el Nro de seguimiento para actualizar los estados del paquete</p>
             <TextInput type="text" placeholdertext="Nro de seguimiento" />
             <div className="flex flex-col gap-4 items-center w-fit m-auto ">
-                <Button text="state 1" className="hidden ms:block" />
-                <Button text="state 2" className="hidden ms:block" />
-                <Button text="state 3" className="hidden ms:block" />
-                <Button text="state 4" className="hidden ms:block" />
-                <Button text="state 5" className="hidden ms:block" />
+                <Button text="state 1" className="" />
+                <Button text="state 2" className="" />
+                <Button text="state 3" className="" />
+                <Button text="state 4" className="" />
+                <Button text="state 5" className="" />
 
 
             </div>
