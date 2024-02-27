@@ -1,6 +1,6 @@
 const TableCategory = ({ columns }) => {
   return (
-    <div className="w-full h-full flex lg:flex-row sm:flex-col min-[320px]:flex-col lg:items-center lg:justify-center lg:text-lg gap-10 sm:text-sm text-white font-bold   ">
+    <div className="w-full h-full flex lg:flex-row sm:flex-col min-[320px]:flex-col lg:items-center lg:justify-center lg:text-lg gap-2 sm:text-sm text-white font-bold   ">
       {columns.map((label, index) => (
         <div
           key={index}
