@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import services from "../services/api";
 
 import { Link, useParams } from "react-router-dom";
+import Spinner from "../components/spinner/Spinner";
 
 function DashboardVisitor() {
   const { id } = useParams();
@@ -38,7 +39,7 @@ function DashboardVisitor() {
       <div className="flex flex-col mt-2 h-full sm:flex-row gap-5 rounded-[24px] lg:w-[90%] sm:w-3/4 min-[360px]:w-full bg-Amethyst">
         <div className="flex flex-col w-full p-6 justify-center gap-5">
           {loading ? (
-            <div className="border-dotted w-24 h-24 border-8 border-bgForm rounded-full animate-spin mx-auto"></div>
+            <Spinner />
           ) : errorId ? (
             <div className="flex flex-col w-full p-6 justify-center gap-5">
               <h2 className="text-pink text-center text-xl font-bold ml-11">
