@@ -11,7 +11,7 @@ function RegistrationModal({ onClose }) {
   return (
     <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
       <div className="flex flex-col items-center gap-7 p-4 py-8">
-        <Logo />
+        <Logo register/>
 
         <TextLanding
           titulo="Registro"
