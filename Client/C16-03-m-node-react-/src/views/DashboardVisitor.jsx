@@ -46,7 +46,11 @@ function DashboardVisitor() {
               <h2 className="text-pink text-center text-xl font-bold ml-11">
                 El id no existe
               </h2>
-              <Link className="text-green text-center text-lg" to="/">
+              <Link
+                className="text-green text-center text-lg"
+                to="/"
+                cursor="pointer"
+              >
                 Volver a inicio
               </Link>
             </div>
