@@ -1,18 +1,18 @@
-const url = "https://c16-03-m-node-react.onrender.com";
+const url = "http://localhost:3000";
 
-async function signUp({ formData }) {
-  try {
-    const response = await fetch(`${url}/auth/signup`, {
-      headers: {
-        "content-type": "application/json",
-      },
-      method: "POST",
-      body: formData,
-    }).then((res) => res.json());
-    return response;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+async function signIn({ formData }) {
+  return fetch(`${url}/auth/signin`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  }).then((res) => {
+    if (!res.ok) {
+      throw res;
+    }
+    return res.json();
+  });
 }
 
 async function getProductData({ id }) {
@@ -37,4 +37,4 @@ async function testBackend() {
   return response;
 }
 
-export default { signUp, testBackend, getProductData };
+export default { signIn, testBackend, getProductData };
