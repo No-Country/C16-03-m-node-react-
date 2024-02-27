@@ -124,7 +124,7 @@ async function login(req, res, next) {
     const token = jwt.sign({ _id: user._id, role: user.role }, SECRET_KEY, {
       expiresIn: '1d',
     });
-    return res.status(200).json({ token });
+    return res.status(200).json({ token, userRole: user.role });
   } catch (err) {
     const errorMessage =
       err.message ||
@@ -143,10 +143,16 @@ async function deleteAccount(req, res) {
     if (!userToDelete) {
       return res.status(404).json({ message: 'User not found' });
     }
-    if (requestingUserRole === 'userAdmin' && userToDelete.role !== 'userAdmin') {
+    if (
+      requestingUserRole === 'userAdmin' &&
+      userToDelete.role !== 'userAdmin'
+    ) {
       await User.findByIdAndDelete(userIdToDelete);
       return res.status(200).json({ message: 'User deleted successfully' });
-    } else if (requestingUserRole === 'user' && userIdToDelete === requestingUserId) {
+    } else if (
+      requestingUserRole === 'user' &&
+      userIdToDelete === requestingUserId
+    ) {
       await User.findByIdAndDelete(userIdToDelete);
       return res.status(200).json({ message: 'User deleted successfully' });
     } else {
