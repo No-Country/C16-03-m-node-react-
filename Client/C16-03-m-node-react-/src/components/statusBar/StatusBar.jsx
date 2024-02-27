@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
 
@@ -41,12 +41,12 @@ const StatusBar = ({ initialStatus }) => {
   };
 
   return (
-    <div className="p-4 md:w-2/3 lg:w-1/2 xl:w-1/3 mx-auto min-w-[360px]">
+    <div className="p-4 md:w-2/3 lg:w-full xl:w-1/3 mx-auto min-w-[360px] bg-Amethyst rounded-lg">
       <div className="w-full relative">
         <ProgressBar
           percent={getProgress()}
-          filledBackground="#916ACC"
-          height={10}
+          filledBackground="#ffffff"
+          height={15}
         >
           <Step>
             {({ accomplished }) => (
@@ -57,8 +57,8 @@ const StatusBar = ({ initialStatus }) => {
               >
                 <div
                   style={{
-                    width: "20px",
-                    height: "20px",
+                    width: "25px",
+                    height: "25px",
                     borderRadius: "50%",
                     background: accomplished ? "#FFFF00" : "#ddd",
                   }}
@@ -75,8 +75,8 @@ const StatusBar = ({ initialStatus }) => {
               >
                 <div
                   style={{
-                    width: "20px",
-                    height: "20px",
+                    width: "25px",
+                    height: "25px",
                     borderRadius: "50%",
                     background: accomplished ? "#0000FF" : "#ddd",
                   }}
@@ -93,8 +93,8 @@ const StatusBar = ({ initialStatus }) => {
               >
                 <div
                   style={{
-                    width: "20px",
-                    height: "20px",
+                    width: "25px",
+                    height: "25px",
                     borderRadius: "50%",
                     background: accomplished ? "#4caf50" : "#ddd",
                   }}
@@ -111,9 +111,9 @@ const StatusBar = ({ initialStatus }) => {
               >
                 <div
                   style={{
-                    margin: "-10px",
-                    width: "20px",
-                    height: "20px",
+                    margin: "-15px",
+                    width: "25px",
+                    height: "25px",
                     borderRadius: "50%",
                     background: accomplished ? "#21da21" : "#ddd",
                   }}
@@ -122,20 +122,20 @@ const StatusBar = ({ initialStatus }) => {
             )}
           </Step>
         </ProgressBar>
-        <div className="flex justify-between mt-2">
-          <span className="text-xs md:text-sm lg:text-base xl:text-lg text-center">
-            En Almacén
-          </span>
-          <span className="text-xs md:text-sm lg:text-base xl:text-lg text-center">
-            En Progreso
-          </span>
-          <span className="text-xs md:text-sm lg:text-base xl:text-lg text-center">
-            En Tránsito
-          </span>
-          <span className="text-xs md:text-sm lg:text-base xl:text-lg text-center">
-            Entregado
-          </span>
-        </div>
+        <div className="flex justify-between mt-2 ">
+        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          En Almacén
+        </span>
+        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          En Progreso
+        </span>
+        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          En Tránsito
+        </span>
+        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          Entregado
+        </span>
+      </div>
       </div>
     </div>
   );

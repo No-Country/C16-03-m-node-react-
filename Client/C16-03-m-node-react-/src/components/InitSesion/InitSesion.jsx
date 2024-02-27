@@ -34,7 +34,9 @@ function InitSesion({ handleActive }) {
       ) : (
         <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
           <div className="absolute top-0 right-0 mr-4 mt-3 ">
-            <button onClick={() => handleActive()}><IoCloseCircleOutline /></button>
+            <button onClick={() => handleActive()}>
+              <IoCloseCircleOutline />
+            </button>
           </div>
           <div className="flex flex-col items-center gap-16 p-4 py-8">
             <div>

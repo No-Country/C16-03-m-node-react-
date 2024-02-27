@@ -1,14 +1,8 @@
 import "./App.css";
-import Login from "./components/login/Login";
-import DashboardClient from "./views/DashboardClient";
-import Landing from "./views/Landing";
+import Routes from "./routes";
 
 function MainContainer() {
-  return (
-    <>
-      <DashboardClient />
-    </>
-  );
+  return <Routes />;
 }
 
 export default MainContainer;
