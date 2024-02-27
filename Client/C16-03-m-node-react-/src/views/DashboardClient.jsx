@@ -15,7 +15,6 @@ function DashboardClient() {
             <MyShipments />
           </div>
           <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full h-full justify-around bg-Amethyst rounded-[24px]  ">
-
             <div className="w-full h-full flex flex-col justify-around rounded-lg">
               <StatusBar />
               <Table />
