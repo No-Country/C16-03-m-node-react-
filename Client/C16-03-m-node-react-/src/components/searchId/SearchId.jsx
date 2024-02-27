@@ -2,16 +2,16 @@ import { useState } from "react";
 import TextInput from "../TextInput/TextInput";
 import { useNavigate } from "react-router-dom";
 
-function SearchId() {
+function SearchId({ ruta }) {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState("");
   const [errorId, setErrorId] = useState(false);
 
   const onSubmit = (event) => {
     event.preventDefault();
     const inputValue = event.target.idNumber.value;
-    if (inputValue.trim() !== "") {
-      navigate("/dashboard-user/" + inputValue);
+    if (inputValue !== "") {
+      navigate(`/dashboard-${ruta}/` + inputValue);
+      event.target.idNumber.value = "";
     } else {
       setErrorId(true);
     }
@@ -24,8 +24,6 @@ function SearchId() {
           placeholdertext={"Ingresa el código de envío"}
           type={"text"}
           name={"idNumber"}
-          value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
         />
         <button className="py-2 px-4 bg-green rounded-[24px]" type="submit">
           Buscar
