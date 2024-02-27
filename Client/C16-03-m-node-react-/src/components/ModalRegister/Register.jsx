@@ -1,4 +1,4 @@
-import React from "react";
+
 import Logo from "../logo/Logo";
 import Button from "../button/button";
 import TextInput from "../TextInput/TextInput";
@@ -12,7 +12,6 @@ function RegistrationModal({ onClose }) {
     <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
       <div className="flex flex-col items-center gap-7 p-4 py-8">
         <Logo />
-
         <TextLanding
           titulo="Registro"
           parrafo="Introduzca sus datos para crear su cuenta"
