@@ -12,6 +12,14 @@
         "sourceType": "module"
     },
     "rules": {
-        "camelcase": "error"
+        "camelcase": "error",
+        "func-style": [
+            "error",
+            "declaration",
+            {
+                "allowArrowFunctions": false
+            }
+        ],
+        "prefer-arrow-callback": "off"
     }
 }

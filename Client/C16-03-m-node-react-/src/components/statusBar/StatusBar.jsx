@@ -1,39 +1,23 @@
-import { useState, useEffect } from "react";
+
 import { ProgressBar, Step } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
 
-const StatusBar = ({ initialStatus }) => {
-  const [orderStatus, setOrderStatus] = useState(initialStatus);
+const StatusBar = ({ initialStatus={} }) => {
 
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      const possibleStatus = [
-        "En Almacén",
-        "En Progreso",
-        "En Tránsito",
-        "Entregado",
-        "Cancelado",
-      ];
-      const randomStatus =
-        possibleStatus[Math.floor(Math.random() * possibleStatus.length)];
+console.log(initialStatus);
 
-      setOrderStatus(randomStatus);
-    }, 1000);
-
-    return () => clearTimeout(timeoutId);
-  }, []);
 
   const getProgress = () => {
-    switch (orderStatus) {
-      case "En Almacén":
+    switch (initialStatus.product?.status) {
+      case  'In Warehouse':
         return 0;
-      case "En Progreso":
+      case  'In Progress':
         return 34;
-      case "En Tránsito":
+      case  'In Transit':
         return 67;
-      case "Entregado":
+      case  'Delivered':
         return 100;
-      case "Cancelado":
+      case 'Canceled':
         return 0;
       default:
         return 0;
@@ -47,7 +31,7 @@ const StatusBar = ({ initialStatus }) => {
         
         <ProgressBar
           percent={getProgress()}
-          filledBackground="#ffffff"
+          filledBackground="#8BEA00"
           height={15}
         >
           <Step>

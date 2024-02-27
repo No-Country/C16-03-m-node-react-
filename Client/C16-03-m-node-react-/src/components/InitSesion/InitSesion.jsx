@@ -59,6 +59,7 @@ function InitSesion({ handleActive }) {
               <p className="">
               ¿No tienes una cuenta?{" "}
                 <a
+                  cursor = "pointer"
                   className="font-bold text-green"
                   onClick={handleRegisterClick}
                 >

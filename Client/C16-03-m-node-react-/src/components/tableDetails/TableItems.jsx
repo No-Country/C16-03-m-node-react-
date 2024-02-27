@@ -1,5 +1,6 @@
 const TableItems = ({ items, states }) => {
   return (
+    // console.log(items),
     <div className="w-full h-full flex lg:flex-row sm:flex-col min-[320px]:flex-col lg:items-center lg:justify-center">
       {items.map((item) => (
         <div

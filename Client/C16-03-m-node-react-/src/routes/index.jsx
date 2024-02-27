@@ -8,7 +8,7 @@ import DashboardAdmin from "../views/DashboardAdmin";
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },
   { path: "/dashboard-client", element: <DashboardClient /> },
-  { path: "/dashboard-user", element: <DashboardVisitor /> },
+  { path: "/dashboard-user/:id", element: <DashboardVisitor /> },
   { path: "*", element: <PageNotFound /> },
   { path: "/dashboard-admin", element: <DashboardAdmin /> },
 

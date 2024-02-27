@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import Header from '../components/header/Header';
+import Header from "../components/header/Header";
 import MyShipments from "../components/myShipments/MyShipments";
 import StatusBar from "../components/statusBar/StatusBar";
 import Table from "../components/tableDetails/Table";
@@ -26,14 +25,13 @@ function DashboardClient() {
             <MyShipments />
           </div>
           <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full justify-center bg-Amethyst rounded-[24px]  ">
-
             <div className="w-full h-full flex flex-col pt-10 rounded-lg">
               <StatusBar />
               <Table />
             </div>
           </div>
         </div>
-      {isModalVisible && <NewShipment handleActive={handleModalClose} />}
+        {isModalVisible && <NewShipment handleActive={handleModalClose} />}
       </div>
     </main>
   );
