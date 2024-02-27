@@ -12,7 +12,7 @@ const TableItems = ({ items, states }) => {
             return (
               <div
                 key={key}
-                className="lg:w-1/2 min-[320px]:w-auto h-auto p-2 rounded-lg text-white flex lg:flex-col sm:flex-row items-center justify-center"
+                className="lg:w-1/2 min-[320px]:w-auto h-auto p-2 rounded-3xl text-white flex lg:flex-col sm:flex-row items-center justify-center"
                 style={{ color : stateColor }}
                 // style={{ backgroundColor }}
               >

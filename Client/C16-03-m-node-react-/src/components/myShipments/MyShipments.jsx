@@ -6,7 +6,7 @@ function MyShipments() {
   return (
     <div className="flex flex-col py-4 px-4 w-full sm:min-w-[361px] h-full gap-8 bg-bgDashboard rounded-[24px] text-white">
       <h1 className="flex justify-center text-[24px]">Mis envíos</h1>
-      <div className="flex flex-col items-start w-fit m-auto ">
+      <div className="flex flex-col items-start w-fit mx-auto ">
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-white"></div>
           <p className="text-sm">Cancelado</p>
