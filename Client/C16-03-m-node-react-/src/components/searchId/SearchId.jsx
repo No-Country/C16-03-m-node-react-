@@ -17,7 +17,7 @@ function SearchId() {
         type={"text"}
         name={"idNumber"}
       />
-      <button type="submit">buscar</button>
+      <button className="py-2 px-4 bg-green rounded-[24px]" type="submit">Buscar</button>
     </form>
   );
 }

@@ -29,7 +29,7 @@ console.log(initialStatus);
       <div className="w-full relative">
         <ProgressBar
           percent={getProgress()}
-          filledBackground="#F08898"
+          filledBackground="#8BEA00"
           height={15}
         >
           <Step>
