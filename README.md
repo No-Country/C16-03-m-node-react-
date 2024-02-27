@@ -6,20 +6,22 @@
     </a>
     <h3 align="center">¡Bienvenidos a Go Courier!</h3>
   </div>
-
 <!-- ABOUT THE PROJECT -->
 <div align="center">
   <p align="center">
     <strong>Go Courier</strong> es un sistema de envíos de paquetería que prioriza la facilidad y la eficiencia. Nuestra plataforma integra tecnología avanzada con un enfoque centrado en el cliente para ofrecer soluciones logísticas confiables y rápidas. Con nosotros, puedes enviar y rastrear tus paquetes de manera segura y conveniente, tanto a nivel local como nacional.<strong> ¡Simplifica tu envíos con Go Courier!</strong>
   </p>
-</div>
 <!-- falta agregar link a demo  -->
+    <a href="#" target="_blank">
+      <img src="https://img.shields.io/badge/WEBSITE-975AB6?style=for-the-badge&logo=vercel">
+    </a>
+</div>
 <!-- TABLE OF CONTENTS -->
 <div>
   <h2>Contents</h2>
   <ul>
     <li><a href="#features">Features</a></li>
-    <li><a href="#built-with">Tecnologías</a></li>
+    <li><a href="#built-with">Tech Stack</a></li>
     <li><a href="#visualization">Project Visualization </a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#developers">Developers</a></li>
@@ -38,7 +40,7 @@
   <!-- agregar dashboard -->
 </ul>
 
-<h2 id="built-with">🛠️ Tecnologías</h2>
+<h2 id="built-with">🛠️ Tech Stack</h2>
 
 <h3>Front-End</h3>
 
@@ -47,8 +49,6 @@
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" alt="Redux" title="Redux"/></code>
 <code><img width="55" src="https://github.com/marwin1991/profile-technology-icons/assets/62091613/b40892ef-efb8-4b0e-a6b5-d1cfc2f3fc35" alt="Vite" title="Vite"/></code>
 <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS"/></code> -->
-
-
 
 <h3>Back-End</h3>
 
@@ -65,14 +65,16 @@
 <code><img width="50" src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma" title="Figma"/></code> -->
 
 <br />
-<h2 id="built-with">🛠️ Herramientas & Organización</h2>
+<!-- <h2 id="built-with">🛠️ Herramientas & Organización</h2>
 
- <img width="180" src="https://skillicons.dev/icons?i=discord,postman,git" />
+ <!-- <img width="180" src="https://skillicons.dev/icons?i=discord,postman,git" />
 
-<br />
+<br />  -->
 <h2 id="visualization">Project Visualization </h2>
-<br />
 
+<img src="./Client/C16-03-m-node-react-/public/img.png">
+<img src="./Client/C16-03-m-node-react-/public/img-phone.png">
+<br />
 
 <!-- <p align="right"><a href="#readme-top"> ⬆ </a></p> -->
 
@@ -97,10 +99,10 @@
           <h4 style="margin-top: 1rem;">Clay Martinez</h4>
           <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         <a href="https://www.linkedin.com/in/clay-martinez" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white "/>
         </a>
           <a href="https://github.com/claymartinez" target="_blank">
-              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+              <img src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label= "/>
           </a>
       </div>
     </td>
