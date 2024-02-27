@@ -1,8 +1,8 @@
 import React from "react";
 
-function HamburguerMenu() {
+function HamburguerMenu({ onClick }) {
   return (
-    <div className="ms:hidden">
+    <div className="ms:hidden" onClick={onClick} style={{ cursor: "pointer" }}>
       <svg
         width="45"
         height="40"
@@ -20,3 +20,4 @@ function HamburguerMenu() {
 }
 
 export default HamburguerMenu;
+

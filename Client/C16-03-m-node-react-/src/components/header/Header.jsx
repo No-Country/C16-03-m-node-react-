@@ -1,18 +1,32 @@
+import React, { useState } from "react";
 import Logo from "../logo/Logo";
 import HamburguerMenu from "./HamburguerMenu";
 import Button from "../button/button";
-function Header() {
+
+function Header({ openModal }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div className="flex items-center w-full h-[104px] bg-bgDashboard rounded-[24px] ">
-      <div className="min-w-80 max-w-screen-lg  w-full">
-        <div className=" flex items-center p-4 justify-between w-full">
-          <Logo />
+    <div className="relative">
+      <div className="flex items-center justify-between w-full h-[104px] bg-bgDashboard rounded-[24px] p-4">
+        <Logo />
 
-          <Button text="Botón 1" className="hidden ms:block" />
-          <Button text="Botón 1" className="hidden ms:block" />
-          <Button text="Botón 1" className="hidden ms:block" />
+        <div className="hidden ms:flex flex-grow items-center justify-center space-x-4">
+          <Button text="Nuevo envío" onClick={openModal} />
+          <Button text="Cancelar envío" />
+          <Button text="Botón 3" />
+        </div>
 
-          <HamburguerMenu />
+        <HamburguerMenu onClick={toggleMenu} />
+
+        <div className={`${isMenuOpen ? "block" : "hidden"} ms:hidden absolute top-full left-0 right-0 bg-bgDashboard p-4 rounded-[24px] border border-gray-300`}>
+          <Button text="Nuevo envío" onClick={openModal} className="block mb-2" />
+          <Button text="Cancelar envío" className="block mb-2" />
+          <Button text="Botón 3" className="block" />
         </div>
       </div>
     </div>

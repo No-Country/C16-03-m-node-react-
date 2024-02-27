@@ -35,8 +35,8 @@ function Login({ onClose }) {
         onSubmit={onSubmit}
         className="flex flex-col items-center gap-10 p-4 py-8"
       >
-        <Logo />
-        <h1 className="text-lg font-bold">Log in</h1>
+        <Logo register />
+        <h1 className="text-lg font-bold text-green">Log in</h1>
         <button onClick={onClose} className="py-2 px-4 bg-green rounded">
           <IoMdArrowBack />
         </button>

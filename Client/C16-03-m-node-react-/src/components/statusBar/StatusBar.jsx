@@ -25,8 +25,10 @@ console.log(initialStatus);
   };
 
   return (
-    <div className="p-4 md:w-2/3 lg:w-full xl:w-1/3 mx-auto min-w-[360px] bg-Amethyst rounded-lg">
+    <div className="p-4 w-full md:w-3/4 lg:w-2/3  mx-auto min-w-sm bg-Amethyst rounded-lg">
+      <h2 className="text-[24px] lg:text-[45px] sm:text-lg font-bold text-white pb-2 w-fit mx-auto">Detalles del Envio</h2>
       <div className="w-full relative">
+        
         <ProgressBar
           percent={getProgress()}
           filledBackground="#8BEA00"

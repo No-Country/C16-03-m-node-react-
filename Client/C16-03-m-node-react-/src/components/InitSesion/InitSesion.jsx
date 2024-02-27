@@ -40,24 +40,24 @@ function InitSesion({ handleActive }) {
           </div>
           <div className="flex flex-col items-center gap-16 p-4 py-8">
             <div>
-              <Logo />
+              <Logo register />
             </div>
             <div>
               <TextLanding
-                titulo="Paqueteria profesional"
-                parrafo="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                titulo="Paquetería Profesional"
+                parrafo="¡Bienvenido a Go Courier! Accede ahora para comenzar a gestionar tus envíos de manera rápida y segura."
                 textColor="text-black"
                 variant="form"
               />
             </div>
             <div className="flex flex-col gap-6 items-center">
               <Button
-                text="Iniciar Sesion"
+                text="Iniciar Sesión"
                 bgcolor="bg-green"
                 onClick={handleLoginClick}
               />
               <p className="">
-                No tienes cuenta?{" "}
+              ¿No tienes una cuenta?{" "}
                 <a
                   cursor = "pointer"
                   className="font-bold text-green"
