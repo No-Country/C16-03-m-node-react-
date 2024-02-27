@@ -10,8 +10,8 @@ function Header({ openModal }) {
         <div className="flex items-center p-4 justify-between w-full">
           <Logo />
 
-          <Button text="Nuevo envio" className="hidden ms:block" onClick={openModal} />
-          <Button text="Cancelar envio" className="hidden ms:block" />
+          <Button text="Nuevo envío" className="hidden ms:block" onClick={openModal} />
+          <Button text="Cancelar envío" className="hidden ms:block" />
           <Button text="Botón 3" className="hidden ms:block" />
 
           <HamburguerMenu />
