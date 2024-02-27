@@ -5,11 +5,12 @@ import { IoMdArrowBack } from "react-icons/io";
 import services from "../../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-useNavigate;
+import useToken from "../../hooks/useToken";
 
 function Login({ onClose }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { updateToken } = useToken();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -20,7 +21,14 @@ function Login({ onClose }) {
     try {
       await services.signIn({ formData }).then((res) => {
         setError("");
-        navigate("/dashboard-client");
+        const { userRole, token } = res;
+        updateToken(token);
+        if (userRole === "userBase") {
+          return navigate("/dashboard-admin");
+        }
+        if (userRole === "user") {
+          return navigate("/dashboard-client");
+        }
       });
     } catch (error) {
       error.json().then((res) => {
