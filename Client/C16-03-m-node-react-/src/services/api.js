@@ -1,4 +1,4 @@
-const url = "https://c16-03-m-node-react.onrender.com/";
+const url = "https://c16-03-m-node-react.onrender.com";
 
 async function signIn({ formData }) {
   return fetch(`${url}/auth/signin`, {
