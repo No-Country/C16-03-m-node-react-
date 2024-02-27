@@ -12,12 +12,12 @@ function DashboardAdmin() {
             <div className=" w-full lg:h-full sm:h-full min-[320px]:h-auto flex flex-col p-2 bg-Dark">
                 <HeaderNoButtons/>
                 <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3">
-                    <div className="lg:w-1/4 sm:w-1/2 h-full min-[360px]:w-full">
+                    <div className="h-full lg:w-1/4 sm:w-1/2 min-[360px]:w-full bg-bgDashboard rounded-[24px]">
                         <AdminStates />
                     </div>
-                    <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full h-full justify-center bg-Amethyst rounded-[24px]  ">
+                    <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full justify-center bg-Amethyst rounded-[24px]  ">
 
-                        <div className="w-full h-full flex flex-col justify-center pt-10 rounded-lg">
+                        <div className="w-full h-full flex flex-col  pt-10 rounded-3xl">
                             <StatusBar />
                             <Table />
                         </div>
