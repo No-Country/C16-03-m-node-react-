@@ -17,7 +17,7 @@ function NewShipment({ handleActive }) {
         </div>
         <div className="flex flex-col items-center gap-4 p-4 py-8">
           <div>
-            <Logo />
+            <Logo register/>
           </div>
           <div>
             <TextLanding
