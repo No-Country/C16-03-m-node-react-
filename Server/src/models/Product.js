@@ -21,18 +21,22 @@ export const ProductSchema = new Schema({
       weightKg: {
         type: Number,
         require: false,
+        default: null,
       },
       heightCm: {
         type: Number,
         require: false,
+        default: null,
       },
       widthCm: {
         type: Number,
         require: false,
+        default: null,
       },
       lengthCm: {
         type: Number,
         require: false,
+        default: null,
       },
     },
     require: true,
@@ -40,7 +44,13 @@ export const ProductSchema = new Schema({
   status: {
     type: String,
     require: true,
-    enum: ['Canceled', 'In Warehouse', 'In Progress', 'In Transit', 'Delivered'],
+    enum: [
+      'Canceled',
+      'In Warehouse',
+      'In Progress',
+      'In Transit',
+      'Delivered',
+    ],
     default: null,
   },
   ownerId: {
@@ -59,8 +69,8 @@ export const ProductSchema = new Schema({
   },
   price: {
     type: Number,
-    require: true, 
+    require: true,
     default: null,
-    min:0
+    min: 0,
   },
 });
