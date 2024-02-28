@@ -40,7 +40,7 @@ const states = [
 
 const Table = ({ products = {} }) => {
   const items = dataPackage(products?.product);
-  console.log(products);
+
   return (
     <div className="w-full min-[320px]:h-auto lg:h-auto  p-3 bg-Amethyst rounded-3xl flex flex-col items-center justify-center ">
       <div className="w-full h-full flex flex-col ">
