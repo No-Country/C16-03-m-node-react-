@@ -15,6 +15,7 @@ function DashboardAdmin() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     services
       .getProductData({ id: id })
       .then((res) => {
@@ -51,7 +52,9 @@ function DashboardAdmin() {
               ) : errorId ? (
                 <div className="flex flex-col p-6 justify-center gap-5">
                   <h2 className="text-pink text-center text-xl font-bold ml-11">
-                    El id no existe
+                    {id
+                      ? "El id no existe"
+                      : "Ingrese el Nro. de seguimiento para actualizar los estados del paquete"}
                   </h2>
                 </div>
               ) : (
