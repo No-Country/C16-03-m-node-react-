@@ -18,6 +18,11 @@ function InitSesion({ handleActive }) {
     setShowLoginModal(false);
     handleActive();
   };
+
+  const closeLoginModalBack = () => {
+    setShowLoginModal(false);
+  };
+
   const handleRegisterClick = () => {
     setShowRegistrationModal(true);
   };
@@ -30,7 +35,7 @@ function InitSesion({ handleActive }) {
   return (
     <div className="fixed inset-0 flex items-center justify-center transition-opacity bg-bgForm">
       {showLoginModal ? (
-        <Login onClose={closeLoginModal} />
+        <Login onClose={closeLoginModal} onBack={closeLoginModalBack}/>
       ) : showRegistrationModal ? (
         <RegistrationModal onClose={closeRegistrationModal} />
       ) : (

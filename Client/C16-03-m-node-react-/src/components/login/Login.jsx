@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useToken from "../../hooks/useToken";
 
-function Login({ onClose }) {
+function Login({ onClose, onBack }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { updateToken } = useToken();
@@ -47,13 +47,11 @@ function Login({ onClose }) {
           </div>
           <form
         onSubmit={onSubmit}
-        className="flex flex-col items-center gap-10 p-4 py-8"
+        className="flex flex-col items-center gap-4 p-4 py-8"
       >
         <Logo register />
         <h1 className="text-lg font-bold text-green">Log in</h1>
-        <button onClick={onClose} className="py-2 px-4 bg-green rounded">
-          <IoMdArrowBack />
-        </button>
+        
         <div className="mb-1">
           <TextInput
             placeholdertext="Ingresa tu correo"
@@ -68,8 +66,16 @@ function Login({ onClose }) {
             name="password"
           />
         </div>
-        <Button text="Ingresar" bgcolor="bg-green" />
-        {error && <p className="text-[#f00]"> {error} </p>}
+        <div className="flex flex-col items-center">
+          
+          <div  className="flex flex-col items-center my-2">
+            <Button text="Ingresar" bgcolor="bg-green" />
+            {error && <p className="text-[#f00]"> {error} </p>}
+          </div>
+          <button onClick={onBack} className="py-2 px-4 bg-green rounded">
+            <IoMdArrowBack />
+          </button>
+        </div>
       </form>
     </div>
   );
