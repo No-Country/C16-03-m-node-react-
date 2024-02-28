@@ -29,7 +29,7 @@ function DashboardVisitor() {
         setErrorId(true);
       })
       .finally(() => {
-        setLoading(false); // Se establece loading en false independientemente del resultado de la petición
+        setLoading(false);
       });
   }, [id]);
 

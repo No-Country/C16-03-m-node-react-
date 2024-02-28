@@ -16,7 +16,7 @@ function Landing() {
   };
 
   return (
-    <main className="w-full h-full lg:h-[100vh] flex justify-between items-center bg-purple flex-wrap">
+    <main className="w-full h-full min-h-[100vh] flex justify-between items-center bg-purple flex-wrap">
       <header className="w-full p-[25px] flex justify-between items-center">
         <Logo />
         <Button

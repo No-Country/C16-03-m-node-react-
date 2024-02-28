@@ -23,8 +23,14 @@ function Header({ openModal }) {
 
         <HamburguerMenu onClick={toggleMenu} />
 
-        <div className={`${isMenuOpen ? "block" : "hidden"} ms:hidden absolute top-full left-0 right-0 bg-bgDashboard p-4 rounded-[24px] border border-gray-300`}>
-          <Button text="Nuevo envío" onClick={openModal} className="block mb-2" />
+        <div
+          className={`${isMenuOpen ? "block" : "hidden"} ms:hidden absolute  top-full left-0 right-100 bg-bgDashboard p-4 rounded-[24px] border border-gray-300`}
+        >
+          <Button
+            text="Nuevo envío"
+            onClick={openModal}
+            className="block mb-2"
+          />
           <Button text="Cancelar envío" className="block mb-2" />
           <Button text="Botón 3" className="block" />
         </div>
