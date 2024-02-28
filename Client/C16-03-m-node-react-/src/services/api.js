@@ -36,13 +36,13 @@ const postNewShipment = async (shipment) => {
   try {
     const token = localStorage.getItem("token");
     const headers = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
+      headers["Authorization"] = `Bearer ${token}`;
     }
     const response = await fetch(`${url}/product/createProduct`, {
-      method: 'POST',
+      method: "POST",
       headers: headers,
       body: JSON.stringify(shipment),
     });
@@ -53,12 +53,45 @@ const postNewShipment = async (shipment) => {
     throw new Error(error.message);
   }
 };
-  
 
+async function sendToFirstBase({ token, id, status }) {
+  return fetch(`${url}/product/sendProduct`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      productId: id,
+      status: status,
+    }),
+  }).then((res) => res.json());
+}
+
+async function updateProductState({ token, id, status }) {
+  return fetch(`${url}/product/receiveProduct`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      productId: id,
+      status: status,
+    }),
+  }).then((res) => res.json());
+}
 
 async function testBackend() {
   const response = await fetch(`${url}/test`).then((res) => res.json());
   return response;
 }
 
-export default { signIn, testBackend, getProductData, postNewShipment };
+export default {
+  signIn,
+  testBackend,
+  getProductData,
+  postNewShipment,
+  sendToFirstBase,
+  updateProductState,
+};

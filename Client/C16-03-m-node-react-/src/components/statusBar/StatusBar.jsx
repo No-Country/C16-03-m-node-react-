@@ -1,20 +1,18 @@
-
 import { ProgressBar, Step } from "react-step-progress-bar";
 import "react-step-progress-bar/styles.css";
 
-const StatusBar = ({ initialStatus={} }) => {
-
+const StatusBar = ({ initialStatus = {} }) => {
   const getProgress = () => {
     switch (initialStatus.product?.status) {
-      case  'In Warehouse':
+      case "In Warehouse":
         return 0;
-      case  'In Progress':
+      case "In Progress":
         return 34;
-      case  'In Transit':
+      case "In Transit":
         return 67;
-      case  'Delivered':
+      case "Delivered":
         return 100;
-      case 'Canceled':
+      case "Canceled":
         return 0;
       default:
         return 0;
@@ -23,9 +21,10 @@ const StatusBar = ({ initialStatus={} }) => {
 
   return (
     <div className="p-4 w-full md:w-3/4 lg:w-2/3  mx-auto min-w-sm bg-Amethyst rounded-lg">
-      <h2 className="text-[24px] lg:text-[45px] sm:text-lg font-bold text-white pb-2 w-fit mx-auto">Detalles del Envio</h2>
+      <h2 className="text-[24px] lg:text-[45px] sm:text-lg font-bold text-white  w-fit mx-auto pb-5">
+        Envio Nro. {initialStatus.product?._id}
+      </h2>
       <div className="w-full relative">
-        
         <ProgressBar
           percent={getProgress()}
           filledBackground="#8BEA00"
@@ -106,19 +105,19 @@ const StatusBar = ({ initialStatus={} }) => {
           </Step>
         </ProgressBar>
         <div className="flex justify-between mt-2 ">
-        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
-          En Almacén
-        </span>
-        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
-          En Progreso
-        </span>
-        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
-          En Tránsito
-        </span>
-        <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
-          Entregado
-        </span>
-      </div>
+          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+            En Almacén
+          </span>
+          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+            En Progreso
+          </span>
+          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+            En Tránsito
+          </span>
+          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+            Entregado
+          </span>
+        </div>
       </div>
     </div>
   );

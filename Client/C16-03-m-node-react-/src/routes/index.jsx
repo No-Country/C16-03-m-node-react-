@@ -11,13 +11,11 @@ const router = createBrowserRouter([
   { path: "/dashboard-user/:id", element: <DashboardVisitor /> },
   { path: "*", element: <PageNotFound /> },
   { path: "/dashboard-admin", element: <DashboardAdmin /> },
-
+  { path: "/dashboard-admin/:id", element: <DashboardAdmin /> },
 ]);
 
 const MyRoutes = () => {
-  return (
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default MyRoutes;
