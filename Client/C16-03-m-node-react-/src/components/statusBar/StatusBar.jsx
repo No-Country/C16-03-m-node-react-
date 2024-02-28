@@ -4,9 +4,6 @@ import "react-step-progress-bar/styles.css";
 
 const StatusBar = ({ initialStatus={} }) => {
 
-console.log(initialStatus);
-
-
   const getProgress = () => {
     switch (initialStatus.product?.status) {
       case  'In Warehouse':

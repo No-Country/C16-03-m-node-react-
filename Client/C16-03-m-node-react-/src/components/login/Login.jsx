@@ -10,7 +10,7 @@ import useToken from "../../hooks/useToken";
 function Login({ onClose }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { updateToken } = useToken();
+  const { updateToken,token } = useToken();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -19,21 +19,19 @@ function Login({ onClose }) {
       password: event.target.password.value,
     };
     try {
-      await services.signIn({ formData }).then((res) => {
-        setError("");
-        const { userRole, token } = res;
-        updateToken(token);
-        if (userRole === "userBase") {
-          return navigate("/dashboard-admin");
-        }
-        if (userRole === "user") {
-          return navigate("/dashboard-client");
-        }
-      });
+      const res = await services.signIn({ formData });
+      setError("");
+      const { userRole, token } = res;
+      localStorage.setItem('token', token);
+      updateToken(token);
+      if (userRole === "userBase") {
+        return navigate("/dashboard-admin");
+      }
+      if (userRole === "user") {
+        return navigate("/dashboard-client");
+      }
     } catch (error) {
-      error.json().then((res) => {
-        setError(res.message);
-      });
+      setError(error.message);
     }
   };
 
