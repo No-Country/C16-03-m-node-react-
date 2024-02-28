@@ -14,14 +14,10 @@ const User = mongoose.model('users', UsersSchema);
 
 async function createProduct(req, res) {
   try {
-    const {
-      description,
-      originData,
-      destinationData,
-      packageData,
-      ownerId,
-      price,
-    } = req.body;
+    const { description, originData, destinationData, packageData, price } =
+      req.body;
+
+    const ownerId = req.user._id;
 
     if (isNaN(price) || price <= 0) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
@@ -102,7 +98,7 @@ async function getProductById(req, res) {
 
 async function findClientProducts(req, res) {
   try {
-    const { ownerId } = req.body;
+    const ownerId = req.user._id;
     const products = new Product.find({ ownerId: ownerId });
 
     return res.status(COD_RESPONSE_HTTP_OK).json({
