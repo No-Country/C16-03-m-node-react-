@@ -2,7 +2,7 @@ import StatusBar from "../components/statusBar/StatusBar";
 import Table from "../components/tableDetails/Table";
 import HeaderNoButtons from "../components/header/HeaderNoButtons";
 import AdminStates from "../components/adminStates/AdminStates";
-import useToken from "../hooks/useToken";
+import useUserConfig from "../hooks/useUserConfig";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import services from "../services/api";
@@ -34,7 +34,7 @@ function DashboardAdmin() {
       });
   }, [id]);
 
-  const { token } = useToken();
+  const { token } = useUserConfig();
   return (
     console.log(token),
     (
