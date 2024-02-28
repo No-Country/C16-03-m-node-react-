@@ -8,7 +8,7 @@ function AdminStates({ productId = "" }) {
   const recive = async () => {
     const status = "In Warehouse";
     services.sendToFirstBase({ id: productId, status, token }).then((res) => {
-      alert("producto actualizado");
+      alert(res.message);
     });
   };
 
