@@ -32,12 +32,16 @@ function InitSesion({ handleActive }) {
     handleActive();
   };
 
+  const closeRegistrationModalBack = () => {
+    setShowRegistrationModal(false);
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center transition-opacity bg-bgForm">
       {showLoginModal ? (
         <Login onClose={closeLoginModal} onBack={closeLoginModalBack}/>
       ) : showRegistrationModal ? (
-        <RegistrationModal onClose={closeRegistrationModal} />
+        <RegistrationModal onClose={closeRegistrationModal}  onBack={closeRegistrationModalBack} />
       ) : (
         <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
           <div className="absolute top-0 right-0 mr-4 mt-3 ">
