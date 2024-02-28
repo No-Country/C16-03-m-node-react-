@@ -41,7 +41,7 @@ function DashboardVisitor() {
           {loading ? (
             <Spinner />
           ) : errorId ? (
-            <div className="flex flex-col p-6 justify-center gap-5">
+            <div className="flex flex-col mt-2 h-full sm:flex-row gap-5 rounded-[24px] lg:w-[90%] sm:w-3/4 min-[360px]:w-full bg-Amethyst">
               <h2 className="text-pink text-center text-xl font-bold ml-11">
                 El id no existe
               </h2>
