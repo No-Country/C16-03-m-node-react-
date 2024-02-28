@@ -19,7 +19,7 @@ function SearchId({ ruta }) {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="space-x-3">
+      <form onSubmit={onSubmit} className="space-x-3 text-black">
         <TextInput
           placeholdertext={"Ingresa el código de envío"}
           type={"text"}

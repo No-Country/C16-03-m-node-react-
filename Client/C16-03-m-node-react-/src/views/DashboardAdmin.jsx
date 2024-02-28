@@ -24,6 +24,7 @@ function DashboardAdmin() {
           setErrorId(true);
         } else {
           setProducts(res);
+          setErrorId(false);
         }
       })
       .catch((error) => {
@@ -49,11 +50,24 @@ function DashboardAdmin() {
           <div className="w-full h-full flex flex-col pt-4 gap-5">
             {loading ? (
               <Spinner />
+            ) : errorId ? (
+              <div className="flex flex-col p-6 justify-center gap-5">
+                <h2 className="text-pink text-center text-xl font-bold ml-11">
+                  El id no existe
+                </h2>
+                <Link
+                  className="text-green text-center text-lg"
+                  to="/"
+                  cursor="pointer"
+                >
+                  Volver a inicio
+                </Link>
+              </div>
             ) : (
-              <div className="flex flex-col gap-5  sm:w-full h-full min-[360px]:w-full justify-center bg-Amethyst rounded-[24px]  ">
+              <>
                 <StatusBar initialStatus={products} />
                 <Table products={products} />
-              </div>
+              </>
             )}
           </div>
         </div>
