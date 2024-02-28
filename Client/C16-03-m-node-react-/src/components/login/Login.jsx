@@ -2,6 +2,7 @@ import Logo from "../logo/Logo";
 import Button from "../button/button";
 import TextInput from "../TextInput/TextInput";
 import { IoMdArrowBack } from "react-icons/io";
+import { IoCloseCircleOutline } from "react-icons/io5";
 import services from "../../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +40,12 @@ function Login({ onClose }) {
 
   return (
     <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
-      <form
+      <div className="absolute top-0 right-0 mr-4 mt-3 ">
+            <button onClick={onClose}>
+              <IoCloseCircleOutline className="text-[32px]"/>
+            </button>
+          </div>
+          <form
         onSubmit={onSubmit}
         className="flex flex-col items-center gap-10 p-4 py-8"
       >

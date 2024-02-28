@@ -16,6 +16,7 @@ function InitSesion({ handleActive }) {
 
   const closeLoginModal = () => {
     setShowLoginModal(false);
+    handleActive();
   };
   const handleRegisterClick = () => {
     setShowRegistrationModal(true);
@@ -23,6 +24,7 @@ function InitSesion({ handleActive }) {
 
   const closeRegistrationModal = () => {
     setShowRegistrationModal(false);
+    handleActive();
   };
 
   return (
@@ -35,7 +37,7 @@ function InitSesion({ handleActive }) {
         <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
           <div className="absolute top-0 right-0 mr-4 mt-3 ">
             <button onClick={() => handleActive()}>
-              <IoCloseCircleOutline />
+              <IoCloseCircleOutline className="text-[32px]"/>
             </button>
           </div>
           <div className="flex flex-col items-center gap-16 p-4 py-8">
@@ -59,8 +61,7 @@ function InitSesion({ handleActive }) {
               <p className="">
               ¿No tienes una cuenta?{" "}
                 <a
-                  cursor = "pointer"
-                  className="font-bold text-green"
+                  className="font-bold text-green cursor-pointer"
                   onClick={handleRegisterClick}
                 >
                   Registrate
