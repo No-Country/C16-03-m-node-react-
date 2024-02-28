@@ -40,7 +40,7 @@ function InitSesion({ handleActive }) {
               <IoCloseCircleOutline className="text-[32px]"/>
             </button>
           </div>
-          <div className="flex flex-col items-center gap-16 p-4 py-8">
+          <div className="flex flex-col items-center gap-4 p-4 py-8">
             <div>
               <Logo register />
             </div>
@@ -52,7 +52,7 @@ function InitSesion({ handleActive }) {
                 variant="form"
               />
             </div>
-            <div className="flex flex-col gap-6 items-center">
+            <div className="flex flex-col mt-4 gap-2 items-center">
               <Button
                 text="Iniciar Sesión"
                 bgcolor="bg-green"
