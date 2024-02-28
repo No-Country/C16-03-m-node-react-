@@ -12,27 +12,13 @@ function AdminStates({ productId = "" }) {
     });
   };
 
-  const update = async () => {
-    const status = "In Progress";
+  const updateState = async (state) => {
     services
-      .updateProductState({ id: productId, status, token })
+      .updateProductState({ id: productId, status: state, token })
       .then((res) => {
-        alert("producto en progreso");
+        alert(res.message);
       });
   };
-
-  //   const update1 = async () => {
-  //     const status = "In Transit";
-  //     services
-  //       .updateProductState({ id: productId, status, token })
-  //       .then((res) => {
-  //         alert("producto en progreso");
-  //       });
-  //   };
-
-  // function handleUpdate() {
-  //   update();
-  // }
 
   return (
     <div className="flex flex-col py-4 px-4 w-full sm:min-w-[361px] h-full gap-8 text-white">
@@ -43,10 +29,26 @@ function AdminStates({ productId = "" }) {
       <SearchId ruta="admin" />
       <div className="flex flex-col gap-4 items-center w-fit mx-auto ">
         <Button text="recibir despacho" className="" onClick={recive} />
-        <Button text="en transito" className="" onClick={update1} />
-        <Button text="en pregreso" className="" onClick={update} />
-        <Button text="state 4" className="" onClick={update} />
-        <Button text="state 5" className="" onClick={update} />
+        <Button
+          text="en progreso"
+          className=""
+          onClick={() => updateState("In Progress")}
+        />
+        <Button
+          text="en transito"
+          className=""
+          onClick={() => updateState("In Transit")}
+        />
+        <Button
+          text="entregado"
+          className=""
+          onClick={() => updateState("Delivered")}
+        />
+        <Button
+          text="cancelar"
+          className=""
+          onClick={() => updateState("Cancel")}
+        />
       </div>
     </div>
   );
