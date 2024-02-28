@@ -5,6 +5,8 @@ export const ProductSchema = new Schema({
   description: {
     type: String,
     require: true,
+    enum: ['Letter', 'Package'],
+    default: null,
   },
   originData: {
     type: String,
