@@ -3,12 +3,19 @@ import SearchId from "../searchId/SearchId";
 import services from "../../services/api";
 import useToken from "./../../hooks/useToken";
 
-function AdminStates({ productId = "" }) {
+function AdminStates({ productId = "", setProducts }) {
   const { token } = useToken();
   const recive = async () => {
     const status = "In Warehouse";
     services.sendToFirstBase({ id: productId, status, token }).then((res) => {
-      alert(res.message);
+      if (res.status === 200) {
+        services.getProductData({ id: productId }).then((data) => {
+          setProducts(data);
+        });
+        alert(res.message);
+      } else {
+        alert(res.message);
+      }
     });
   };
 
@@ -16,7 +23,14 @@ function AdminStates({ productId = "" }) {
     services
       .updateProductState({ id: productId, status: state, token })
       .then((res) => {
-        alert(res.message);
+        if (res.status === 200) {
+          services.getProductData({ id: productId }).then((data) => {
+            setProducts(data);
+          });
+          alert(res.message);
+        } else {
+          alert(res.message);
+        }
       });
   };
 

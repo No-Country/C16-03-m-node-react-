@@ -43,7 +43,7 @@ function DashboardAdmin() {
           <HeaderNoButtons />
           <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3">
             <div className="h-full lg:w-1/4 sm:w-1/2 min-[360px]:w-full bg-bgDashboard rounded-[24px]">
-              <AdminStates productId={id} />
+              <AdminStates productId={id} setProducts={setProducts} />
             </div>
             <div className="w-full h-full flex flex-col pt-4 gap-5 bg-Amethyst rounded-[24px]">
               {loading ? (
