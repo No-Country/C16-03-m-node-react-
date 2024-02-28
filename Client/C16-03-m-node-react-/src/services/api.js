@@ -43,7 +43,7 @@ async function sendToFirstBase({ token, id, status }) {
       productId: id,
       status: status,
     }),
-  });
+  }).then((res) => res.json());
 }
 
 async function updateProductState({ token, id, status }) {
@@ -57,7 +57,7 @@ async function updateProductState({ token, id, status }) {
       productId: id,
       status: status,
     }),
-  });
+  }).then((res) => res.json());
 }
 
 async function testBackend() {
