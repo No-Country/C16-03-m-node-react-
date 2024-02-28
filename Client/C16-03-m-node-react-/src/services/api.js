@@ -32,6 +32,28 @@ async function getProductData({ id }) {
   }
 }
 
+const postNewShipment = async (shipment) => {
+  try {
+    const token = localStorage.getItem("token");
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await fetch(`${url}/product/createProduct`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(shipment),
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 async function sendToFirstBase({ token, id, status }) {
   return fetch(`${url}/product/sendProduct`, {
     method: "PUT",
@@ -69,6 +91,7 @@ export default {
   signIn,
   testBackend,
   getProductData,
+  postNewShipment,
   sendToFirstBase,
   updateProductState,
 };
