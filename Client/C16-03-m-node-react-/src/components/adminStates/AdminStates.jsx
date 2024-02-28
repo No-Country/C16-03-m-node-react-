@@ -41,27 +41,26 @@ function AdminStates({ productId = "", setProducts }) {
         Ingrese el Nro. de seguimiento para actualizar los estados del paquete
       </p>
       <SearchId ruta="admin" />
-      <div className="flex flex-col gap-4 items-center w-fit mx-auto ">
-        <Button text="recibir despacho" className="" onClick={recive} />
+      <div className="flex flex-col gap-4 items-center w-fit mx-auto  text-black ">
         <Button
-          text="en progreso"
-          className=""
+          text="Recibir despacho"
+          className="text-[17px]"
+          onClick={recive}
+        />
+        <Button
+          text="En progreso"
+          className="text-[17px]"
           onClick={() => updateState("In Progress")}
         />
         <Button
-          text="en transito"
-          className=""
+          text="En transito"
+          className="text-[17px]"
           onClick={() => updateState("In Transit")}
         />
         <Button
-          text="entregado"
-          className=""
+          text="Entregado"
+          className="text-[17px]"
           onClick={() => updateState("Delivered")}
-        />
-        <Button
-          text="cancelar"
-          className=""
-          onClick={() => updateState("Cancel")}
         />
       </div>
     </div>
