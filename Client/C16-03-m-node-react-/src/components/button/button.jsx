@@ -10,7 +10,7 @@ export default function Button({
 }) {
   return (
     <button
-      className={`w-44 h-12 ${bgcolor} text-md rounded-[24px] ${rest.className}`}
+      className={`w-44 h-12 ${bgcolor} rounded-[24px] ${rest.className}`}
       onClick={onClick ? () => onClick() : noAction}
     >
       {text}
