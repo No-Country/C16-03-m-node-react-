@@ -28,26 +28,46 @@ async function createProduct(req, res) {
 
     const existingUser = await User.findOne({ _id: ownerId });
     if (existingUser) {
-      if (
-        !isNaN(packageData.weightKg) &&
-        !isNaN(packageData.heightCm) &&
-        !isNaN(packageData.widthCm) &&
-        !isNaN(packageData.lengthCm) &&
-        packageData.weightKg > 0 &&
-        packageData.heightCm > 0 &&
-        packageData.widthCm > 0 &&
-        packageData.lengthCm > 0
-      ) {
+      if (description == 'Package') {
+        if (
+          !isNaN(packageData.weightKg) &&
+          !isNaN(packageData.heightCm) &&
+          !isNaN(packageData.widthCm) &&
+          !isNaN(packageData.lengthCm) &&
+          packageData.weightKg > 0 &&
+          packageData.heightCm > 0 &&
+          packageData.widthCm > 0 &&
+          packageData.lengthCm > 0
+        ) {
+          const product = new Product({
+            description: description,
+            originData: originData,
+            destinationData: destinationData,
+            packageData: {
+              weightKg: packageData.weightKg,
+              heightCm: packageData.heightCm,
+              widthCm: packageData.widthCm,
+              lengthCm: packageData.lengthCm,
+            },
+            ownerId: ownerId,
+            price: price,
+          });
+          await product.save();
+          res.status(COD_RESPONSE_HTTP_OK).json({
+            status: COD_RESPONSE_HTTP_OK,
+            message: 'The product has been stored correctly',
+          });
+        } else {
+          return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+            status: COD_RESPONSE_HTTP_BAD_REQUEST,
+            message: 'The packageData must be numbers and positive',
+          });
+        }
+      } else if (description == 'Letter') {
         const product = new Product({
           description: description,
           originData: originData,
           destinationData: destinationData,
-          packageData: {
-            weightKg: packageData.weightKg,
-            heightCm: packageData.heightCm,
-            widthCm: packageData.widthCm,
-            lengthCm: packageData.lengthCm,
-          },
           ownerId: ownerId,
           price: price,
         });
@@ -57,9 +77,9 @@ async function createProduct(req, res) {
           message: 'The product has been stored correctly',
         });
       } else {
-        return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+        res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
           status: COD_RESPONSE_HTTP_BAD_REQUEST,
-          message: 'The packageData must be numbers and positive',
+          message: 'Invalid description',
         });
       }
     } else {
@@ -92,6 +112,37 @@ async function getProductById(req, res) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
       message: 'Error finding this product',
+    });
+  }
+}
+
+async function deleteProduct(req, res) {
+  try {
+    const { productId } = req.body;
+    await Product.findOneAndDelete({ _id: productId });
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
+      message: 'The product has been deleted',
+    });
+  } catch (error) {
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
+      message: 'Error removing this product',
+    });
+  }
+}
+
+async function getAllProducts(req, res) {
+  try {
+    const products = await Product.find({});
+    return res.status(COD_RESPONSE_HTTP_OK).json({
+      status: COD_RESPONSE_HTTP_OK,
+      products: products,
+    });
+  } catch (error) {
+    return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
+      status: COD_RESPONSE_HTTP_BAD_REQUEST,
+      message: 'Error getting products',
     });
   }
 }
@@ -299,4 +350,6 @@ export {
   findClientProducts,
   sendProduct,
   receiveProduct,
+  deleteProduct,
+  getAllProducts,
 };
