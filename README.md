@@ -45,25 +45,13 @@
 <h3>Front-End</h3>
 
  <img width="220" src="https://skillicons.dev/icons?i=react,tailwind,vite" />
-<!-- <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" alt="Redux" title="Redux"/></code>
-<code><img width="55" src="https://github.com/marwin1991/profile-technology-icons/assets/62091613/b40892ef-efb8-4b0e-a6b5-d1cfc2f3fc35" alt="Vite" title="Vite"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS"/></code> -->
 
 <h3>Back-End</h3>
 
- <img width="220" src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
-
-<!-- <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" alt="Express" title="Express"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png" alt="mongoDB" title="mongoDB"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman" title="Postman"/></code> -->
+  <img width="220" src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
 
 <h3>UX/UI</h3>
- <img width="60" src="https://skillicons.dev/icons?i=figma" />
-<!-- 
-<code><img width="50" src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma" title="Figma"/></code> -->
-
+  <img width="60" src="https://skillicons.dev/icons?i=figma" />
 <br />
 <!-- <h2 id="built-with">🛠️ Herramientas & Organización</h2>
 
