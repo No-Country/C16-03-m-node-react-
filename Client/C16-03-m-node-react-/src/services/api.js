@@ -33,6 +33,20 @@ async function getProductData({ id }) {
 }
 
 async function sendToFirstBase({ token, id, status }) {
+  return fetch(`${url}/product/sendProduct`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      productId: id,
+      status: status,
+    }),
+  });
+}
+
+async function updateProductState({ token, id, status }) {
   return fetch(`${url}/product/receiveProduct`, {
     method: "PUT",
     headers: {
@@ -41,7 +55,7 @@ async function sendToFirstBase({ token, id, status }) {
     },
     body: JSON.stringify({
       productId: id,
-      status,
+      status: status,
     }),
   });
 }
@@ -51,4 +65,10 @@ async function testBackend() {
   return response;
 }
 
-export default { signIn, testBackend, getProductData, sendToFirstBase };
+export default {
+  signIn,
+  testBackend,
+  getProductData,
+  sendToFirstBase,
+  updateProductState,
+};

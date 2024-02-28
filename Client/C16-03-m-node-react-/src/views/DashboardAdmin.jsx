@@ -7,7 +7,6 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import services from "../services/api";
 import Spinner from "../components/spinner/Spinner";
-import { Link } from "react-router-dom";
 
 function DashboardAdmin() {
   const { id } = useParams();
@@ -45,7 +44,7 @@ function DashboardAdmin() {
         <HeaderNoButtons />
         <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3">
           <div className="h-full lg:w-1/4 sm:w-1/2 min-[360px]:w-full bg-bgDashboard rounded-[24px]">
-            <AdminStates />
+            <AdminStates productId={id} />
           </div>
           <div className="w-full h-full flex flex-col pt-4 gap-5 bg-Amethyst rounded-[24px]">
             {loading ? (
