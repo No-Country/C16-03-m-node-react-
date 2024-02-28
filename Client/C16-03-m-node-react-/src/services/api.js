@@ -32,9 +32,23 @@ async function getProductData({ id }) {
   }
 }
 
+async function sendToFirstBase({ token, id, status }) {
+  return fetch(`${url}/product/receiveProduct`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      productId: id,
+      status,
+    }),
+  });
+}
+
 async function testBackend() {
   const response = await fetch(`${url}/test`).then((res) => res.json());
   return response;
 }
 
-export default { signIn, testBackend, getProductData };
+export default { signIn, testBackend, getProductData, sendToFirstBase };
