@@ -82,6 +82,21 @@ async function updateProductState({ token, id, status }) {
   }).then((res) => res.json());
 }
 
+async function register({ nombre, email, password }) {
+  return fetch(`${url}/auth/signin`, {
+    method: "POST",
+    headers: {
+      "contet-type": "application/json",
+    },
+    body: JSON.stringify({ nombre, email, password }),
+  }).then((res) => {
+    if (!res.ok) {
+      throw res;
+    }
+    return res.json();
+  });
+}
+
 async function testBackend() {
   const response = await fetch(`${url}/test`).then((res) => res.json());
   return response;
@@ -94,4 +109,5 @@ export default {
   postNewShipment,
   sendToFirstBase,
   updateProductState,
+  register,
 };
