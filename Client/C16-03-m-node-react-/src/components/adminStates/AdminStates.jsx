@@ -1,10 +1,10 @@
 import Button from "../button/button";
 import SearchId from "../searchId/SearchId";
 import services from "../../services/api";
-import useToken from "./../../hooks/useToken";
+import useUserConfig from "./../../hooks/useUserConfig";
 
 function AdminStates({ productId = "", setProducts }) {
-  const { token } = useToken();
+  const { token } = useUserConfig();
   const recive = async () => {
     const status = "In Warehouse";
     services.sendToFirstBase({ id: productId, status, token }).then((res) => {
