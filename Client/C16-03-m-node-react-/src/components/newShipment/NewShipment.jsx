@@ -49,13 +49,14 @@ function NewShipment({ handleActive }) {
   
   return (
     <form onSubmit={submitForm} className="fixed inset-0 flex items-center justify-center transition-opacity bg-bgForm min-w-[360px]">
-      <div className="relative flex flex-col w-1/3 h-5/6 overflow-auto bg-white rounded-3xl min-w-[360px]">
+      
+      <div className="relative flex flex-col w-1/3 h-5/6 bg-white rounded-3xl min-w-[360px]">
         <div className="absolute top-0 right-0 mr-4 mt-2">
             <button onClick={() => handleActive()}>
               <IoCloseCircleOutline />
             </button>
         </div>
-        <div className="flex flex-col items-center gap-4 p-4 py-8">
+        <div className="flex flex-col items-center gap-4 p-4 my-6 overflow-auto overscroll-contain">
           <div>
             <Logo register/>
           </div>
