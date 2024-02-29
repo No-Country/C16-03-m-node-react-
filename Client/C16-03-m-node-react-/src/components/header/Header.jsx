@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Logo from "../logo/Logo";
 import HamburguerMenu from "./HamburguerMenu";
 import Button from "../button/button";
+import { Link } from "react-router-dom";
 
 function Header({ openModal }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +14,9 @@ function Header({ openModal }) {
   return (
     <div className="relative">
       <div className="flex items-center justify-between w-full h-[104px] bg-bgDashboard rounded-[24px] p-4">
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
 
         <div className="hidden ms:flex flex-grow items-center justify-center space-x-4">
           <Button text="Nuevo envío" onClick={openModal} />
