@@ -17,7 +17,6 @@ function DashboardVisitor() {
     services
       .getProductData({ id: id })
       .then((res) => {
-        console.log(res);
         if (res && res.product._id !== id) {
           setErrorId(true);
         } else {

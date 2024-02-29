@@ -21,7 +21,7 @@ function MyShipments() {
         </div>
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-Amethyst"></div>
-          <p className="text-sm">En transito</p>
+          <p className="text-sm">En tránsito</p>
         </div>
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-black"></div>

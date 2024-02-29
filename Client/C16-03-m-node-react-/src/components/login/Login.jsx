@@ -6,12 +6,12 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import services from "../../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useToken from "../../hooks/useToken";
+import useUserConfig from "../../hooks/useUserConfig";
 
 function Login({ onClose, onBack }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { updateToken,token } = useToken();
+  const { setConfig } = useUserConfig();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -23,8 +23,8 @@ function Login({ onClose, onBack }) {
       const res = await services.signIn({ formData });
       setError("");
       const { userRole, token } = res;
-      localStorage.setItem('token', token);
-      updateToken(token);
+      localStorage.setItem("token", token);
+      setConfig(token, userRole);
       if (userRole === "userBase") {
         return navigate("/dashboard-admin");
       }
@@ -39,17 +39,17 @@ function Login({ onClose, onBack }) {
   return (
     <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
       <div className="absolute top-0 right-0 mr-4 mt-3 ">
-            <button onClick={onClose}>
-              <IoCloseCircleOutline className="text-[32px]"/>
-            </button>
-          </div>
-          <form
+        <button onClick={onClose}>
+          <IoCloseCircleOutline className="text-[32px]" />
+        </button>
+      </div>
+      <form
         onSubmit={onSubmit}
         className="flex flex-col items-center gap-4 p-4 py-8"
       >
         <Logo register />
         <h1 className="text-lg font-bold text-green">Log in</h1>
-        
+
         <div className="mb-1">
           <TextInput
             placeholdertext="Ingresa tu correo"
@@ -65,8 +65,7 @@ function Login({ onClose, onBack }) {
           />
         </div>
         <div className="flex flex-col items-center">
-          
-          <div  className="flex flex-col items-center my-2">
+          <div className="flex flex-col items-center my-2">
             <Button text="Ingresar" bgcolor="bg-green" />
             {error && <p className="text-[#f00]"> {error} </p>}
           </div>

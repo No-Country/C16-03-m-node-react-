@@ -2,15 +2,13 @@ import { useState } from "react";
 import userContext from "./user";
 
 function ContextProvider({ children }) {
-  const [token, setToken] = useState("");
-
-  const updateToken = (token) => {
-    if (!token) return;
-    setToken(token);
-  };
+  const [userConfig, setUserConfig] = useState({
+    token: "",
+    role: "",
+  });
 
   return (
-    <userContext.Provider value={{ token, updateToken }}>
+    <userContext.Provider value={{ userConfig, setUserConfig }}>
       {children}
     </userContext.Provider>
   );
