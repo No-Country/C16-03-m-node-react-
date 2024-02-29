@@ -11,8 +11,7 @@
   <p align="center">
     <strong>Go Courier</strong> es un sistema de envíos de paquetería que prioriza la facilidad y la eficiencia. Nuestra plataforma integra tecnología avanzada con un enfoque centrado en el cliente para ofrecer soluciones logísticas confiables y rápidas. Con nosotros, puedes enviar y rastrear tus paquetes de manera segura y conveniente, tanto a nivel local como nacional.<strong> ¡Simplifica tu envíos con Go Courier!</strong>
   </p>
-<!-- falta agregar link a demo  -->
-    <a href="#" target="_blank">
+    <a href="https://c16-03-m-node-react.vercel.app/" target="_blank">
       <img src="https://img.shields.io/badge/WEBSITE-975AB6?style=for-the-badge&logo=vercel">
     </a>
 </div>
@@ -45,34 +44,22 @@
 <h3>Front-End</h3>
 
  <img width="220" src="https://skillicons.dev/icons?i=react,tailwind,vite" />
-<!-- <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" title="React"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" alt="Redux" title="Redux"/></code>
-<code><img width="55" src="https://github.com/marwin1991/profile-technology-icons/assets/62091613/b40892ef-efb8-4b0e-a6b5-d1cfc2f3fc35" alt="Vite" title="Vite"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183898674-75a4a1b1-f960-4ea9-abcb-637170a00a75.png" alt="CSS" title="CSS"/></code> -->
 
 <h3>Back-End</h3>
 
- <img width="220" src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
-
-<!-- <code><img width="55" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" alt="Express" title="Express"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png" alt="mongoDB" title="mongoDB"/></code>
-<code><img width="55" src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman" title="Postman"/></code> -->
+  <img width="220" src="https://skillicons.dev/icons?i=nodejs,express,mongodb" />
 
 <h3>UX/UI</h3>
- <img width="60" src="https://skillicons.dev/icons?i=figma" />
-<!-- 
-<code><img width="50" src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma" title="Figma"/></code> -->
-
+  <img width="60" src="https://skillicons.dev/icons?i=figma" />
 <br />
 <!-- <h2 id="built-with">🛠️ Herramientas & Organización</h2>
 
  <!-- <img width="180" src="https://skillicons.dev/icons?i=discord,postman,git" />
 
 <br />  -->
-<h2 id="visualization">Project Visualization </h2>
+<h2 id="visualization">🌐 Project Visualization </h2>
 
-<img src="./Client/C16-03-m-node-react-/public/img.png">
+<img src="./Client/C16-03-m-node-react-/public/img-mac.png">
 <img src="./Client/C16-03-m-node-react-/public/img-phone.png">
 <br />
 
@@ -81,9 +68,7 @@
 <!-- ROADMAP -->
 <h2 id="roadmap">🎯 Links</h2>
 
-🎥 **YouTube Video**: [Watch here]()
-
-🚀 **Deployed Website**: [Visit here]()
+🚀 **Deployed Website**: [Visit here](https://c16-03-m-node-react.vercel.app/)
 
 🔎 **Original Repository**: [Check it out](https://github.com/No-Country/C16-03-m-node-react-)
 
@@ -204,10 +189,4 @@
     </td>
   </tr>
 </table>
-<!-- ACKNOWLEDGMENTS -->
-<!-- <div align='center'>
-<h3>Agradecimientos</h3>
-  <a href="https://www.nocountry.tech/" target="_blank">
-    <img style='background-color:black;' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsukYB3HL90LSwYv_RIR2O2OlCV8Sbkx2eNHv8nRvOu8L16FxLQ0nPzY02wQ_BJOfQZw&usqp=CAU" width="200">
-  </a>
-</div> -->
+
