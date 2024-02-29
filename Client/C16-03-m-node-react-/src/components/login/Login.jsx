@@ -67,7 +67,7 @@ function Login({ onClose, onBack }) {
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-center my-2">
             <Button text="Ingresar" bgcolor="bg-green" />
-            {error && <p className="text-[#f00]"> {error} </p>}
+            {error && <p className="text-red-500"> {error} </p>}
           </div>
           <button onClick={onBack} className="py-2 px-4 bg-green rounded">
             <IoMdArrowBack />

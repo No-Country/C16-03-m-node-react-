@@ -83,12 +83,18 @@ async function updateProductState({ token, id, status }) {
 }
 
 async function register({ name, email, password }) {
-  return fetch(`${url}/auth/signin`, {
+  return fetch(`${url}/auth/signup`, {
     method: "POST",
     headers: {
-      "contet-type": "application/json",
+      "content-type": "application/json",
     },
-    body: JSON.stringify({ name, email, password }),
+    body: JSON.stringify({
+      name,
+      lastName: "Cliente",
+      email,
+      password,
+      role: "user",
+    }),
   }).then((res) => {
     if (!res.ok) {
       throw res;

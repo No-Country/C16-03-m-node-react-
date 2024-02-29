@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "../logo/Logo";
 import Button from "../button/button";
 import TextInput from "../TextInput/TextInput";
@@ -10,13 +10,25 @@ import services from "../../services/api";
 function RegistrationModal({ onClose, onBack }) {
   const handleRegister = () => {};
 
-  const onSubmit = (event) => {
+  const [message, setMessage] = useState({
+    text: "",
+    error: false,
+  });
+
+  const onSubmit = async (event) => {
     event.preventDefault();
     const target = event.target;
     const name = target.name.value;
     const email = target.email.value;
     const password = target.password.value;
-    console.log(name, email, password);
+    try {
+      await services.register({ email, password, name });
+      setMessage({ text: "Registro exitoso", error: false });
+    } catch (error) {
+      error
+        .json()
+        .then((data) => setMessage({ text: data.message, error: true }));
+    }
   };
 
   return (
@@ -56,6 +68,13 @@ function RegistrationModal({ onClose, onBack }) {
               type={"password"}
               name={"password"}
             />
+            {message.text && (
+              <p
+                className={`${message.error ? "text-red-500 " : "text-teal-500 "} text-center pt-2 `}
+              >
+                {message.text}
+              </p>
+            )}
           </div>
           <div className="flex flex-col items-center">
             <Button
