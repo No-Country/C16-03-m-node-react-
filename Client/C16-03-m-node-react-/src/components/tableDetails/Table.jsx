@@ -5,7 +5,7 @@ import TableItems from "./TableItems";
 function dataPackage(products = {}) {
   return [
     {
-      id: products._id,
+      // id: products._id,
       descrption: products.description,
       peso: products.packageData?.weightKg,
       despacho: products.originData,
@@ -26,7 +26,7 @@ function dataPackage(products = {}) {
 //   },
 // ];
 
-const columns = ["ID", "Descripción", "Peso", "Despacho", "Destino", "Estado"];
+const columns = ["Descripción", "Peso", "Despacho", "Destino", "Estado"];
 
 const states = [
   {
