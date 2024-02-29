@@ -82,13 +82,13 @@ async function updateProductState({ token, id, status }) {
   }).then((res) => res.json());
 }
 
-async function register({ nombre, email, password }) {
+async function register({ name, email, password }) {
   return fetch(`${url}/auth/signin`, {
     method: "POST",
     headers: {
       "contet-type": "application/json",
     },
-    body: JSON.stringify({ nombre, email, password }),
+    body: JSON.stringify({ name, email, password }),
   }).then((res) => {
     if (!res.ok) {
       throw res;
