@@ -31,13 +31,20 @@ function Landing() {
         <div className="space-x-2">
           {role ? (
             <>
-              <Button text={"Panel"} bgcolor="bg-green" onClick={redirect} />
-              <Button text="Logout" bgcolor="bg-green" />
+              <Button
+                cursor="pointer"
+                text={"Panel"}
+                bgcolor="bg-green"
+                onClick={redirect}
+              />
+              <Button cursor="pointer" text="Logout" bgcolor="bg-green" />
             </>
           ) : (
             <Button
+              cursor="pointer"
               text="Clientes"
               bgcolor="bg-green"
+              className="bg-green rounded-[24px] hover:bg-green/80 hover:border-green border-2"
               onClick={() => handleActive()}
             />
           )}

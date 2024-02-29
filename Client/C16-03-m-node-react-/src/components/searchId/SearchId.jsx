@@ -25,7 +25,10 @@ function SearchId({ ruta }) {
           type={"text"}
           name={"idNumber"}
         />
-        <button className="py-2 px-4 bg-green rounded-[24px]" type="submit">
+        <button
+          className="py-2 px-4 bg-green rounded-[24px] hover:bg-green/80 hover:border-green/80 border-2 "
+          type="submit"
+        >
           Buscar
         </button>
       </form>
