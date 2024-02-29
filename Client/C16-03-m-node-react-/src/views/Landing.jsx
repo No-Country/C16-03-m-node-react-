@@ -29,14 +29,18 @@ function Landing() {
       <header className="w-full p-[25px] flex justify-between items-center">
         <Logo />
         <div className="space-x-2">
-          {role && (
-            <Button text={"Dashboard"} bgcolor="bg-green" onClick={redirect} />
+          {role ? (
+            <>
+              <Button text={"Panel"} bgcolor="bg-green" onClick={redirect} />
+              <Button text="Logout" bgcolor="bg-green" />
+            </>
+          ) : (
+            <Button
+              text="Clientes"
+              bgcolor="bg-green"
+              onClick={() => handleActive()}
+            />
           )}
-          <Button
-            text="Clientes"
-            bgcolor="bg-green"
-            onClick={() => handleActive()}
-          />
         </div>
       </header>
       <section className="w-full  sm:flex sm:flex-row flex flex-col p-[25px] gap-2 justify-between items-center ">
