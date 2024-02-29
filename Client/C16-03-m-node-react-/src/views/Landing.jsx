@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 function Landing() {
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
-  const { role } = useUserConfig();
+  const { role, clearConfig } = useUserConfig();
 
   const handleActive = () => {
     setActive(!active);
@@ -37,7 +37,12 @@ function Landing() {
                 bgcolor="bg-green"
                 onClick={redirect}
               />
-              <Button cursor="pointer" text="Logout" bgcolor="bg-green" />
+              <Button
+                cursor="pointer"
+                text="Logout"
+                bgcolor="bg-green"
+                onClick={clearConfig}
+              />
             </>
           ) : (
             <Button
