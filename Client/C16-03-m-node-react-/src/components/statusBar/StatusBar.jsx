@@ -22,7 +22,7 @@ const StatusBar = ({ initialStatus = {} }) => {
   return (
     <div className="p-4 w-full md:w-3/4 lg:w-2/3  mx-auto min-w-sm bg-Amethyst rounded-lg">
       <h2 className="text-[24px] lg:text-[45px] sm:text-lg font-bold text-white  w-fit mx-auto pb-5">
-        Envio Nro. {initialStatus.product?._id}
+        Envío Nro. {initialStatus.product?._id}
       </h2>
       <div className="w-full relative">
         <ProgressBar
