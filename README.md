@@ -11,8 +11,7 @@
   <p align="center">
     <strong>Go Courier</strong> es un sistema de envíos de paquetería que prioriza la facilidad y la eficiencia. Nuestra plataforma integra tecnología avanzada con un enfoque centrado en el cliente para ofrecer soluciones logísticas confiables y rápidas. Con nosotros, puedes enviar y rastrear tus paquetes de manera segura y conveniente, tanto a nivel local como nacional.<strong> ¡Simplifica tu envíos con Go Courier!</strong>
   </p>
-<!-- falta agregar link a demo  -->
-    <a href="#" target="_blank">
+    <a href="https://c16-03-m-node-react.vercel.app/" target="_blank">
       <img src="https://img.shields.io/badge/WEBSITE-975AB6?style=for-the-badge&logo=vercel">
     </a>
 </div>
@@ -58,9 +57,9 @@
  <!-- <img width="180" src="https://skillicons.dev/icons?i=discord,postman,git" />
 
 <br />  -->
-<h2 id="visualization">Project Visualization </h2>
+<h2 id="visualization">🌐 Project Visualization </h2>
 
-<img src="./Client/C16-03-m-node-react-/public/img.png">
+<img src="./Client/C16-03-m-node-react-/public/img-mac.png">
 <img src="./Client/C16-03-m-node-react-/public/img-phone.png">
 <br />
 
@@ -69,9 +68,7 @@
 <!-- ROADMAP -->
 <h2 id="roadmap">🎯 Links</h2>
 
-🎥 **YouTube Video**: [Watch here]()
-
-🚀 **Deployed Website**: [Visit here]()
+🚀 **Deployed Website**: [Visit here](https://c16-03-m-node-react.vercel.app/)
 
 🔎 **Original Repository**: [Check it out](https://github.com/No-Country/C16-03-m-node-react-)
 
@@ -192,10 +189,4 @@
     </td>
   </tr>
 </table>
-<!-- ACKNOWLEDGMENTS -->
-<!-- <div align='center'>
-<h3>Agradecimientos</h3>
-  <a href="https://www.nocountry.tech/" target="_blank">
-    <img style='background-color:black;' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsukYB3HL90LSwYv_RIR2O2OlCV8Sbkx2eNHv8nRvOu8L16FxLQ0nPzY02wQ_BJOfQZw&usqp=CAU" width="200">
-  </a>
-</div> -->
+
