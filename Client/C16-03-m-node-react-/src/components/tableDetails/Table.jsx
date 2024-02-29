@@ -26,7 +26,7 @@ function dataPackage(products = {}) {
 //   },
 // ];
 
-const columns = ["Id", "Descripcion", "Peso", "Despacho", "Destino", "Estado"];
+const columns = ["ID", "Descripción", "Peso", "Despacho", "Destino", "Estado"];
 
 const states = [
   {
@@ -46,7 +46,7 @@ const Table = ({ products = {} }) => {
       <div className="w-full h-full flex flex-col ">
         <div className=" flex flex-col items-center min-[320px]:items-center p-3 text-white w-full">
           <h2 className="text-[24px] lg:text-[45px] sm:text-lg font-bold ">
-            Detalles del Envio
+            Detalles del Envío
           </h2>
         </div>
         <div className="lg:w-full sm:w-full lg:h-full sm:h-full min-[320px]:w-full min-[320px]:h-full flex lg:flex-col sm:flex-row">
