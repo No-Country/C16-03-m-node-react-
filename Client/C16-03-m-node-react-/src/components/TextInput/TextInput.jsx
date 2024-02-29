@@ -22,7 +22,7 @@ function TextInput({ placeholdertext, type, name, handleChange }) {
 
       <input
         type={type === "password" ? "password" : isNumberType ? "number" : "text"}
-        className="w-350 h-50 border border-gray-300 rounded-[24px] px-4 py-2 focus:outline-none text-base focus:border-blue-500 placeholder-black input-focus-placeholder"
+        className="w-[230px] h-[50px] border border-gray-300 rounded-[24px] px-4 py-2 focus:outline-none text-base focus:border-blue-500 placeholder-black input-focus-placeholder"
         placeholder={placeholdertext}
         {...(isNumberType ? { min: "0" } : {})}
         onKeyDown={handleKeyDown}
