@@ -1,3 +1,11 @@
+const diccionario = {
+  Delivered: "Entregado",
+  "In Warehouse": "En almacen",
+  "In Progress": "En progreso",
+  "In Transit": "En tránsito",
+  Cancel: "Cancelado",
+};
+
 const TableItems = ({ items, states }) => {
   return (
     <div className="w-full h-full flex lg:flex-row sm:flex-col min-[320px]:flex-col lg:items-center lg:justify-center">
@@ -13,10 +21,12 @@ const TableItems = ({ items, states }) => {
               <div
                 key={key}
                 className="lg:w-1/2 min-[320px]:w-auto h-auto p-2 rounded-3xl text-white flex lg:flex-col sm:flex-row items-center justify-center"
-                style={{ color : stateColor }}
+                style={{ color: stateColor }}
                 // style={{ backgroundColor }}
               >
-                {value}
+                {Object.keys(diccionario).includes(value)
+                  ? diccionario[value]
+                  : value}
               </div>
             );
           })}

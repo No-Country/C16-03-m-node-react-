@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 function Landing() {
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
-  const { role } = useUserConfig();
+  const { role, clearConfig } = useUserConfig();
 
   const handleActive = () => {
     setActive(!active);
@@ -29,13 +29,29 @@ function Landing() {
       <header className="w-full p-[25px] flex justify-between items-center">
         <Logo />
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button
-            text="Clientes"
-            bgcolor="bg-green"
-            onClick={() => handleActive()}
-          />
-          {role && (
-            <Button text={"Dashboard"} bgcolor="bg-green" onClick={redirect} />
+          {role ? (
+            <>
+              <Button
+                cursor="pointer"
+                text={"Panel"}
+                bgcolor="bg-green"
+                onClick={redirect}
+              />
+              <Button
+                cursor="pointer"
+                text="Logout"
+                bgcolor="bg-green"
+                onClick={clearConfig}
+              />
+            </>
+          ) : (
+            <Button
+              cursor="pointer"
+              text="Clientes"
+              bgcolor="bg-green"
+              className="bg-green rounded-[24px] hover:bg-green/80 hover:border-green border-2"
+              onClick={() => handleActive()}
+            />
           )}
         </div>
       </header>

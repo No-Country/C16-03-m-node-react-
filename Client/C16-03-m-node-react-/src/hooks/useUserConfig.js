@@ -12,7 +12,14 @@ function useUserConfig() {
     });
   };
 
-  return { token, role, setConfig };
+  const clearConfig = () => {
+    setUserConfig({
+      token: "",
+      role: "",
+    });
+  };
+
+  return { token, role, setConfig, clearConfig };
 }
 
 export default useUserConfig;
