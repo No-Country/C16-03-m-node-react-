@@ -7,12 +7,15 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import services from "../services/api";
 import Spinner from "../components/spinner/Spinner";
+import { useNavigate } from "react-router";
 
 function DashboardAdmin() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [products, setProducts] = useState();
   const [errorId, setErrorId] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { token } = useUserConfig();
 
   useEffect(() => {
     setLoading(true);
@@ -35,7 +38,10 @@ function DashboardAdmin() {
       });
   }, [id]);
 
-  const { token } = useUserConfig();
+  if (!token) {
+    return navigate("/");
+  }
+
   return (
     console.log(token),
     (
