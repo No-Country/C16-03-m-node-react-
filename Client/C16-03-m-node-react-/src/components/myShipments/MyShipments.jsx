@@ -5,8 +5,8 @@ import Button from "../button/button";
 function MyShipments() {
   return (
     <div className="flex flex-col py-4 px-4 w-full sm:min-w-[361px] h-full gap-8 bg-bgDashboard rounded-[24px] text-white">
-      <h1 className="flex justify-center text-[24px]">Mis envios</h1>
-      <div className="flex flex-col items-start w-fit m-auto ">
+      <h1 className="flex justify-center text-[24px]">Mis envíos</h1>
+      <div className="flex flex-col items-start w-fit mx-auto ">
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-white"></div>
           <p className="text-sm">Cancelado</p>
@@ -21,7 +21,7 @@ function MyShipments() {
         </div>
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-Amethyst"></div>
-          <p className="text-sm">En transito</p>
+          <p className="text-sm">En tránsito</p>
         </div>
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-black"></div>
