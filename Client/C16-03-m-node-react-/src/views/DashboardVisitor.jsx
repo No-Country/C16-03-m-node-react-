@@ -3,33 +3,30 @@ import StatusBar from "../components/statusBar/StatusBar";
 import Table from "../components/tableDetails/Table";
 import { useEffect, useState } from "react";
 import services from "../services/api";
-
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/spinner/Spinner";
 
 function DashboardVisitor() {
   const { id } = useParams();
-  const [products, setProducts] = useState();
-  const [errorId, setErrorId] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [productData, setProductData] = useState();
+  const [errorId, setErrorId] = useState(false);
 
   useEffect(() => {
-    services
-      .getProductData({ id: id })
-      .then((res) => {
-        if (res && res.product._id !== id) {
-          setErrorId(true);
-        } else {
-          setProducts(res);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching product data:", error);
-        setErrorId(true);
-      })
-      .finally(() => {
+    const fetchData = async () => {
+      try {
+        const data = await services.getProductData({ id: id });
+        setProductData(data);
         setLoading(false);
-      });
+        setErrorId(false);
+      } catch (error) {
+        error.json().then(() => {
+          setLoading(false);
+          setErrorId(true);
+        });
+      }
+    };
+    fetchData();
   }, [id]);
 
   return (
@@ -54,8 +51,8 @@ function DashboardVisitor() {
             </div>
           ) : (
             <>
-              <StatusBar initialStatus={products} />
-              <Table products={products} />
+              <StatusBar initialStatus={productData} />
+              <Table products={productData} />
             </>
           )}
         </div>

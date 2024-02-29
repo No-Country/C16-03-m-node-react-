@@ -20,8 +20,8 @@ function Login({ onClose, onBack }) {
       password: event.target.password.value,
     };
     try {
-      const res = await services.signIn({ formData });
       setError("");
+      const res = await services.signIn({ formData });
       const { userRole, token } = res;
       localStorage.setItem("token", token);
       setConfig(token, userRole);
@@ -32,7 +32,9 @@ function Login({ onClose, onBack }) {
         return navigate("/dashboard-client");
       }
     } catch (error) {
-      setError(error.message);
+      error.json().then((res) => {
+        setError(res.message);
+      });
     }
   };
 

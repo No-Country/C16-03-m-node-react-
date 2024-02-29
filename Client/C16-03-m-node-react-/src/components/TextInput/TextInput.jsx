@@ -17,7 +17,7 @@ function TextInput({
   const handleInputChange = (event) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    handleChange(newValue);
+    handleChange ? handleChange(newValue) : null;
   };
 
   const togglePasswordVisibility = () => {
@@ -42,6 +42,7 @@ function TextInput({
         <button
           className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
           onClick={togglePasswordVisibility}
+          type="button"
         >
           {showPassword ? <FaEyeSlash /> : <FaEye />}
         </button>
