@@ -30,7 +30,7 @@ function Landing() {
         <Logo />
         <div className="flex flex-col sm:flex-row gap-4">
           {role ? (
-            <>
+            <div>
               <Button
                 cursor="pointer"
                 text={"Panel"}
@@ -43,7 +43,7 @@ function Landing() {
                 bgcolor="bg-green"
                 onClick={clearConfig}
               />
-            </>
+            </div>
           ) : (
             <Button
               cursor="pointer"
