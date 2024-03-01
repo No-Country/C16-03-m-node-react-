@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import services from "../services/api";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/spinner/Spinner";
+import Button from "../components/button/button";
 
 function DashboardVisitor() {
   const { id } = useParams();
@@ -38,8 +39,8 @@ function DashboardVisitor() {
             <Spinner />
           ) : errorId ? (
             <div className="flex flex-col mt-2 h-full sm:flex-row gap-5 rounded-[24px] lg:w-[90%] sm:w-3/4 min-[360px]:w-full bg-Amethyst">
-              <h2 className="text-white  text-center text-lg font-bold ml-11"> 
-              {`No se encontró ningún paquete con el ID proporcionado. Por favor, verifique el ID e inténtelo de nuevo.`}
+              <h2 className="text-white  text-center text-lg font-bold ml-11">
+                {`No se encontró ningún paquete con el ID proporcionado. Por favor, verifique el ID e inténtelo de nuevo.`}
               </h2>
               <Link
                 className="text-green text-center text-lg"
@@ -50,10 +51,10 @@ function DashboardVisitor() {
               </Link>
             </div>
           ) : (
-            <>
+            <div className="space-y-4">
               <StatusBar initialStatus={productData} />
               <Table products={productData} />
-            </>
+            </div>
           )}
         </div>
       </div>
