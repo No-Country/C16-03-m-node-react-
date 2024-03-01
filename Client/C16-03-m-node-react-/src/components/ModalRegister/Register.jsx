@@ -32,7 +32,6 @@ function RegistrationModal({ onClose, onBack }) {
         .then((data) => setMessage({ text: data.message, error: true }));
     } finally {
       setLoading(false);
-      setMessage({ text: "", error: false });
     }
   };
 

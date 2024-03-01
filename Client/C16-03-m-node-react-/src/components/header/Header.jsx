@@ -14,9 +14,11 @@ function Header({ openModal }) {
   return (
     <div className="relative">
       <div className="flex items-center justify-between w-full h-[104px] bg-bgDashboard rounded-[24px] p-4">
-        <Link to="/">
-          <Logo />
-        </Link>
+        <div className=" m-2">
+          <Link to="/">
+            <Logo variant="dashboard" />
+          </Link>
+        </div>
 
         <div className="hidden ms:flex flex-grow items-center justify-center space-x-4">
           <Button text="Nuevo envío" onClick={openModal} />

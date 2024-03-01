@@ -7,7 +7,7 @@ function HeaderNoButtons() {
       <div className="min-w-80 max-w-screen-lg  w-full">
         <div className=" flex items-center p-4 justify-between w-full">
           <Link to="/">
-            <Logo />
+            <Logo variant={"dashboard"} />
           </Link>
         </div>
       </div>
