@@ -59,7 +59,7 @@ function DashboardAdmin() {
                 <div className="flex flex-col p-6 justify-center gap-5">
                   <h2 className="text-white text-center text-lg font-bold ml-11">
                     {id
-                      ? `No se encontró ningún paquete con el ID proporcionado. Por favor, verifique el ID e inténtelo de nuevo`
+                      ? `No se encontró ningún paquete con el ID proporcionado. Por favor, verifique el ID e inténtelo de nuevo.`
                       : "Ingrese el Nro. de seguimiento para actualizar los estados del paquete"}
                   </h2>
                 </div>
