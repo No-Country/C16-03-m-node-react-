@@ -27,6 +27,7 @@ function SearchId({ ruta }) {
           placeholdertext={"Ingresa el código de envío"}
           type={"text"}
           name={"idNumber"}
+          showLabel={false}
         />
         <button
           className="py-2 px-4 bg-green rounded-[24px] hover:bg-green/80 hover:border-green/80 border-2 "
