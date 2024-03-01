@@ -43,7 +43,7 @@ function TextInput({
           className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
           onClick={togglePasswordVisibility}
         >
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
+          {showPassword ? <FaEye /> : <FaEyeSlash /> }
         </button>
       )}
     </div>
