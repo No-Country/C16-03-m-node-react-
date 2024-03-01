@@ -44,7 +44,7 @@ function TextInput({
           onClick={togglePasswordVisibility}
           type="button"
         >
-          {showPassword ? <FaEyeSlash /> : <FaEye />}
+          {showPassword ? <FaEye /> : <FaEyeSlash /> }
         </button>
       )}
     </div>
