@@ -26,11 +26,11 @@ function TextInput({
   };
 
   return (
-    <div className=" flex flex-col relative">
+    <div className=" flex flex-col relative ">
       {showLabel && <label htmlFor="input">{placeholdertext}</label>}
       <input
         type={type === "password" ? (showPassword ? "text" : "password") : type}
-        className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+        className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-rose-100 focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
         placeholder={placeholdertext}
         value={inputValue}
         onChange={handleInputChange}
