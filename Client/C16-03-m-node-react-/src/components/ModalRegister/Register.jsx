@@ -9,6 +9,7 @@ import services from "../../services/api";
 
 function RegistrationModal({ onClose, onBack }) {
   const handleRegister = () => {};
+  const [loading, setLoading] = useState(false);
 
   const [message, setMessage] = useState({
     text: "",
@@ -17,6 +18,7 @@ function RegistrationModal({ onClose, onBack }) {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const target = event.target;
     const name = target.name.value;
     const email = target.email.value;
@@ -28,41 +30,45 @@ function RegistrationModal({ onClose, onBack }) {
       error
         .json()
         .then((data) => setMessage({ text: data.message, error: true }));
+    } finally {
+      setLoading(false);
+      setMessage({ text: "", error: false });
     }
   };
 
   return (
     <div className="relative flex flex-col w-1/3 h-auto bg-white rounded-3xl min-w-[360px]">
-      <div className="flex flex-col items-center gap-4 p-4 py-8">
+      <div className="flex flex-col items-center gap-4 p-4 py-8 ">
         <div className="absolute top-0 right-0 mr-4 mt-3 ">
           <button onClick={onClose}>
             <IoCloseCircleOutline className="text-[32px]" />
           </button>
         </div>
         <Logo register />
-        <TextLanding
-          titulo="Registro"
-          parrafo="Introduzca sus datos para crear su cuenta"
-          textColor="text-black"
-          variant="form"
-        />
+        <div className="flex flex-col gap-4">
+          <TextLanding
+            titulo="Registro"
+            parrafo="Introduzca sus datos para crear su cuenta"
+            textColor="text-black"
+            variant="form"
+          />
 
-        <form action="#" onSubmit={onSubmit} className="space-y-5">
-          <div className="">
+          <form
+            action="#"
+            onSubmit={onSubmit}
+            className="space-y-5 w-full flex flex-col
+                  justify-center items-center"
+          >
             <TextInput
               placeholdertext={"Ingresa tu nombre"}
               type={"text"}
               name={"name"}
             />
-          </div>
-          <div className="">
             <TextInput
               placeholdertext={"Ingresa tu email"}
               type={"email"}
               name={"email"}
             />
-          </div>
-          <div className="">
             <TextInput
               placeholdertext={"Ingresa tu contraseña"}
               type={"password"}
@@ -70,20 +76,21 @@ function RegistrationModal({ onClose, onBack }) {
             />
             {message.text && (
               <p
-                className={`${message.error ? "text-red-500 " : "text-teal-500 "} text-center pt-2 `}
+                className={`${message.error ? "text-red-500 " : "text-teal-500 "}  pt-2 w-3/4 text-xs`}
               >
                 {message.text}
               </p>
             )}
-          </div>
-          <div className="flex flex-col items-center">
-            <Button
-              text="Registrate"
-              onClick={handleRegister}
-              bgcolor="bg-green"
-            />
-          </div>
-        </form>
+
+            <div className="flex flex-col items-center">
+              <Button
+                text={loading ? "Registrando..." : "Registrate"}
+                onClick={handleRegister}
+                bgcolor="bg-green"
+              />
+            </div>
+          </form>
+        </div>
 
         <button onClick={onBack} className="py-2 px-4 bg-green rounded">
           <IoMdArrowBack />
