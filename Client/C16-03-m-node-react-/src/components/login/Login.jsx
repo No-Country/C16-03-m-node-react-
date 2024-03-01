@@ -12,6 +12,7 @@ function Login({ onClose, onBack }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { setConfig } = useUserConfig();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -20,11 +21,13 @@ function Login({ onClose, onBack }) {
       password: event.target.password.value,
     };
     try {
+      setLoading(true);
       setError("");
       const res = await services.signIn({ formData });
       const { userRole, token } = res;
       localStorage.setItem("token", token);
       setConfig(token, userRole);
+
       if (userRole === "userBase") {
         return navigate("/dashboard-admin");
       }
@@ -35,6 +38,9 @@ function Login({ onClose, onBack }) {
       error.json().then((res) => {
         setError(res.message);
       });
+    } finally {
+      setLoading(false);
+      setError("");
     }
   };
 
@@ -67,9 +73,12 @@ function Login({ onClose, onBack }) {
           />
         </div>
         <div className="flex flex-col items-center">
+          {error && <p className="text-red-500 text-xs py-2"> {error} </p>}
           <div className="flex flex-col items-center my-2">
-            <Button text="Ingresar" bgcolor="bg-green" />
-            {error && <p className="text-red-500"> {error} </p>}
+            <Button
+              text={loading ? "Cargando..." : "Ingresar"}
+              bgcolor="bg-green"
+            />
           </div>
           <button onClick={onBack} className="py-2 px-4 bg-green rounded">
             <IoMdArrowBack />
