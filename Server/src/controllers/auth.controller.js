@@ -10,7 +10,7 @@ const SECRET_KEY = process.env.JWT_SECRET;
 async function validateUser(req, res) {
   const existingUser = await User.findOne({ email: req.body.email });
   if (existingUser) {
-    return { error: 'Email already registered' };
+    return { error: 'Este correo electrónico ya está registrado.' };
   }
 
   const specialCharRegex = /[!@#$%^&*()_+\-=()[\]{};':"\\|,.<>/?]+/;
@@ -20,7 +20,8 @@ async function validateUser(req, res) {
   ) {
     return {
       error:
-        'The password must be at least 8 characters long and contain at least 1 special character',
+        // 'The password must be at least 8 characters long and contain at least 1 special character',
+        'La contraseña debe tener al menos 8 caracteres y un caracter especial.'
     };
   }
   return null;
@@ -34,7 +35,7 @@ async function createUserWithUserRole(req, res) {
     }
 
     if (req.body.role !== 'user') {
-      return res.status(400).send({ message: 'Invalid user role' });
+      return res.status(400).send({ message: 'Rol de usuario no válido.' });
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -50,9 +51,9 @@ async function createUserWithUserRole(req, res) {
     user.password = undefined;
     return res.status(201).send(user);
   } catch (err) {
-    let errorMessage = 'Error creating user.';
+    let errorMessage = 'Error al crear el usuario.';
     if (err.code === 11000) {
-      errorMessage = 'The email address is already registered';
+      errorMessage = 'Este correo electrónico ya está registrado.';
     } else if (err.name === 'ValidationError') {
       const field = Object.keys(err.errors)[0];
       errorMessage = err.errors[field].message;
@@ -72,7 +73,7 @@ async function createUserWithBaseRole(req, res) {
     }
 
     if (req.body.role && req.body.role !== 'userBase') {
-      return res.status(400).send({ message: 'Invalid user role' });
+      return res.status(400).send({ message: 'Rol de usuario no válido.' });
     }
 
     const validationError = await validateUser(req, res);
@@ -93,9 +94,9 @@ async function createUserWithBaseRole(req, res) {
     user.password = undefined;
     return res.status(201).send(user);
   } catch (err) {
-    let errorMessage = 'Error creating user.';
+    let errorMessage = 'Error al crear el usuario.';
     if (err.code === 11000) {
-      errorMessage = 'The email address is already registered';
+      errorMessage = 'Este correo electrónico ya está registrado.';
     } else if (err.name === 'ValidationError') {
       const field = Object.keys(err.errors)[0];
       errorMessage = err.errors[field].message;
@@ -111,13 +112,13 @@ async function login(req, res, next) {
   try {
     const user = await User.findOne({ email }).select('+password');
     if (!user) {
-      const error = new Error('Email or password incorrect');
+      const error = new Error('Correo electrónico o contraseña incorrectos');
       error.status = 404;
       throw error;
     }
     const isPasswordMatch = await bcrypt.compare(password, user.password);
     if (!isPasswordMatch) {
-      const error = new Error('Email or password incorrect');
+      const error = new Error('Correo electrónico o contraseña incorrectos');
       error.status = 401;
       throw error;
     }
@@ -141,23 +142,23 @@ async function deleteAccount(req, res) {
   try {
     const userToDelete = await User.findById(userIdToDelete);
     if (!userToDelete) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'Usuario no encontrado.' });
     }
     if (
       requestingUserRole === 'userAdmin' &&
       userToDelete.role !== 'userAdmin'
     ) {
       await User.findByIdAndDelete(userIdToDelete);
-      return res.status(200).json({ message: 'User deleted successfully' });
+      return res.status(200).json({ message: 'Usuario eliminado exitosamente.' });
     } else if (
       requestingUserRole === 'user' &&
       userIdToDelete === requestingUserId
     ) {
       await User.findByIdAndDelete(userIdToDelete);
-      return res.status(200).json({ message: 'User deleted successfully' });
+      return res.status(200).json({ message: 'Usuario eliminado exitosamente.' });
     } else {
       return res.status(403).json({
-        message: 'Access forbidden. You are not allowed to delete this user',
+        message: 'Acceso denegado. No tienes permiso para eliminar este usuario.',
       });
     }
   } catch (error) {
