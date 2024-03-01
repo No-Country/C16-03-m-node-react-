@@ -20,8 +20,8 @@ function Login({ onClose, onBack }) {
       password: event.target.password.value,
     };
     try {
-      const res = await services.signIn({ formData });
       setError("");
+      const res = await services.signIn({ formData });
       const { userRole, token } = res;
       localStorage.setItem("token", token);
       setConfig(token, userRole);
@@ -32,7 +32,9 @@ function Login({ onClose, onBack }) {
         return navigate("/dashboard-client");
       }
     } catch (error) {
-      setError(error.message);
+      error.json().then((res) => {
+        setError(res.message);
+      });
     }
   };
 
@@ -67,7 +69,7 @@ function Login({ onClose, onBack }) {
         <div className="flex flex-col items-center">
           <div className="flex flex-col items-center my-2">
             <Button text="Ingresar" bgcolor="bg-green" />
-            {error && <p className="text-[#f00]"> {error} </p>}
+            {error && <p className="text-red-500"> {error} </p>}
           </div>
           <button onClick={onBack} className="py-2 px-4 bg-green rounded">
             <IoMdArrowBack />

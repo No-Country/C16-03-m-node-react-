@@ -16,20 +16,20 @@ async function signIn({ formData }) {
 }
 
 async function getProductData({ id }) {
-  try {
-    const response = await fetch(`${url}/product/getOneProduct`, {
-      headers: {
-        "content-type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({
-        productId: id,
-      }),
-    }).then((res) => res.json());
-    return response;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+  return fetch(`${url}/product/getOneProduct`, {
+    headers: {
+      "content-type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      productId: id,
+    }),
+  }).then((res) => {
+    if (!res.ok) {
+      throw res;
+    }
+    return res.json();
+  });
 }
 
 const postNewShipment = async (shipment) => {
@@ -82,6 +82,27 @@ async function updateProductState({ token, id, status }) {
   }).then((res) => res.json());
 }
 
+async function register({ name, email, password }) {
+  return fetch(`${url}/auth/signup`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      lastName: "Cliente",
+      email,
+      password,
+      role: "user",
+    }),
+  }).then((res) => {
+    if (!res.ok) {
+      throw res;
+    }
+    return res.json();
+  });
+}
+
 async function testBackend() {
   const response = await fetch(`${url}/test`).then((res) => res.json());
   return response;
@@ -94,4 +115,5 @@ export default {
   postNewShipment,
   sendToFirstBase,
   updateProductState,
+  register,
 };
