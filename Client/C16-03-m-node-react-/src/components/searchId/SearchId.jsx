@@ -19,13 +19,20 @@ function SearchId({ ruta }) {
 
   return (
     <div>
-      <form onSubmit={onSubmit} className="space-x-3 text-black">
+      <form
+        onSubmit={onSubmit}
+        className=" flex text-black  flex-wrap gap-2 sm:gap-4 w-full justify-center"
+      >
         <TextInput
           placeholdertext={"Ingresa el código de envío"}
           type={"text"}
           name={"idNumber"}
+          showLabel={false}
         />
-        <button className="py-2 px-4 bg-green rounded-[24px]" type="submit">
+        <button
+          className="py-2 px-4 bg-green rounded-[24px] hover:bg-green/80 hover:border-green/80 border-2 "
+          type="submit"
+        >
           Buscar
         </button>
       </form>

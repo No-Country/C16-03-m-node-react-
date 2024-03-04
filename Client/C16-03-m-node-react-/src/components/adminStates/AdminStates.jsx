@@ -2,6 +2,7 @@ import Button from "../button/button";
 import SearchId from "../searchId/SearchId";
 import services from "../../services/api";
 import useUserConfig from "./../../hooks/useUserConfig";
+import Swal from "sweetalert2";
 
 function AdminStates({ productId = "", setProducts }) {
   const { token } = useUserConfig();
@@ -12,9 +13,17 @@ function AdminStates({ productId = "", setProducts }) {
         services.getProductData({ id: productId }).then((data) => {
           setProducts(data);
         });
-        alert(res.message);
+        Swal.fire({
+          icon: "success",
+          title: "Actualizado",
+          text: res.message,
+        });
       } else {
-        alert(res.message);
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: res.message,
+        });
       }
     });
   };
@@ -27,9 +36,17 @@ function AdminStates({ productId = "", setProducts }) {
           services.getProductData({ id: productId }).then((data) => {
             setProducts(data);
           });
-          alert(res.message);
+          Swal.fire({
+            icon: "success",
+            title: "Actualizado",
+            text: res.message,
+          });
         } else {
-          alert(res.message);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: res.message,
+          });
         }
       });
   };
