@@ -9,6 +9,7 @@ import services from "../services/api";
 import Spinner from "../components/spinner/Spinner";
 import { useNavigate } from "react-router";
 import img from "../assets/worker.jpg";
+import { WaitBackground } from "../components/waitBackground/WaitBackground";
 
 function DashboardAdmin() {
   const navigate = useNavigate();
@@ -61,20 +62,24 @@ function DashboardAdmin() {
                     favor, verifique el ID e inténtelo de nuevo.
                   </h2>
                 ) : (
-                  <div className="flex flex-col p-6 justify-center items-center space-y-8">
-                    <h2 className="text-white text-center sm:text-sm lg:text-lg font-bold ml-11 ">
-                      Bienvenido al panel de control de Administrador. <br />
-                      Ingrese el Nro. de seguimiento para actualizar los
-                      detalles del paquete.
-                    </h2>
-                    <div className="sm:w-[300px] lg:w-[450px] ">
-                      <img
-                        className="rounded-[24px] object-cover"
-                        src={img}
-                        alt="trabajador"
-                      />
-                    </div>
-                  </div>
+                  // <div className="flex flex-col p-6 justify-center items-center space-y-8">
+                  //   <h2 className="text-white text-center sm:text-sm lg:text-lg font-bold ml-11 ">
+                  //     Bienvenido al panel de control de Administrador. <br />
+                  //     Ingrese el Nro. de seguimiento para actualizar los
+                  //     detalles del paquete.
+                  //   </h2>
+                  //   <div className="sm:w-[300px] lg:w-[450px] ">
+                  //     <img
+                  //       className="rounded-[24px] object-cover"
+                  //       src={img}
+                  //       alt="trabajador"
+                  //     />
+                  //   </div>
+                  // </div>
+                  <WaitBackground
+                    title="Bienvenido al panel de control de Administrador."
+                    paragraph="Ingrese el Nro. de seguimiento para actualizar los detalles del paquete."
+                  />
                 )}
               </div>
             ) : (
