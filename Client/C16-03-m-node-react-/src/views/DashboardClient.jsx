@@ -55,7 +55,7 @@ function DashboardClient() {
               />
             </div>
             <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full justify-center bg-Amethyst rounded-[24px]  ">
-              {  ? (
+              {products.length && productFilter ? (
                 <div className="w-full h-full flex flex-col pt-10 rounded-lg">
                   <StatusBar initialStatus={{ product: productFilter }} />
                   <Table productFilter={productFilter} />

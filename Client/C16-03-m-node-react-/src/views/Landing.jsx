@@ -64,7 +64,7 @@ function Landing() {
           )}
         </div>
         <div
-          className={`${isMenuOpen ? "block" : "hidden"} ms:hidden fixed h-auto top-0 left-0 right-100 bg-bgDashboard p-4 rounded-[10px] border border-gray-300`}
+          className={`${isMenuOpen ? "block" : "hidden"} ms:hidden absolute h-auto top-0 left-0 right-100  bg-bgDashboard p-4 rounded-[10px] border border-gray-300`}
         >
           {role ? (
             <div className=" flex flex-col gap-4">
