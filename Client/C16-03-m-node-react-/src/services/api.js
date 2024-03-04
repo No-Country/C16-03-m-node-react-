@@ -42,26 +42,21 @@ async function getProductData({ id }) {
   });
 }
 
-const postNewShipment = async (shipment) => {
-  try {
-    const token = localStorage.getItem("token");
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    if (token) {
-      headers["Authorization"] = `Bearer ${token}`;
+const postNewShipment = async (shipment, token) => {
+  return fetch(`${url}/product/createProduct`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(shipment),
+  }).then((res) => {
+    if (!res.ok) {
+      throw res;
     }
-    const response = await fetch(`${url}/product/createProduct`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(shipment),
-    });
 
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw new Error(error.message);
-  }
+    return res.json();
+  });
 };
 
 async function sendToFirstBase({ token, id, status }) {
@@ -113,6 +108,20 @@ async function register({ name, email, password }) {
   });
 }
 
+async function getClientProducts({ token }) {
+  return fetch(`${url}/product/findClientProducts`, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    if (!res.ok) {
+      throw res;
+    }
+    return res.json();
+  });
+}
+
 async function testBackend() {
   const response = await fetch(`${url}/test`).then((res) => res.json());
   return response;
@@ -127,4 +136,5 @@ export default {
   updateProductState,
   register,
   getProducts,
+  getClientProducts,
 };
