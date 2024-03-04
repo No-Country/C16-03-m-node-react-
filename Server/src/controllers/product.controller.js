@@ -52,10 +52,11 @@ async function createProduct(req, res) {
             ownerId: ownerId,
             price: price,
           });
-          await product.save();
+          const savedProduct = await product.save();
           res.status(COD_RESPONSE_HTTP_OK).json({
             status: COD_RESPONSE_HTTP_OK,
             message: 'The product has been stored correctly',
+            productId: savedProduct._id
           });
         } else {
           return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
@@ -71,10 +72,11 @@ async function createProduct(req, res) {
           ownerId: ownerId,
           price: price,
         });
-        await product.save();
+        const savedProduct = await product.save();
         res.status(COD_RESPONSE_HTTP_OK).json({
           status: COD_RESPONSE_HTTP_OK,
           message: 'The product has been stored correctly',
+          productId: savedProduct._id
         });
       } else {
         res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
