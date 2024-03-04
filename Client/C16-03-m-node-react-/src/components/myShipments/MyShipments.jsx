@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Spinner from "../spinner/Spinner";
 
 function MyShipments({ products, handleFilter, isLoading }) {
@@ -33,17 +33,22 @@ function MyShipments({ products, handleFilter, isLoading }) {
       {isLoading && <Spinner />}
       <div className="max-h-[300px] overflow-y-auto">
         <div className="flex flex-col gap-3 text-black text-[18px]">
+          {!isLoading && !products.length && (
+            <h1 className="text-white text-center text-[21px]">
+              Comienza a crear tus envios!
+            </h1>
+          )}
           {products?.map((product) => (
             <button
               key={product._id}
-              className="border rounded-[20px] p-1 h-12 text-center bg-white items-center flex justify-center"
+              className="rounded-[4px] p-1 h-12 text-center bg-violet-500 items-center flex justify-center"
               onClick={() => {
                 handleFilter(product._id);
                 setActiveProduct(product._id);
               }}
             >
               <p
-                className={`text-${product._id === activeProduct ? "green" : "black"}`}
+                className={`text-${product._id === activeProduct ? "green" : "white"}`}
               >
                 {product._id}
               </p>

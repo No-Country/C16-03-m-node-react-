@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import services from "../services/api";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/spinner/Spinner";
-import Button from "../components/button/button";
 
 function DashboardVisitor() {
   const { id } = useParams();
@@ -29,8 +28,6 @@ function DashboardVisitor() {
     };
     fetchData();
   }, [id]);
-
-  console.log(productData);
 
   return (
     <div className="h-[100vh] flex flex-col p-2 gap-2 md:gap-4 items-center bg-purpleDark">

@@ -5,51 +5,55 @@ import TextInput from "../TextInput/TextInput";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import services from "../../services/api";
 import { useState } from "react";
+import Alert from "sweetalert2";
+import useUserConfig from "../../hooks/useUserConfig";
 
-function NewShipment({ handleActive }) {
-  const [type, setType] = useState("package");
-  const token = localStorage.getItem("token");
-  const [product, setProduct] = useState({
-    description: "",
-    originData: "",
-    destinationData: "",
-    packageData: {
-      weightKg: 0,
-      heightCm: 0,
-      widthCm: 0,
-      lengthCm: 0,
-    },
-    status: "In progress",
-    price: 0,
-  });
+function NewShipment({ handleActive, reRenderProducts }) {
+  const [type, setType] = useState("Package");
+  const { token } = useUserConfig();
 
   const handleChangeType = (e) => {
     setType(e.target.value);
   };
 
-  const handleChange = (e) => {
-    if (
-      ["weightKg", "heightCm", "widthCm", "lengthCm"].includes(e.target.name)
-    ) {
-      setProduct({
-        ...product,
-        packageData: {
-          ...product.packageData,
-          [e.target.name]: e.target.value,
-        },
-      });
-    } else {
-      setProduct({
-        ...product,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
-
   const submitForm = async (e) => {
     e.preventDefault();
-    await services.postNewShipment(product);
-    handleActive();
+    const inputs = e.target;
+    const getInputValue = (inputName) => inputs[inputName]?.value;
+    const formData = {
+      description: getInputValue("description"),
+      originData: getInputValue("originData"),
+      destinationData: getInputValue("destinationData"),
+      packageData: {
+        weightKg: getInputValue("weightKg"),
+        heightCm: getInputValue("heightCm"),
+        widthCm: getInputValue("widthCm"),
+        lengthCm: getInputValue("lengthCm"),
+      },
+      status: "",
+      price: getInputValue("price"),
+    };
+
+    try {
+      const res = await services.postNewShipment(formData, token);
+      Alert.fire({
+        icon: "success",
+        title: "Envio creado correctamente",
+        text: `Aqui tienes el ID de tu envio: ${res.productId}`,
+        didClose() {
+          handleActive();
+          reRenderProducts();
+        },
+      });
+    } catch (error) {
+      error.json().then((res) => {
+        Alert.fire({
+          icon: "error",
+          title: "Ha ocurrio un error",
+          text: `${res.message}`,
+        });
+      });
+    }
   };
 
   return (
@@ -84,57 +88,42 @@ function NewShipment({ handleActive }) {
                 name="description"
                 id=""
               >
-                <option value="package">Paquete</option>
-                <option value="letter">Carta</option>
+                <option value="Package">Paquete</option>
+                <option value="Letter">Carta</option>
               </select>
             </div>
-            <TextInput
-              name="originData"
-              type="text"
-              placeholdertext="Origen"
-              handleChange={handleChange}
-            />
+            <TextInput name="originData" type="text" placeholdertext="Origen" />
             <TextInput
               name="destinationData"
               type="text"
               placeholdertext="Destino"
-              handleChange={handleChange}
             />
 
-            {type === "package" && (
+            {type === "Package" && (
               <>
                 <TextInput
                   name="weightKg"
                   type="number"
                   placeholdertext="Peso"
-                  handleChange={handleChange}
                 />
                 <TextInput
                   name="heightCm"
                   type="number"
                   placeholdertext="Alto"
-                  handleChange={handleChange}
                 />
                 <TextInput
                   name="widthCm"
                   type="number"
                   placeholdertext="Ancho"
-                  handleChange={handleChange}
                 />
                 <TextInput
                   name="lengthCm"
                   type="number"
                   placeholdertext="Largo"
-                  handleChange={handleChange}
                 />
               </>
             )}
-            <TextInput
-              name="price"
-              type="number"
-              placeholdertext="Precio"
-              handleChange={handleChange}
-            />
+            <TextInput name="price" type="number" placeholdertext="Precio" />
             <Button text="Listo" bgcolor="bg-green" type="submit" />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import MyShipments from "../components/myShipments/MyShipments";
 import StatusBar from "../components/statusBar/StatusBar";
@@ -20,12 +20,16 @@ function DashboardClient() {
     setProductFilter(product);
   };
 
-  useEffect(() => {
+  const getProducts = useCallback(() => {
     api.getClientProducts({ token }).then((res) => {
       setIsLoading(false);
       setProducts(res.products);
     });
   }, [token]);
+
+  useEffect(() => {
+    getProducts();
+  }, [token, getProducts]);
 
   const handleModalOpen = () => {
     setModalVisible(true);
@@ -34,7 +38,6 @@ function DashboardClient() {
   const handleModalClose = () => {
     setModalVisible(false);
   };
-  console.log(productFilter);
 
   return (
     <main className="w-full sm:h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
@@ -55,7 +58,12 @@ function DashboardClient() {
             </div>
           </div>
         </div>
-        {isModalVisible && <NewShipment handleActive={handleModalClose} />}
+        {isModalVisible && (
+          <NewShipment
+            reRenderProducts={getProducts}
+            handleActive={handleModalClose}
+          />
+        )}
       </div>
     </main>
   );
