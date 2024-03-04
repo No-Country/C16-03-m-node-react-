@@ -105,16 +105,16 @@ const StatusBar = ({ initialStatus = {} }) => {
           </Step>
         </ProgressBar>
         <div className="flex justify-between mt-2 ">
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className="min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
             En Almacén
           </span>
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className=" min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
             En Progreso
           </span>
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className=" min-[320px]:text-[10px] sm:text-xs lg:text-md l text-center mt-4 text-white font-semibold">
             En Tránsito
           </span>
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className="min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
             Entregado
           </span>
         </div>
