@@ -9,7 +9,16 @@ import SearchId from "../components/searchId/SearchId";
 import useUserConfig from "../hooks/useUserConfig";
 import { useNavigate } from "react-router";
 
+import HamburguerMenu from "../components/header/HamburguerMenu";
+
 function Landing() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log(isMenuOpen);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
   const { role, clearConfig } = useUserConfig();
@@ -28,9 +37,9 @@ function Landing() {
     <main className="w-full h-full min-h-[100vh] flex justify-start items-center bg-purple flex-wrap">
       <header className="w-full p-[25px] flex justify-between items-center">
         <Logo />
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className=" hidden ms:flex space-x-4">
           {role ? (
-            <div>
+            <div className="space-x-4">
               <Button
                 cursor="pointer"
                 text={"Panel"}
@@ -49,11 +58,40 @@ function Landing() {
               cursor="pointer"
               text="Clientes"
               bgcolor="bg-green"
-              className="bg-green rounded-[24px] hover:bg-green/80 hover:border-green border-2"
+              className="bg-green"
               onClick={() => handleActive()}
             />
           )}
         </div>
+        <div
+          className={`${isMenuOpen ? "block" : "hidden"} ms:hidden absolute h-auto top-0 left-0 right-100  bg-bgDashboard p-4 rounded-[10px] border border-gray-300`}
+        >
+          {role ? (
+            <div className=" flex flex-col gap-4">
+              <Button
+                cursor="pointer"
+                text={"Panel"}
+                bgcolor="bg-green"
+                onClick={redirect}
+              />
+              <Button
+                cursor="pointer"
+                text="Logout"
+                bgcolor="bg-green"
+                onClick={clearConfig}
+              />
+            </div>
+          ) : (
+            <Button
+              cursor="pointer"
+              text="Clientes"
+              bgcolor="bg-green"
+              className="bg-green"
+              onClick={() => handleActive()}
+            />
+          )}
+        </div>
+        <HamburguerMenu onClick={toggleMenu} />
       </header>
       <section className="w-full  ms:flex ms:flex-row flex flex-col p-[25px] gap-2 justify-between items-center ">
         <div className=" p-10 ms:w-3/5 flex justify-center">
