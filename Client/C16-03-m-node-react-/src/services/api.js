@@ -15,6 +15,16 @@ async function signIn({ formData }) {
   });
 }
 
+async function getProducts() {
+  try {
+    const response = await fetch(`${url}/product/getAllProducts`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
 async function getProductData({ id }) {
   return fetch(`${url}/product/getOneProduct`, {
     headers: {
@@ -116,4 +126,5 @@ export default {
   sendToFirstBase,
   updateProductState,
   register,
+  getProducts,
 };

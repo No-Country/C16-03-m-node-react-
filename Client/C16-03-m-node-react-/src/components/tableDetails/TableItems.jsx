@@ -21,6 +21,7 @@ const TableItems = ({ items, states }) => {
               {Object.keys(diccionario).includes(value)
                 ? diccionario[value]
                 : value}
+              {value}
             </div>
           );
         })}
