@@ -7,7 +7,7 @@ import services from "../../services/api";
 import { useState } from "react";
 
 function NewShipment({ handleActive }) {
-  const [type, setType] = useState(null);
+  const [type, setType] = useState("package");
   const token = localStorage.getItem("token");
   const [product, setProduct] = useState({
     description: "",

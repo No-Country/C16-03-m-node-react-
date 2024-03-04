@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import MyShipments from "../components/myShipments/MyShipments";
 import StatusBar from "../components/statusBar/StatusBar";
 import Table from "../components/tableDetails/Table";
 import NewShipment from "../components/newShipment/NewShipment";
 import api from "../services/api";
-import Button from "../components/button/button";
+import useUserConfig from "./../hooks/useUserConfig";
 
 function DashboardClient() {
   const [isModalVisible, setModalVisible] = useState(false);
   const [products, setProducts] = useState([]);
   const [productFilter, setProductFilter] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async () => {
-    const response = await api.getProducts();
-    console.log(response);
-    setProducts(response.products);
-  };
+  const { token } = useUserConfig();
 
   const handleFilter = (productId) => {
     const product = products.find((product) => product._id === productId);
@@ -24,8 +21,11 @@ function DashboardClient() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    api.getClientProducts({ token }).then((res) => {
+      setIsLoading(false);
+      setProducts(res.products);
+    });
+  }, [token]);
 
   const handleModalOpen = () => {
     setModalVisible(true);
@@ -42,11 +42,15 @@ function DashboardClient() {
         <Header openModal={handleModalOpen} />
         <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3">
           <div className="lg:w-1/4 sm:w-1/2 h-full min-[360px]:w-full">
-            <MyShipments products={products} handleFilter={handleFilter} />
+            <MyShipments
+              products={products}
+              handleFilter={handleFilter}
+              isLoading={isLoading}
+            />
           </div>
           <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full justify-center bg-Amethyst rounded-[24px]  ">
-            <div className="w-full h-full flex flex-col justify-around items-center ">
-              <StatusBar initialStatus={products} />
+            <div className="w-full h-full flex flex-col pt-10 rounded-lg">
+              <StatusBar initialStatus={{ product: productFilter }} />
               <Table productFilter={productFilter} />
             </div>
           </div>

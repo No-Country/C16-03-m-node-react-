@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Spinner from "../spinner/Spinner";
 
-function MyShipments({ products, handleFilter }) {
+function MyShipments({ products, handleFilter, isLoading }) {
   // Estado para almacenar el ID del producto activo
   const [activeProduct, setActiveProduct] = useState(null);
 
@@ -29,7 +30,8 @@ function MyShipments({ products, handleFilter }) {
           <p className="text-sm">Entregado</p>
         </div>
       </div>
-      <div style={{ maxHeight: "300px", overflowY: "auto" }}>
+      {isLoading && <Spinner />}
+      <div className="max-h-[300px] overflow-y-auto">
         <div className="flex flex-col gap-3 text-black text-[18px]">
           {products?.map((product) => (
             <button
