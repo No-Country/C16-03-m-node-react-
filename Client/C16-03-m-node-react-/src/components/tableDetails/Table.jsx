@@ -2,35 +2,24 @@ import TableCategory from "./TableCategory";
 import TableItems from "./TableItems";
 
 // Datos del paquete
-function dataPackage(products = {}) {
+function dataPackage(product = {}) {
   return [
     {
-      // id: products._id,
-      descrption: products.description,
-      peso: products.packageData?.weightKg,
-      despacho: products.originData,
-      destino: products.destinationData,
-      estado: products.status,
+      // id: product._id,
+      descrption: product.description,
+      peso: product.packageData?.weightKg,
+      despacho: product.originData,
+      destino: product.destinationData,
+      estado: product.status,
     },
   ];
 }
-
-// const items = [
-//   {
-//     id: "1",
-//     descrption: "Producto de tecnologia",
-//     despacho: "Sucursal A",
-//     destino: "Sucursal B",
-//     precio: "$505",
-//     estado: "Almacen",
-//   },
-// ];
 
 const columns = ["Descripción", "Peso", "Despacho", "Destino", "Estado"];
 
 const states = [
   {
-    Delivered: "#1DBA23",
+    Delivered: "#8BEA00",
     "In Warehouse": "#FFF500",
     "In Progress": "#97A1FF",
     "In Transit": "#0038FF",
@@ -38,8 +27,8 @@ const states = [
   },
 ];
 
-const Table = ({ products = {} }) => {
-  const items = dataPackage(products?.product);
+const Table = ({ productFilter }) => {
+  const item = dataPackage(productFilter);
 
   return (
     <div className="w-full min-[320px]:h-auto lg:h-auto  p-3 bg-Amethyst rounded-3xl flex flex-col items-center justify-center ">
@@ -54,7 +43,7 @@ const Table = ({ products = {} }) => {
             <TableCategory columns={columns} />
           </div>
           <div className="min-[320px]:w-1/2 sm:w-1/2 lg:w-full h-full">
-            <TableItems items={items} states={states} />
+            <TableItems items={item} states={states} />
           </div>
         </div>
       </div>

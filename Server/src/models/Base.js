@@ -32,10 +32,8 @@ export const BaseSchema = new Schema({
   description: {
     type: String,
     require: true,
-    enum: ['Letter', 'Package'],
-    default: null,
-    // minlength: 2,
-    // maxlength: 50,
+    minlength: 2,
+    maxlength: 50,
   },
   products: [{ type: Schema.Types.ObjectId, ref: 'Product' }],
 });

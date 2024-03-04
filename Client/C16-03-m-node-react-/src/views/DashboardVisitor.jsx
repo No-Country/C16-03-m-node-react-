@@ -30,6 +30,8 @@ function DashboardVisitor() {
     fetchData();
   }, [id]);
 
+  console.log(productData);
+
   return (
     <div className="h-[100vh] flex flex-col p-2 gap-2 md:gap-4 items-center bg-purpleDark">
       <HeaderNoButtons />
@@ -53,7 +55,7 @@ function DashboardVisitor() {
           ) : (
             <div className="space-y-4">
               <StatusBar initialStatus={productData} />
-              <Table products={productData} />
+              <Table productFilter={productData.product} />
             </div>
           )}
         </div>

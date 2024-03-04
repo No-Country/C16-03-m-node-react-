@@ -80,7 +80,7 @@ function DashboardAdmin() {
             ) : (
               <>
                 <StatusBar initialStatus={products} />
-                <Table products={products} />
+                <Table productFilter={products.product} />
               </>
             )}
           </div>
