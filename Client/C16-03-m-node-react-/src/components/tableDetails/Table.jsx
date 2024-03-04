@@ -14,24 +14,12 @@ function dataPackage(product = {}) {
     },
   ];
 }
-console.log(dataPackage());
-
-const items = [
-  {
-    id: "1",
-    descrption: "Producto de tecnologia",
-    despacho: "Sucursal A",
-    destino: "Sucursal B",
-    precio: "$505",
-    estado: "Almacen",
-  },
-];
 
 const columns = ["Descripción", "Peso", "Despacho", "Destino", "Estado"];
 
 const states = [
   {
-    Delivered: "#1DBA23",
+    Delivered: "#8BEA00",
     "In Warehouse": "#FFF500",
     "In Progress": "#97A1FF",
     "In Transit": "#0038FF",
