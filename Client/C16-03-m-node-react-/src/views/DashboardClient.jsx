@@ -5,6 +5,7 @@ import StatusBar from "../components/statusBar/StatusBar";
 import Table from "../components/tableDetails/Table";
 import NewShipment from "../components/newShipment/NewShipment";
 import api from "../services/api";
+import Button from "../components/button/button";
 
 function DashboardClient() {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -13,6 +14,7 @@ function DashboardClient() {
 
   const fetchData = async () => {
     const response = await api.getProducts();
+    console.log(response);
     setProducts(response.products);
   };
 
@@ -32,7 +34,7 @@ function DashboardClient() {
   const handleModalClose = () => {
     setModalVisible(false);
   };
-  console.log(productFilter)
+  console.log(productFilter);
 
   return (
     <main className="w-full sm:h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
@@ -43,7 +45,7 @@ function DashboardClient() {
             <MyShipments products={products} handleFilter={handleFilter} />
           </div>
           <div className="flex flex-col gap-5 lg:w-3/4 sm:w-1/2 min-[360px]:w-full justify-center bg-Amethyst rounded-[24px]  ">
-            <div className="w-full h-full flex flex-col pt-10 rounded-lg">
+            <div className="w-full h-full flex flex-col justify-around items-center ">
               <StatusBar initialStatus={products} />
               <Table productFilter={productFilter} />
             </div>

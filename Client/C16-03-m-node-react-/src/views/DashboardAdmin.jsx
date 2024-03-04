@@ -78,10 +78,10 @@ function DashboardAdmin() {
                 )}
               </div>
             ) : (
-              <>
+              <div className="w-full h-full flex flex-col justify-around items-center ">
                 <StatusBar initialStatus={products} />
                 <Table productFilter={products.product} />
-              </>
+              </div>
             )}
           </div>
         </div>

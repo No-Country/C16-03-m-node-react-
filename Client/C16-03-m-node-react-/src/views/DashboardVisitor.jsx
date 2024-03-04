@@ -53,7 +53,7 @@ function DashboardVisitor() {
               </Link>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="w-full h-full flex flex-col justify-around items-center space-y-4">
               <StatusBar initialStatus={productData} />
               <Table productFilter={productData.product} />
             </div>
