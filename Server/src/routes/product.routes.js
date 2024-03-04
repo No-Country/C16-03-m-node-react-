@@ -13,9 +13,9 @@ import authMiddleware from '../middlewares/auth.middleware.js';
 const router = express.Router();
 
 router.post('/createProduct', authMiddleware, createProduct);
-router.get('/getAllProducts', getAllProducts, authMiddleware);
-router.post('/findClientProducts', findClientProducts, authMiddleware);
-router.delete('/deleteProduct', deleteProduct, authMiddleware);
+router.get('/getAllProducts', authMiddleware, getAllProducts);
+router.post('/findClientProducts', authMiddleware, findClientProducts );
+router.delete('/deleteProduct', authMiddleware, deleteProduct );
 router.post('/getOneProduct', getProductById);
 router.put('/updateProduct', authMiddleware, updateProduct);
 router.put('/sendProduct', authMiddleware, sendProduct);
