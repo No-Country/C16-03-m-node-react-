@@ -41,7 +41,6 @@ function DashboardClient() {
   };
 
   return (
-    console.log(products),
     (
       <main className="w-full sm:h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
         <div className=" w-full lg:h-full sm:h-full min-[320px]:h-auto flex flex-col p-2 bg-Dark">
