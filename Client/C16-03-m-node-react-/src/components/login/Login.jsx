@@ -25,7 +25,13 @@ function Login({ onClose, onBack }) {
       setError("");
       const res = await services.signIn({ formData });
       const { userRole, token } = res;
-      localStorage.setItem("token", token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          token,
+          userRole,
+        }),
+      );
       setConfig(token, userRole);
 
       if (userRole === "userBase") {
