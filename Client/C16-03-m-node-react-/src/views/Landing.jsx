@@ -13,7 +13,6 @@ import HamburguerMenu from "../components/header/HamburguerMenu";
 
 function Landing() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log(isMenuOpen);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -29,6 +28,11 @@ function Landing() {
 
   const redirect = () => {
     navigate(`/dashboard-${dashboard}`);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    clearConfig();
   };
 
   const dashboard = role === "userBase" ? "admin" : "client";
@@ -50,7 +54,7 @@ function Landing() {
                 cursor="pointer"
                 text="Logout"
                 bgcolor="bg-green"
-                onClick={clearConfig}
+                onClick={logout}
               />
             </div>
           ) : (
