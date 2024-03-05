@@ -83,7 +83,7 @@ function RegistrationModal({ onClose, onBack }) {
 
             <div className="flex flex-col items-center">
               <Button
-                text={loading ? "Registrando..." : "Registrate"}
+                text={loading ? "Registrando..." : "Regístrate"}
                 onClick={handleRegister}
                 bgcolor="bg-green"
               />
