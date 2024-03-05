@@ -1,15 +1,15 @@
 const diccionario = {
   Delivered: "Entregado",
-  "In Warehouse": "En almacen",
-  "In Progress": "En progreso",
-  "In Transit": "En tránsito",
+  "In Warehouse": "En Almacén",
+  "In Progress": "En Progreso",
+  "In Transit": "En Tránsito",
   Cancel: "Cancelado",
 };
 
 const TableItems = ({ items, states }) => {
   return (
     <div className="w-full h-full flex lg:flex-row sm:flex-col min-[320px]:flex-col lg:items-center lg:justify-center">
-      <div className="w-full  flex lg:flex-row sm:flex-col min-[320px]:flex-col min-[320px]:text-xs items-center justify-center lg:text-md gap-2 sm:text-sm text-black">
+      <div className="w-full h-full flex lg:flex-row sm:flex-col min-[320px]:flex-col lg:items-center lg:justify-center lg:text-lg gap-2 sm:text-sm text-white font-bold">
         {Object.entries(items[0]).map(([key, value]) => {
           const stateColor = states[0][value];
           return (
@@ -21,6 +21,7 @@ const TableItems = ({ items, states }) => {
               {Object.keys(diccionario).includes(value)
                 ? diccionario[value]
                 : value}
+              {!value && "-"}
             </div>
           );
         })}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import Spinner from "../spinner/Spinner";
 
-function MyShipments({ products, handleFilter }) {
+function MyShipments({ products, handleFilter, isLoading }) {
   // Estado para almacenar el ID del producto activo
   const [activeProduct, setActiveProduct] = useState(null);
 
@@ -9,39 +10,41 @@ function MyShipments({ products, handleFilter }) {
       <h1 className="flex justify-center text-[24px]">Mis envíos</h1>
       <div className="flex flex-col items-start w-fit mx-auto ">
         <div className="flex gap-4 items-center">
-          <div className="w-4 h-4 rounded-full bg-white"></div>
-          <p className="text-sm">Cancelado</p>
+          <div className="w-4 h-4 rounded-full bg-[#FFF500]"></div>
+          <p className="text-sm">En Almacén</p>
         </div>
         <div className="flex gap-4 items-center">
-          <div className="w-4 h-4 rounded-full bg-pink ite"></div>
-          <p className="text-sm">En almacen</p>
+          <div className="w-4 h-4 rounded-full bg-[#a2d2ff]"></div>
+          <p className="text-sm">En Progreso</p>
+        </div>
+        <div className="flex gap-4 items-center">
+          <div className="w-4 h-4 rounded-full bg-[#0038FF]"></div>
+          <p className="text-sm">En Tránsito</p>
         </div>
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-green"></div>
-          <p className="text-sm">En progreso</p>
-        </div>
-        <div className="flex gap-4 items-center">
-          <div className="w-4 h-4 rounded-full bg-Amethyst"></div>
-          <p className="text-sm">En tránsito</p>
-        </div>
-        <div className="flex gap-4 items-center">
-          <div className="w-4 h-4 rounded-full bg-black"></div>
           <p className="text-sm">Entregado</p>
         </div>
       </div>
-      <div style={{ maxHeight: "300px", overflowY: "auto" }}>
+      {isLoading && <Spinner />}
+      <div className="max-h-[300px] overflow-y-auto">
         <div className="flex flex-col gap-3 text-black text-[18px]">
+          {!isLoading && !products.length && (
+            <h1 className="text-white text-center text-[21px]">
+              ¡Registra tus envíos en pocos pasos!
+            </h1>
+          )}
           {products?.map((product) => (
             <button
               key={product._id}
-              className="border rounded-[20px] p-1 h-12 text-center bg-white items-center flex justify-center"
+              className="rounded-[4px] p-1 h-12 text-center bg-violet-500 items-center flex justify-center"
               onClick={() => {
                 handleFilter(product._id);
                 setActiveProduct(product._id);
               }}
             >
               <p
-                className={`text-${product._id === activeProduct ? "green" : "black"}`}
+                className={`text-${product._id === activeProduct ? "green" : "white"}`}
               >
                 {product._id}
               </p>

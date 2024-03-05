@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import services from "../services/api";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/spinner/Spinner";
-import Button from "../components/button/button";
 
 function DashboardVisitor() {
   const { id } = useParams();
@@ -30,8 +29,6 @@ function DashboardVisitor() {
     fetchData();
   }, [id]);
 
-  console.log(productData);
-
   return (
     <div className="h-[100vh] flex flex-col p-2 gap-2 md:gap-4 items-center bg-purpleDark">
       <HeaderNoButtons />
@@ -53,7 +50,7 @@ function DashboardVisitor() {
               </Link>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="w-full h-full flex flex-col justify-around items-center space-y-4">
               <StatusBar initialStatus={productData} />
               <Table productFilter={productData.product} />
             </div>

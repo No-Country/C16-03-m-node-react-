@@ -24,6 +24,8 @@ export default {
         bgDashboard: "#421A80",
         bgDetailDashboard: "#73599C",
         purpleDark: "#221633",
+        greyForm: "#e9ecef",
+        lavander: "#E6AFFC"
       },
       screens: {
         sm: "600px",

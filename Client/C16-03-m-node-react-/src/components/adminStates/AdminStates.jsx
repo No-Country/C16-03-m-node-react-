@@ -43,8 +43,8 @@ function AdminStates({ productId = "", setProducts }) {
           });
         } else {
           Swal.fire({
-            icon: 'error',
-            title: 'Error',
+            icon: "error",
+            title: "Error",
             text: res.message,
           });
         }
