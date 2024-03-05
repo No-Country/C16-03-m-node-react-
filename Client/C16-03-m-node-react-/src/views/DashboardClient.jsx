@@ -62,7 +62,7 @@ function DashboardClient() {
                 </div>
               ) : (
                 <WaitBackground
-                  title="Bienvenido al panel de control para gestión de envíos!"
+                  title="¡Bienvenido al Panel de Control para la Gestión de Envíos!"
                   paragraph="Crea un nuevo envío y comienza a gestionarlos"
                 />
               )}

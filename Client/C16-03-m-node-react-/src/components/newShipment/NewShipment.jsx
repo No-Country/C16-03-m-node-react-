@@ -38,8 +38,8 @@ function NewShipment({ handleActive, reRenderProducts }) {
       const res = await services.postNewShipment(formData, token);
       Alert.fire({
         icon: "success",
-        title: "Envio creado correctamente",
-        text: `Aqui tienes el ID de tu envio: ${res.productId}`,
+        title: "Envío creado correctamente",
+        text: `El número de seguimiento de tu envío es: ${res.productId}`,
         didClose() {
           handleActive();
           reRenderProducts();
@@ -80,13 +80,15 @@ function NewShipment({ handleActive, reRenderProducts }) {
             />
           </div>
           <div className="flex flex-col gap-4 items-center">
-            <div className="flex gap-4">
-              <p>Descripción</p>
+            {/* <div className="flex gap-4"> */}
+            <div>
+              <p>Tipo de Envío</p>
               <select
                 onChange={handleChangeType}
                 value={type}
                 name="description"
                 id=""
+                className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
               >
                 <option value="Package">Paquete</option>
                 <option value="Letter">Carta</option>
@@ -105,25 +107,29 @@ function NewShipment({ handleActive, reRenderProducts }) {
                   name="weightKg"
                   type="number"
                   placeholdertext="Peso"
+                  min={0}
                 />
                 <TextInput
                   name="heightCm"
                   type="number"
                   placeholdertext="Alto"
+                  min={0}
                 />
                 <TextInput
                   name="widthCm"
                   type="number"
                   placeholdertext="Ancho"
+                  min={0}
                 />
                 <TextInput
                   name="lengthCm"
                   type="number"
                   placeholdertext="Largo"
+                  min={0}
                 />
               </>
             )}
-            <TextInput name="price" type="number" placeholdertext="Precio" />
+            <TextInput name="price" type="number" placeholdertext="Precio" min={0} />
             <Button text="Listo" bgcolor="bg-green" type="submit" />
           </div>
         </div>

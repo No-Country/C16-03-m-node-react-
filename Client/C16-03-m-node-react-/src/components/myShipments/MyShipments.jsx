@@ -11,15 +11,15 @@ function MyShipments({ products, handleFilter, isLoading }) {
       <div className="flex flex-col items-start w-fit mx-auto ">
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-[#FFF500]"></div>
-          <p className="text-sm">En almacen</p>
+          <p className="text-sm">En Almacén</p>
         </div>
         <div className="flex gap-4 items-center">
-          <div className="w-4 h-4 rounded-full bg-[#97A1FF]"></div>
-          <p className="text-sm">En progreso</p>
+          <div className="w-4 h-4 rounded-full bg-[#a2d2ff]"></div>
+          <p className="text-sm">En Progreso</p>
         </div>
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-[#0038FF]"></div>
-          <p className="text-sm">En tránsito</p>
+          <p className="text-sm">En Tránsito</p>
         </div>
         <div className="flex gap-4 items-center">
           <div className="w-4 h-4 rounded-full bg-green"></div>
@@ -31,7 +31,7 @@ function MyShipments({ products, handleFilter, isLoading }) {
         <div className="flex flex-col gap-3 text-black text-[18px]">
           {!isLoading && !products.length && (
             <h1 className="text-white text-center text-[21px]">
-              Comienza a crear tus envios!
+              ¡Registra tus envíos en pocos pasos!
             </h1>
           )}
           {products?.map((product) => (

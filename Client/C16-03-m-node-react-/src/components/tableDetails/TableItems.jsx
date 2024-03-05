@@ -1,8 +1,8 @@
 const diccionario = {
   Delivered: "Entregado",
-  "In Warehouse": "En almacen",
-  "In Progress": "En progreso",
-  "In Transit": "En tránsito",
+  "In Warehouse": "En Almacén",
+  "In Progress": "En Progreso",
+  "In Transit": "En Tránsito",
   Cancel: "Cancelado",
 };
 

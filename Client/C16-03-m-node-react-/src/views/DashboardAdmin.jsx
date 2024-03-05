@@ -62,7 +62,7 @@ function DashboardAdmin() {
                   </h2>
                 ) : (
                   <WaitBackground
-                    title="Bienvenido al panel de control de Administrador."
+                    title="¡Bienvenido al Panel de Control del Administrador!"
                     paragraph="Ingrese el Nro. de seguimiento para actualizar los detalles del paquete."
                   />
                 )}
