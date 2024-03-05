@@ -30,7 +30,7 @@ function DashboardVisitor() {
   }, [id]);
 
   return (
-    <div className="h-[100vh] flex flex-col p-2 gap-2 md:gap-4 items-center bg-purpleDark">
+    <div className="min-h-[100vh] flex flex-col p-2 gap-2 md:gap-4 items-center bg-purpleDark">
       <HeaderNoButtons />
       <div className="flex flex-col mt-2 h-full sm:flex-row gap-5 rounded-[24px] lg:w-[90%] sm:w-3/4 min-[360px]:w-full bg-Amethyst">
         <div className="w-full h-full flex flex-col pt-4 gap-5">
@@ -50,7 +50,7 @@ function DashboardVisitor() {
               </Link>
             </div>
           ) : (
-            <div className="w-full h-full flex flex-col justify-around items-center space-y-4">
+            <div className="w-full min-h-[70vh] flex flex-col justify-around items-center space-y-4">
               <StatusBar initialStatus={productData} />
               <Table productFilter={productData.product} />
             </div>

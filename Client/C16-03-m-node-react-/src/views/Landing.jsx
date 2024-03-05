@@ -13,7 +13,6 @@ import HamburguerMenu from "../components/header/HamburguerMenu";
 
 function Landing() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log(isMenuOpen);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
