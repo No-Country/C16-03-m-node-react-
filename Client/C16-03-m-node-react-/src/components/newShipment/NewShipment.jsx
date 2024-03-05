@@ -49,7 +49,7 @@ function NewShipment({ handleActive, reRenderProducts }) {
       error.json().then((res) => {
         Alert.fire({
           icon: "error",
-          title: "Ha ocurrio un error",
+          title: "Ha ocurrió un error",
           text: `${res.message}`,
         });
       });
