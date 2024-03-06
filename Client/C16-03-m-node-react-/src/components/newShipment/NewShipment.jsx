@@ -13,7 +13,6 @@ function NewShipment({ handleActive, reRenderProducts }) {
   const { token } = useUserConfig();
 
   const [peso, setPeso] = useState(0);
-  const [price, setPrice] = useState(0);
 
   const calculatePrice = () => {
     if (type === "Letter") return 500;
