@@ -34,7 +34,7 @@ function MyShipments({ products, handleFilter, isLoading }) {
               ¡Registra tus envíos en pocos pasos!
             </h1>
           )}
-          {products?.map((product) => (
+          {products?.toReversed().map((product) => (
             <button
               key={product._id}
               className="rounded-[4px] p-1 h-12 text-center bg-violet-500 items-center flex justify-center"

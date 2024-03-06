@@ -4,6 +4,8 @@ const diccionario = {
   "In Progress": "En Progreso",
   "In Transit": "En Tránsito",
   Cancel: "Cancelado",
+  Package: "Paquete",
+  Letter: "Carta",
 };
 
 const TableItems = ({ items, states }) => {

@@ -10,12 +10,31 @@ import useUserConfig from "../../hooks/useUserConfig";
 
 function NewShipment({ handleActive, reRenderProducts }) {
   const [type, setType] = useState("Package");
+  const [destination, setDestination] = useState(null);
+  const [sending, setSending] = useState(null);
   const { token } = useUserConfig();
+
+  const [peso, setPeso] = useState(0);
+
+  const calculatePrice = () => {
+    if (type === "Letter") return 500;
+    return peso * 500;
+  };
+
+  const setInputPeso = (e) => {
+    setPeso(e.target.value);
+  };
 
   const handleChangeType = (e) => {
     setType(e.target.value);
   };
+  const handleDestination = (e) => {
+    setDestination(e.target.value);
+  };
 
+  const handleSending = (e) => {
+    setSending(e.target.value);
+  };
   const submitForm = async (e) => {
     e.preventDefault();
     const inputs = e.target;
@@ -31,7 +50,7 @@ function NewShipment({ handleActive, reRenderProducts }) {
         lengthCm: getInputValue("lengthCm"),
       },
       status: "",
-      price: getInputValue("price"),
+      price: calculatePrice(),
     };
 
     try {
@@ -80,7 +99,6 @@ function NewShipment({ handleActive, reRenderProducts }) {
             />
           </div>
           <div className="flex flex-col gap-4 items-center">
-            {/* <div className="flex gap-4"> */}
             <div>
               <p>Tipo de Envío</p>
               <select
@@ -94,21 +112,54 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 <option value="Letter">Carta</option>
               </select>
             </div>
-            <TextInput name="originData" type="text" placeholdertext="Origen" />
+            <div>
+              <p>Salida</p>
+              <select
+                onChange={handleSending}
+                value={sending}
+                name="originData"
+                id=""
+                className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+              >
+                <option value="Base1">Base1</option>
+                <option value="Base2">Base2</option>
+                <option value="Base3">Base3</option>
+              </select>
+            </div>
+            <div>
+              <p>Llegada</p>
+              <select
+                onChange={handleDestination}
+                value={destination}
+                name="destinationData"
+                id=""
+                className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+              >
+                <option value="Base1">Base1</option>
+                <option value="Base2">Base2</option>
+                <option value="Base3">Base3</option>
+              </select>
+            </div>
+            {/* <TextInput name="originData" type="text" placeholdertext="Origen" />
             <TextInput
               name="destinationData"
               type="text"
               placeholdertext="Destino"
-            />
+            /> */}
 
             {type === "Package" && (
               <>
-                <TextInput
-                  name="weightKg"
-                  type="number"
-                  placeholdertext="Peso"
-                  min={0}
-                />
+                <div className="flex flex-col">
+                  <label htmlFor="Peso">Peso</label>
+                  <input
+                    name="weightKg"
+                    className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+                    type="number"
+                    placeholder="Peso (Kg)"
+                    value={peso}
+                    onChange={setInputPeso}
+                  />
+                </div>
                 <TextInput
                   name="heightCm"
                   type="number"
@@ -129,12 +180,9 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 />
               </>
             )}
-            <TextInput
-              name="price"
-              type="number"
-              placeholdertext="Precio"
-              min={0}
-            />
+            <p className="w-2/3 text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm ">
+              Precio : $ {calculatePrice()}
+            </p>
             <Button text="Listo" bgcolor="bg-green" type="submit" />
           </div>
         </div>
