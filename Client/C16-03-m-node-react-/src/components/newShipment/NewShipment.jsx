@@ -12,6 +12,18 @@ function NewShipment({ handleActive, reRenderProducts }) {
   const [type, setType] = useState("Package");
   const { token } = useUserConfig();
 
+  const [peso, setPeso] = useState(0);
+  const [price, setPrice] = useState(0);
+
+  const calculatePrice = () => {
+    if (type === "Letter") return 500;
+    return peso * 500;
+  };
+
+  const setInputPeso = (e) => {
+    setPeso(e.target.value);
+  };
+
   const handleChangeType = (e) => {
     setType(e.target.value);
   };
@@ -103,11 +115,11 @@ function NewShipment({ handleActive, reRenderProducts }) {
 
             {type === "Package" && (
               <>
-                <TextInput
-                  name="weightKg"
+                <input
                   type="number"
-                  placeholdertext="Peso"
-                  min={0}
+                  placeholder="peso.."
+                  value={peso}
+                  onChange={setInputPeso}
                 />
                 <TextInput
                   name="heightCm"
@@ -129,7 +141,7 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 />
               </>
             )}
-            <TextInput name="price" type="number" placeholdertext="Precio" min={0} />
+            <p>Precio : {calculatePrice()}</p>
             <Button text="Listo" bgcolor="bg-green" type="submit" />
           </div>
         </div>
