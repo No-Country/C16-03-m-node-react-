@@ -140,17 +140,11 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 <option value="Base3">Base3</option>
               </select>
             </div>
-            {/* <TextInput name="originData" type="text" placeholdertext="Origen" />
-            <TextInput
-              name="destinationData"
-              type="text"
-              placeholdertext="Destino"
-            /> */}
-
             {type === "Package" && (
               <>
                 <div className="flex flex-col">
                   <label htmlFor="Peso">Peso</label>
+                  {/* solo numeros positivos */}
                   <input
                     name="weightKg"
                     className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
@@ -158,6 +152,7 @@ function NewShipment({ handleActive, reRenderProducts }) {
                     placeholder="Peso (Kg)"
                     value={peso}
                     onChange={setInputPeso}
+                    min={0}
                   />
                 </div>
                 <TextInput
