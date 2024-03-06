@@ -18,11 +18,11 @@ function dataPackage(product = {}) {
 
 const columns = [
   "Descripción",
-  "Peso",
+  "Peso (KG)",
   "Despacho",
   "Destino",
   "Estado",
-  "Precio",
+  "Precio ($)",
 ];
 
 const states = [
