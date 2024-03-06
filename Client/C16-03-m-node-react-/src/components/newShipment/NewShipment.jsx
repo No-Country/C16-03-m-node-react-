@@ -64,7 +64,7 @@ function NewShipment({ handleActive, reRenderProducts }) {
       <div className="relative flex flex-col w-1/3 h-5/6 bg-white rounded-3xl min-w-[360px]">
         <div className="absolute top-0 right-0 mr-4 mt-2">
           <button onClick={() => handleActive()}>
-            <IoCloseCircleOutline />
+            <IoCloseCircleOutline className="text-3xl" />
           </button>
         </div>
         <div className="flex flex-col items-center gap-4 p-4 my-6 overflow-auto overscroll-contain">
@@ -129,7 +129,12 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 />
               </>
             )}
-            <TextInput name="price" type="number" placeholdertext="Precio" min={0} />
+            <TextInput
+              name="price"
+              type="number"
+              placeholdertext="Precio"
+              min={0}
+            />
             <Button text="Listo" bgcolor="bg-green" type="submit" />
           </div>
         </div>
