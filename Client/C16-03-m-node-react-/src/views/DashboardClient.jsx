@@ -45,11 +45,11 @@ function DashboardClient() {
   if (!token) return navigate("/");
 
   return (
-    <main className="w-full sm:min-h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
-      <div className=" w-full lg:h-full sm:h-full min-[320px]:h-auto flex flex-col p-2 bg-Dark">
+    <main className="w-full sm:min-h-screen min-[360px]:h-auto bg-purpleDark  ">
+      <div className="w-full min-h-screen flex flex-col p-2 bg-Dark">
         <Header openModal={handleModalOpen} />
-        <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3">
-          <div className="lg:w-1/4 sm:w-1/2 h-full min-[360px]:w-full">
+        <div className="w-full mt-2 min-h-[85vh] flex flex-col sm:flex-row gap-3">
+          <div className="lg:w-1/4 sm:w-1/2 h-auto min-[360px]:w-full">
             <MyShipments
               products={products}
               handleFilter={handleFilter}
