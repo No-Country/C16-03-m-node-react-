@@ -45,7 +45,7 @@ function DashboardClient() {
   if (!token) return navigate("/");
 
   return (
-    <main className="w-full sm:h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
+    <main className="w-full sm:min-h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
       <div className=" w-full lg:h-full sm:h-full min-[320px]:h-auto flex flex-col p-2 bg-Dark">
         <Header openModal={handleModalOpen} />
         <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3">
