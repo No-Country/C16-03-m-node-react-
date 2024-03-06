@@ -24,7 +24,7 @@ const Rating = () => {
         />
       </div>
       <div>
-        <h2 className="text-3xl font-bold">Nuestros clientes satisfechos</h2>
+        <h2 className="text-2xl font-bold">Nuestros clientes satisfechos</h2>
         <div className="flex gap-2">
           <FaStar />
           <p className="font-semibold">4.8 (100.000 reseñas)</p>

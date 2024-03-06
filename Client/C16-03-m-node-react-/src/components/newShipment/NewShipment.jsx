@@ -180,7 +180,6 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 />
               </>
             )}
-
             <p className="w-2/3 text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm ">
               Precio : $ {calculatePrice()}
             </p>
