@@ -42,7 +42,7 @@ function NewShipment({ handleActive, reRenderProducts }) {
         lengthCm: getInputValue("lengthCm"),
       },
       status: "",
-      price: getInputValue("price"),
+      price: calculatePrice(),
     };
 
     try {
@@ -75,7 +75,7 @@ function NewShipment({ handleActive, reRenderProducts }) {
       <div className="relative flex flex-col w-1/3 h-5/6 bg-white rounded-3xl min-w-[360px]">
         <div className="absolute top-0 right-0 mr-4 mt-2">
           <button onClick={() => handleActive()}>
-            <IoCloseCircleOutline />
+            <IoCloseCircleOutline className="text-3xl" />
           </button>
         </div>
         <div className="flex flex-col items-center gap-4 p-4 my-6 overflow-auto overscroll-contain">
@@ -114,12 +114,17 @@ function NewShipment({ handleActive, reRenderProducts }) {
 
             {type === "Package" && (
               <>
-                <input
-                  type="number"
-                  placeholder="peso.."
-                  value={peso}
-                  onChange={setInputPeso}
-                />
+                <div className="flex flex-col">
+                  <label htmlFor="Peso">Peso</label>
+                  <input
+                    name="weightKg"
+                    className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+                    type="number"
+                    placeholder="Peso (Kg)"
+                    value={peso}
+                    onChange={setInputPeso}
+                  />
+                </div>
                 <TextInput
                   name="heightCm"
                   type="number"
@@ -140,7 +145,10 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 />
               </>
             )}
-            <p>Precio : {calculatePrice()}</p>
+
+            <p className="w-2/3 text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm ">
+              Precio : $ {calculatePrice()}
+            </p>
             <Button text="Listo" bgcolor="bg-green" type="submit" />
           </div>
         </div>

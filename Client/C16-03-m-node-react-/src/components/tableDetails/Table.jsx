@@ -11,11 +11,19 @@ function dataPackage(product = {}) {
       despacho: product.originData,
       destino: product.destinationData,
       estado: product.status,
+      precio: product.price,
     },
   ];
 }
 
-const columns = ["Descripción", "Peso", "Despacho", "Destino", "Estado"];
+const columns = [
+  "Descripción",
+  "Peso",
+  "Despacho",
+  "Destino",
+  "Estado",
+  "Precio",
+];
 
 const states = [
   {
