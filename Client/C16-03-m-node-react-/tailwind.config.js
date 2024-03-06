@@ -25,10 +25,10 @@ export default {
         bgDetailDashboard: "#73599C",
         purpleDark: "#221633",
         greyForm: "#e9ecef",
-        lavander: "#E6AFFC"
+        lavander: "#E6AFFC",
       },
       screens: {
-        sm: "600px",
+        sm: "700px",
         ms: "905px",
         md: "1240px",
         lg: "1400px",

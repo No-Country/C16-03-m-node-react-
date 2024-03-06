@@ -43,14 +43,14 @@ function DashboardAdmin() {
   }
 
   return (
-    <main className="w-full sm:h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
+    <main className="w-full min-h-screen bg-purpleDark  ">
       <div className=" w-full lg:h-full sm:h-full min-[320px]:h-auto flex flex-col p-2 ">
         <HeaderNoButtons />
-        <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3 ">
-          <div className="h-full lg:w-1/4 sm:w-1/2 min-[360px]:w-full bg-bgDashboard rounded-[24px]">
+        <div className="w-full mt-2 flex flex-col sm:flex-row gap-3 ">
+          <div className="h-full lg:w-1/4 min-h-screen sm:w-1/2 min-[360px]:w-full bg-bgDashboard rounded-[24px]">
             <AdminStates productId={id} setProducts={setProducts} />
           </div>
-          <div className="lg:w-3/4 sm:w-1/2 h-full flex flex-col pt-4 gap-5 bg-Amethyst rounded-[24px]">
+          <div className="lg:w-3/4 sm:w-1/2 min-h-screen flex flex-col pt-4 gap-5 bg-Amethyst rounded-[24px]">
             {loading ? (
               <Spinner />
             ) : errorId ? (
