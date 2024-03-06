@@ -72,7 +72,7 @@
 
 🔎 **Original Repository**: [Check it out](https://github.com/No-Country/C16-03-m-node-react-)
 
-🚀 **Deployed Website**: [Visit here](https://www.figma.com/file/OeKWjjHbiLfBFLOBojFuJp/No-Country?type=design&node-id=0-1&mode=design&t=NyFacDqZwzK8AA6I-0)
+🚀 **Figma Desing**: [Visit here](https://www.figma.com/file/OeKWjjHbiLfBFLOBojFuJp/No-Country?type=design&node-id=0-1&mode=design&t=NyFacDqZwzK8AA6I-0)
 
 <br />
 
