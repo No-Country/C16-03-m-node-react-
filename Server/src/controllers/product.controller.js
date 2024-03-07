@@ -22,7 +22,7 @@ async function createProduct(req, res) {
     if (isNaN(price) || price <= 0) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
-        message: 'The price must be a positive number',
+        message: 'El precio debe ser un número positivo',
       });
     }
 
@@ -60,7 +60,7 @@ async function createProduct(req, res) {
         } else {
           return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
             status: COD_RESPONSE_HTTP_BAD_REQUEST,
-            message: 'The packageData must be numbers and positive',
+            message: 'Los datos del paquete deben ser números y positivos',
           });
         }
       } else if (description == 'Letter') {
@@ -79,13 +79,13 @@ async function createProduct(req, res) {
       } else {
         res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
           status: COD_RESPONSE_HTTP_BAD_REQUEST,
-          message: 'Invalid description',
+          message: 'Descripción no válida',
         });
       }
     } else {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
-        message: 'This user does not exist',
+        message: 'Este usuario no existe',
       });
     }
   } catch (error) {
