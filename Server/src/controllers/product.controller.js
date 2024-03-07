@@ -276,10 +276,10 @@ async function receiveProduct(req, res) {
     }
 
     const validStatuses = [
-      'Canceled',
-      'In Progress',
-      'In Transit',
-      'Delivered',
+      'Cancelado',
+      'En Progreso',
+      'En Transito',
+      'Entragado',
     ];
     if (!validStatuses.includes(status)) {
       return res
@@ -294,10 +294,10 @@ async function receiveProduct(req, res) {
     }
 
     const invalidTransitions = {
-      Canceled: ['Canceled'],
-      'In Progress': ['In Progress'],
-      'In Transit': ['In Transit', 'In Progress', 'Canceled'],
-      Delivered: ['Delivered', 'In Transit', 'In Progress', 'Canceled'],
+      Canceled: ['Cancelado'],
+      'In Progress': ['En Progreso'],
+      'In Transit': ['En Transito', 'En Progreso', 'Cancelado'],
+      Delivered: ['Entragado', 'En Transito', 'En Progreso', 'Cancelado'],
     };
 
     if (
