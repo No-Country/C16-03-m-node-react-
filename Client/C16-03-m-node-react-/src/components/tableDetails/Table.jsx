@@ -40,7 +40,7 @@ const Table = ({ productFilter }) => {
   const item = dataPackage(productFilter);
 
   return (
-    <div className="w-full min-[320px]:h-auto lg:h-auto  p-3 bg-Amethyst rounded-3xl flex flex-col items-center justify-center ">
+    <div className="w-full min-[320px]:h-auto lg:h-auto py-8 p-3 bg-Amethyst rounded-3xl flex flex-col items-center justify-center ">
       <div className="w-full h-full flex flex-col ">
         <div className=" flex flex-col items-center min-[320px]:items-center p-3 text-white w-full">
           <h2 className="text-[24px] lg:text-[45px] sm:text-lg font-bold ">
