@@ -72,6 +72,8 @@
 
 🔎 **Original Repository**: [Check it out](https://github.com/No-Country/C16-03-m-node-react-)
 
+🚀 **Figma Desing**: [Visit here](https://www.figma.com/file/OeKWjjHbiLfBFLOBojFuJp/No-Country?type=design&node-id=0-1&mode=design&t=NyFacDqZwzK8AA6I-0)
+
 <br />
 
 <!-- CONTACT US-->
@@ -106,7 +108,7 @@
     </td>
    <td>
       <div align="center">
-        <img width="70" src="https://media.licdn.com/dms/image/D5603AQFMjI8VTh2IGA/profile-displayphoto-shrink_200_200/0/1684004578529?e=2147483647&v=beta&t=Vj8T4gAX2bVHj50NI_M62PrLngl-5hBycvrsRgu2HnA"/>
+        <img width="70" src="https://media.licdn.com/dms/image/D4D03AQGqKQ3pWITc_w/profile-displayphoto-shrink_100_100/0/1709586326860?e=1715212800&v=beta&t=kz0hOoBxf0J-gHuCnbq1KLBypLV_oqNEUAYQ1THV9ew"/>
           <h4 style="margin-top: 1rem;">German Ravarotto</h4>
           <h4 style="margin-top: 1rem;">Frontend Developer</h4>
         <a href="https://www.linkedin.com/in/german-ravarotto/" target="_blank">

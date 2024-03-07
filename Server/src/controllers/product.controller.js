@@ -52,10 +52,11 @@ async function createProduct(req, res) {
             ownerId: ownerId,
             price: price,
           });
-          await product.save();
+          const savedProduct = await product.save();
           res.status(COD_RESPONSE_HTTP_OK).json({
             status: COD_RESPONSE_HTTP_OK,
             message: 'The product has been stored correctly',
+            productId: savedProduct._id
           });
         } else {
           return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
@@ -71,10 +72,11 @@ async function createProduct(req, res) {
           ownerId: ownerId,
           price: price,
         });
-        await product.save();
+        const savedProduct = await product.save();
         res.status(COD_RESPONSE_HTTP_OK).json({
           status: COD_RESPONSE_HTTP_OK,
           message: 'The product has been stored correctly',
+          productId: savedProduct._id
         });
       } else {
         res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
@@ -150,12 +152,12 @@ async function getAllProducts(req, res) {
 async function findClientProducts(req, res) {
   try {
     const ownerId = req.user._id;
-    const products = new Product.find({ ownerId: ownerId });
+    const products = await Product.find({ ownerId: ownerId }).exec();
 
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The products has been found',
-      product: products,
+      message: 'The products have been found',
+      products: products, 
     });
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({

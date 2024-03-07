@@ -73,7 +73,7 @@ function InitSesion({ handleActive }) {
                   className="font-bold text-green cursor-pointer"
                   onClick={handleRegisterClick}
                 >
-                  Registrate
+                  Regístrate
                 </a>
               </p>
             </div>

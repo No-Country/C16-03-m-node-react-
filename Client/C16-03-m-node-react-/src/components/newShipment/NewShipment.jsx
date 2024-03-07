@@ -2,62 +2,93 @@ import Button from "../button/button";
 import Logo from "../logo/Logo";
 import TextLanding from "../textLanding/TextLanding";
 import TextInput from "../TextInput/TextInput";
-import { IoCloseCircleOutline } from "react-icons/io5"
-import services from "../../services/api"
+import { IoCloseCircleOutline } from "react-icons/io5";
+import services from "../../services/api";
 import { useState } from "react";
+import Alert from "sweetalert2";
+import useUserConfig from "../../hooks/useUserConfig";
 
+function NewShipment({ handleActive, reRenderProducts }) {
+  const [type, setType] = useState("Package");
+  const [destination, setDestination] = useState(null);
+  const [sending, setSending] = useState(null);
+  const { token } = useUserConfig();
 
-function NewShipment({ handleActive }) {
-  const token = localStorage.getItem('token');
-  const [product, setProduct] = useState({
-    description: '',
-    originData: '',
-    destinationData: '',
-    packageData: {
-      weightKg: 0,
-      heightCm: 0,
-      widthCm: 0,
-      lengthCm: 0,
-    },
-    status: 'In progress',
-    price: 0,
-  });
+  const [peso, setPeso] = useState(0);
 
-  const handleChange = (e) => {
-  
-    if (['weightKg', 'heightCm', 'widthCm', 'lengthCm'].includes(e.target.name)) {
-      setProduct({
-        ...product,
-        packageData: {
-          ...product.packageData,
-          [e.target.name]: e.target.value,
+  const calculatePrice = () => {
+    if (type === "Letter") return 500;
+    return peso * 500;
+  };
+
+  const setInputPeso = (e) => {
+    setPeso(e.target.value);
+  };
+
+  const handleChangeType = (e) => {
+    setType(e.target.value);
+  };
+  const handleDestination = (e) => {
+    setDestination(e.target.value);
+  };
+
+  const handleSending = (e) => {
+    setSending(e.target.value);
+  };
+  const submitForm = async (e) => {
+    e.preventDefault();
+    const inputs = e.target;
+    const getInputValue = (inputName) => inputs[inputName]?.value;
+    const formData = {
+      description: getInputValue("description"),
+      originData: getInputValue("originData"),
+      destinationData: getInputValue("destinationData"),
+      packageData: {
+        weightKg: getInputValue("weightKg"),
+        heightCm: getInputValue("heightCm"),
+        widthCm: getInputValue("widthCm"),
+        lengthCm: getInputValue("lengthCm"),
+      },
+      status: "",
+      price: calculatePrice(),
+    };
+
+    try {
+      const res = await services.postNewShipment(formData, token);
+      Alert.fire({
+        icon: "success",
+        title: "Envío creado correctamente",
+        text: `El número de seguimiento de tu envío es: ${res.productId}`,
+        didClose() {
+          handleActive();
+          reRenderProducts();
         },
       });
-    } else {
-      setProduct({
-        ...product,
-        [e.target.name]: e.target.value,
+    } catch (error) {
+      error.json().then((res) => {
+        Alert.fire({
+          icon: "error",
+          title: "Ha ocurrió un error",
+          text: `${res.message}`,
+        });
       });
     }
   };
 
-  const submitForm = async (e) => {
-    e.preventDefault();
-    const data = await services.postNewShipment(product);
-    console.log(data);
-  };
-  
   return (
-    <form onSubmit={submitForm} className="fixed inset-0 flex items-center justify-center transition-opacity bg-bgForm min-w-[360px]">
-      <div className="relative flex flex-col w-1/3 h-5/6 overflow-auto bg-white rounded-3xl min-w-[360px]">
+    <form
+      onSubmit={submitForm}
+      className="fixed inset-0 flex items-center justify-center transition-opacity bg-bgForm min-w-[360px]"
+    >
+      <div className="relative flex flex-col w-1/3 h-5/6 bg-white rounded-3xl min-w-[360px]">
         <div className="absolute top-0 right-0 mr-4 mt-2">
-            <button onClick={() => handleActive()}>
-              <IoCloseCircleOutline />
-            </button>
+          <button onClick={() => handleActive()}>
+            <IoCloseCircleOutline className="text-3xl" />
+          </button>
         </div>
-        <div className="flex flex-col items-center gap-4 p-4 py-8">
+        <div className="flex flex-col items-center gap-4 p-4 my-6 overflow-auto overscroll-contain">
           <div>
-            <Logo register/>
+            <Logo register />
           </div>
           <div>
             <TextLanding
@@ -68,19 +99,86 @@ function NewShipment({ handleActive }) {
             />
           </div>
           <div className="flex flex-col gap-4 items-center">
-            <TextInput name="description" type="text" placeholdertext="Descripción" handleChange={handleChange} />
-            <TextInput name="originData" type="text" placeholdertext="Origen" handleChange={handleChange} />
-            <TextInput name="destinationData" type="text" placeholdertext="Destino" handleChange={handleChange} />
-            <TextInput name="weightKg" type="number" placeholdertext="Peso" handleChange={handleChange} />
-            <TextInput name="heightCm" type="number" placeholdertext="Alto" handleChange={handleChange} />
-            <TextInput name="widthCm" type="number" placeholdertext="Ancho" handleChange={handleChange} />
-            <TextInput name="lengthCm" type="number" placeholdertext="Largo" handleChange={handleChange} />
-            <TextInput name="price" type="number" placeholdertext="Precio" handleChange={handleChange} />
-            <Button
-              text="Listo"
-              bgcolor="bg-green"
-              type="submit"
-            />
+            <div>
+              <p>Tipo de Envío</p>
+              <select
+                onChange={handleChangeType}
+                value={type}
+                name="description"
+                id=""
+                className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+              >
+                <option value="Package">Paquete</option>
+                <option value="Letter">Carta</option>
+              </select>
+            </div>
+            <div>
+              <p>Salida</p>
+              <select
+                onChange={handleSending}
+                value={sending}
+                name="originData"
+                id=""
+                className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+              >
+                <option value="Rosario">Rosario</option>
+                <option value="Mendoza">Mendoza</option>
+                <option value="Cordoba">Cordoba</option>
+              </select>
+            </div>
+            <div>
+              <p>Llegada</p>
+              <select
+                onChange={handleDestination}
+                value={destination}
+                name="destinationData"
+                id=""
+                className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+              >
+                <option value="Rosario">Rosario</option>
+                <option value="Mendoza">Mendoza</option>
+                <option value="Cordoba">Cordoba</option>
+              </select>
+            </div>
+            {type === "Package" && (
+              <>
+                <div className="flex flex-col">
+                  <label htmlFor="Peso">Peso</label>
+                  {/* solo numeros positivos */}
+                  <input
+                    name="weightKg"
+                    className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
+                    type="number"
+                    placeholder="Peso (Kg)"
+                    value={peso}
+                    onChange={setInputPeso}
+                    min={0}
+                  />
+                </div>
+                <TextInput
+                  name="heightCm"
+                  type="number"
+                  placeholdertext="Alto"
+                  min={0}
+                />
+                <TextInput
+                  name="widthCm"
+                  type="number"
+                  placeholdertext="Ancho"
+                  min={0}
+                />
+                <TextInput
+                  name="lengthCm"
+                  type="number"
+                  placeholdertext="Largo"
+                  min={0}
+                />
+              </>
+            )}
+            <p className="w-2/3 text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm ">
+              Precio : $ {calculatePrice()}
+            </p>
+            <Button text="Listo" bgcolor="bg-green" type="submit" />
           </div>
         </div>
       </div>

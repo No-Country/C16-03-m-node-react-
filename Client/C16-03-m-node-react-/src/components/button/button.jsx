@@ -10,8 +10,9 @@ export default function Button({
 }) {
   return (
     <button
-      className={`w-44 h-12 ${bgcolor} rounded-[24px] ${rest.className}`}
+      className={`w-44 h-12 ${bgcolor}  bg-green rounded-[24px] hover:bg-green/80 hover:border-green border-2 ${rest.className}`}
       onClick={onClick ? () => onClick() : noAction}
+      cursor="pointer"
     >
       {text}
     </button>

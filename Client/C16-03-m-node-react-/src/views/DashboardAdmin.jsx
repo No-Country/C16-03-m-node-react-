@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import services from "../services/api";
 import Spinner from "../components/spinner/Spinner";
 import { useNavigate } from "react-router";
+import { WaitBackground } from "../components/waitBackground/WaitBackground";
 
 function DashboardAdmin() {
   const navigate = useNavigate();
@@ -29,8 +30,7 @@ function DashboardAdmin() {
           setErrorId(false);
         }
       })
-      .catch((error) => {
-        console.error("Error fetching product data:", error);
+      .catch(() => {
         setErrorId(true);
       })
       .finally(() => {
@@ -43,37 +43,40 @@ function DashboardAdmin() {
   }
 
   return (
-    console.log(token),
-    (
-      <main className="w-full sm:h-[100vh] min-[360px]:h-auto bg-purpleDark  ">
-        <div className=" w-full lg:h-full sm:h-full min-[320px]:h-auto flex flex-col p-2 ">
-          <HeaderNoButtons />
-          <div className="w-full mt-2 h-full flex flex-col sm:flex-row gap-3">
-            <div className="h-full lg:w-1/4 sm:w-1/2 min-[360px]:w-full bg-bgDashboard rounded-[24px]">
-              <AdminStates productId={id} setProducts={setProducts} />
-            </div>
-            <div className="w-full h-full flex flex-col pt-4 gap-5 bg-Amethyst rounded-[24px]">
-              {loading ? (
-                <Spinner />
-              ) : errorId ? (
-                <div className="flex flex-col p-6 justify-center gap-5">
-                  <h2 className="text-pink text-center text-xl font-bold ml-11">
-                    {id
-                      ? "El id no existe"
-                      : "Ingrese el Nro. de seguimiento para actualizar los estados del paquete"}
+    <main className="w-full min-h-screen bg-purpleDark  ">
+      <div className=" w-full lg:h-full sm:h-full min-[320px]:h-auto flex flex-col p-2 ">
+        <HeaderNoButtons />
+        <div className="w-full mt-2 flex flex-col sm:flex-row gap-3 ">
+          <div className="h-full lg:w-1/4 min-h-screen sm:w-1/2 min-[360px]:w-full bg-bgDashboard rounded-[24px]">
+            <AdminStates productId={id} setProducts={setProducts} />
+          </div>
+          <div className="lg:w-3/4 sm:w-1/2 min-h-screen flex flex-col pt-4 gap-5 bg-Amethyst rounded-[24px]">
+            {loading ? (
+              <Spinner />
+            ) : errorId ? (
+              <div className="flex flex-col p-6 justify-center gap-5">
+                {id ? (
+                  <h2 className="text-white text-center sm:text-sm lg:text-lg font-bold ml-11">
+                    No se encontró ningún paquete con el ID proporcionado. Por
+                    favor, verifique el ID e inténtelo de nuevo.
                   </h2>
-                </div>
-              ) : (
-                <>
-                  <StatusBar initialStatus={products} />
-                  <Table products={products} />
-                </>
-              )}
-            </div>
+                ) : (
+                  <WaitBackground
+                    title="¡Bienvenido al Panel de Control del Administrador!"
+                    paragraph="Ingrese el Nro. de seguimiento para actualizar los detalles del paquete."
+                  />
+                )}
+              </div>
+            ) : (
+              <div className="w-full h-full flex flex-col justify-around items-center ">
+                <StatusBar initialStatus={products} />
+                <Table productFilter={products.product} />
+              </div>
+            )}
           </div>
         </div>
-      </main>
-    )
+      </div>
+    </main>
   );
 }
 

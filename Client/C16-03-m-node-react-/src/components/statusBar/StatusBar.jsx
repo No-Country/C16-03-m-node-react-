@@ -21,7 +21,7 @@ const StatusBar = ({ initialStatus = {} }) => {
 
   return (
     <div className="p-4 w-full md:w-3/4 lg:w-2/3  mx-auto min-w-sm bg-Amethyst rounded-lg">
-      <h2 className="text-[24px] lg:text-[45px] sm:text-lg font-bold text-white  w-fit mx-auto pb-5">
+      <h2 className=" min-[320px]:text-[10px] sm:text-xs lg:text-lg  text-center mt-4 font-bold text-white  w-fit mx-auto pb-5">
         Envío Nro. {initialStatus.product?._id}
       </h2>
       <div className="w-full relative">
@@ -42,7 +42,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#FFFF00" : "#ddd",
+                    background: accomplished ? "#ff8000" : "#ddd",
                   }}
                 ></div>
               </div>
@@ -60,7 +60,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#0000FF" : "#ddd",
+                    background: accomplished ? "#FFF500" : "#ddd",
                   }}
                 ></div>
               </div>
@@ -78,7 +78,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#4caf50" : "#ddd",
+                    background: accomplished ? "#0038FF" : "#ddd",
                   }}
                 ></div>
               </div>
@@ -97,7 +97,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#21da21" : "#ddd",
+                    background: accomplished ? "#8BEA00" : "#ddd",
                   }}
                 ></div>
               </div>
@@ -105,16 +105,16 @@ const StatusBar = ({ initialStatus = {} }) => {
           </Step>
         </ProgressBar>
         <div className="flex justify-between mt-2 ">
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className="min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
             En Almacén
           </span>
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className=" min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
             En Progreso
           </span>
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className=" min-[320px]:text-[10px] sm:text-xs lg:text-md l text-center mt-4 text-white font-semibold">
             En Tránsito
           </span>
-          <span className="sm:text-sm lg:text-md xl:text-xl text-center mt-4 text-white font-semibold">
+          <span className="min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
             Entregado
           </span>
         </div>
