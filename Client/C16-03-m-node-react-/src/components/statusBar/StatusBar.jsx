@@ -1,4 +1,9 @@
 import { ProgressBar, Step } from "react-step-progress-bar";
+import Warehouse from "../icons/Warehouse";
+import InProgress from "../icons/InProgress";
+import InTransit from "../icons/InTransit";
+import Delivered from "../icons/Delivered";
+
 import "react-step-progress-bar/styles.css";
 
 const StatusBar = ({ initialStatus = {} }) => {
@@ -7,9 +12,9 @@ const StatusBar = ({ initialStatus = {} }) => {
       case "In Warehouse":
         return 0;
       case "In Progress":
-        return 34;
+        return 33;
       case "In Transit":
-        return 67;
+        return 66;
       case "Delivered":
         return 100;
       case "Canceled":
@@ -24,7 +29,7 @@ const StatusBar = ({ initialStatus = {} }) => {
       <h2 className=" min-[320px]:text-[10px] sm:text-xs lg:text-lg  text-center mt-4 font-bold text-white  w-fit mx-auto pb-5">
         Envío Nro. {initialStatus.product?._id}
       </h2>
-      <div className="w-full relative">
+      <div className="w-full relative px-10">
         <ProgressBar
           percent={getProgress()}
           filledBackground="#8BEA00"
@@ -35,16 +40,12 @@ const StatusBar = ({ initialStatus = {} }) => {
               <div
                 className={`step ${
                   accomplished ? "accomplished" : ""
-                } flex items-center justify-center absolute -left-2`}
+                } relative`}
               >
-                <div
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    borderRadius: "50%",
-                    background: accomplished ? "#ff8000" : "#ddd",
-                  }}
-                ></div>
+                <Warehouse />
+                <span className="min-[320px]:text-[10px] text-center absolute inset-0 top-9 w-[130px] -left-[105%] sm:text-xs lg:text-md mt-4 text-white font-semibold">
+                  En Almacén
+                </span>
               </div>
             )}
           </Step>
@@ -53,16 +54,12 @@ const StatusBar = ({ initialStatus = {} }) => {
               <div
                 className={`step ${
                   accomplished ? "accomplished" : ""
-                } flex items-center justify-center absolute left-1/3 -translate-x-1/2`}
+                }  absolute`}
               >
-                <div
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    borderRadius: "50%",
-                    background: accomplished ? "#FFF500" : "#ddd",
-                  }}
-                ></div>
+                <InProgress />
+                <span className=" min-[320px]:text-[10px] absolute text-center inset-0 top-9 w-[130px] -left-[110%] sm:text-xs lg:text-md mt-4 text-white font-semibold">
+                  En Progreso
+                </span>
               </div>
             )}
           </Step>
@@ -71,16 +68,12 @@ const StatusBar = ({ initialStatus = {} }) => {
               <div
                 className={`step ${
                   accomplished ? "accomplished" : ""
-                } flex items-center justify-center absolute left-2/3 -translate-x-1/2`}
+                }  absolute`}
               >
-                <div
-                  style={{
-                    width: "25px",
-                    height: "25px",
-                    borderRadius: "50%",
-                    background: accomplished ? "#0038FF" : "#ddd",
-                  }}
-                ></div>
+                <InTransit />
+                <span className=" min-[320px]:text-[10px] sm:text-xs text-center absolute inset-0 top-9 w-[130px] -left-[94%] lg:text-md mt-4 text-white font-semibold">
+                  En Tránsito
+                </span>
               </div>
             )}
           </Step>
@@ -89,35 +82,16 @@ const StatusBar = ({ initialStatus = {} }) => {
               <div
                 className={`step ${
                   accomplished ? "accomplished" : ""
-                } flex items-center justify-center absolute right-2 -translate-x-full`}
+                }  absolute`}
               >
-                <div
-                  style={{
-                    margin: "-15px",
-                    width: "25px",
-                    height: "25px",
-                    borderRadius: "50%",
-                    background: accomplished ? "#8BEA00" : "#ddd",
-                  }}
-                ></div>
+                <Delivered />
+                <span className="min-[320px]:text-[10px] absolute text-center inset-0 top-9 w-[130px] -left-[96%] sm:text-xs lg:text-md  mt-4 text-white font-semibold">
+                  Entregado
+                </span>
               </div>
             )}
           </Step>
         </ProgressBar>
-        <div className="flex justify-between mt-2 ">
-          <span className="min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
-            En Almacén
-          </span>
-          <span className=" min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
-            En Progreso
-          </span>
-          <span className=" min-[320px]:text-[10px] sm:text-xs lg:text-md l text-center mt-4 text-white font-semibold">
-            En Tránsito
-          </span>
-          <span className="min-[320px]:text-[10px] sm:text-xs lg:text-md  text-center mt-4 text-white font-semibold">
-            Entregado
-          </span>
-        </div>
       </div>
     </div>
   );
