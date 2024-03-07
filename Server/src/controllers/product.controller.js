@@ -295,8 +295,8 @@ async function receiveProduct(req, res) {
 
     const invalidTransitions = {
       Canceled: ['Cancelado'],
-      'In Progress': ['En Progreso'],
-      'In Transit': ['En Transito', 'En Progreso', 'Cancelado'],
+      'En Progreso': ['En Progreso'],
+      'En Transito': ['En Transito', 'En Progreso', 'Cancelado'],
       Delivered: ['Entragado', 'En Transito', 'En Progreso', 'Cancelado'],
     };
 
