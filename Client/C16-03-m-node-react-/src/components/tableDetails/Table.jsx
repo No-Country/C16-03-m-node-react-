@@ -17,7 +17,7 @@ function dataPackage(product = {}) {
 }
 
 const columns = [
-  "Descripción",
+  "Tipo de Envío",
   "Peso (KG)",
   "Despacho",
   "Destino",
@@ -28,9 +28,9 @@ const columns = [
 const states = [
   {
     Delivered: "#8BEA00",
-    "In Warehouse": "#FFF500",
-    // "In Progress": "#97A1FF",
-    "In Progress": "#a2d2ff",
+    "In Warehouse": "#ff8000",
+    // "In Progress": "#FFF500"",
+    "In Progress": "#FFF500",
     "In Transit": "#0038FF",
     Canceled: "#FF0000",
   },

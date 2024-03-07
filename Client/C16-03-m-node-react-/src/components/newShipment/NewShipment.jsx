@@ -121,9 +121,9 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 id=""
                 className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
               >
-                <option value="Base1">Base1</option>
-                <option value="Base2">Base2</option>
-                <option value="Base3">Base3</option>
+                <option value="Rosario">Rosario</option>
+                <option value="Mendoza">Mendoza</option>
+                <option value="Cordoba">Cordoba</option>
               </select>
             </div>
             <div>
@@ -135,9 +135,9 @@ function NewShipment({ handleActive, reRenderProducts }) {
                 id=""
                 className="sm:w-[300px] text-center border border-gray-300 rounded-[24px] px-4 py-2 bg-greyForm focus:outline-none text-base focus:border-blue-500  placeholder-black input-focus-placeholder::text-green"
               >
-                <option value="Base1">Base1</option>
-                <option value="Base2">Base2</option>
-                <option value="Base3">Base3</option>
+                <option value="Rosario">Rosario</option>
+                <option value="Mendoza">Mendoza</option>
+                <option value="Cordoba">Cordoba</option>
               </select>
             </div>
             {type === "Package" && (

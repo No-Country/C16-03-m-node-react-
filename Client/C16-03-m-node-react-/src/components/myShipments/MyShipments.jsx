@@ -10,11 +10,11 @@ function MyShipments({ products, handleFilter, isLoading }) {
       <h1 className="flex justify-center text-[24px]">Mis envíos</h1>
       <div className="flex flex-col items-start w-fit mx-auto ">
         <div className="flex gap-4 items-center">
-          <div className="w-4 h-4 rounded-full bg-[#FFF500]"></div>
+          <div className="w-4 h-4 rounded-full bg-[#ff8000]"></div>
           <p className="text-sm">En Almacén</p>
         </div>
         <div className="flex gap-4 items-center">
-          <div className="w-4 h-4 rounded-full bg-[#a2d2ff]"></div>
+          <div className="w-4 h-4 rounded-full bg-[#FFF500]"></div>
           <p className="text-sm">En Progreso</p>
         </div>
         <div className="flex gap-4 items-center">

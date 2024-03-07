@@ -42,7 +42,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#FFFF00" : "#ddd",
+                    background: accomplished ? "#ff8000" : "#ddd",
                   }}
                 ></div>
               </div>
@@ -60,7 +60,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#0000FF" : "#ddd",
+                    background: accomplished ? "#FFF500" : "#ddd",
                   }}
                 ></div>
               </div>
@@ -78,7 +78,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#4caf50" : "#ddd",
+                    background: accomplished ? "#0038FF" : "#ddd",
                   }}
                 ></div>
               </div>
@@ -97,7 +97,7 @@ const StatusBar = ({ initialStatus = {} }) => {
                     width: "25px",
                     height: "25px",
                     borderRadius: "50%",
-                    background: accomplished ? "#21da21" : "#ddd",
+                    background: accomplished ? "#8BEA00" : "#ddd",
                   }}
                 ></div>
               </div>
