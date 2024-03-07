@@ -279,7 +279,7 @@ async function receiveProduct(req, res) {
       'Cancelado',
       'En Progreso',
       'En Transito',
-      'Entragado',
+      'Entregado',
     ];
     if (!validStatuses.includes(status)) {
       return res
@@ -295,9 +295,9 @@ async function receiveProduct(req, res) {
 
     const invalidTransitions = {
       Canceled: ['Cancelado'],
-      'In Progress': ['En Progreso'],
-      'In Transit': ['En Transito', 'En Progreso', 'Cancelado'],
-      Delivered: ['Entragado', 'En Transito', 'En Progreso', 'Cancelado'],
+      'En Progreso': ['En Progreso'],
+      'En Transito': ['En Transito', 'En Progreso', 'Cancelado'],
+      Delivered: ['Entregado', 'En Transito', 'En Progreso', 'Cancelado'],
     };
 
     if (
@@ -324,7 +324,7 @@ async function receiveProduct(req, res) {
         successMessage = 'El producto está en progreso';
         break;
       case 'In Transit':
-        successMessage = 'El producto está en  transito';
+        successMessage = 'El producto está en transito';
         break;
       case 'Delivered':
         successMessage = 'El producto ha sido entregado';
