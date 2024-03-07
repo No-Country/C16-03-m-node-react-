@@ -276,10 +276,10 @@ async function receiveProduct(req, res) {
     }
 
     const validStatuses = [
-      'Cancelado',
-      'En Progreso',
-      'En Transito',
-      'Entregado',
+      'Canceled',
+      'In Progress',
+      'In Transit',
+      'Delivered',
     ];
     if (!validStatuses.includes(status)) {
       return res
@@ -294,10 +294,10 @@ async function receiveProduct(req, res) {
     }
 
     const invalidTransitions = {
-      Canceled: ['Cancelado'],
-      'En Progreso': ['En Progreso'],
-      'En Transito': ['En Transito', 'En Progreso', 'Cancelado'],
-      Delivered: ['Entregado', 'En Transito', 'En Progreso', 'Cancelado'],
+      Canceled: ['Canceled'],
+      'In Progress': ['In Progress'],
+      'In Transit': ['In Transit', 'In Progress', 'Canceled'],
+      Delivered: ['Delivered', 'In Transit', 'In Progress', 'Canceled'],
     };
 
     if (
@@ -324,7 +324,7 @@ async function receiveProduct(req, res) {
         successMessage = 'El producto está en progreso';
         break;
       case 'In Transit':
-        successMessage = 'El producto está en transito';
+        successMessage = 'El producto está en  transito';
         break;
       case 'Delivered':
         successMessage = 'El producto ha sido entregado';
