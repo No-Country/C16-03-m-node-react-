@@ -22,7 +22,7 @@ async function createProduct(req, res) {
     if (isNaN(price) || price <= 0) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
-        message: 'The price must be a positive number',
+        message: 'El precio debe ser un número positivo',
       });
     }
 
@@ -55,13 +55,13 @@ async function createProduct(req, res) {
           const savedProduct = await product.save();
           res.status(COD_RESPONSE_HTTP_OK).json({
             status: COD_RESPONSE_HTTP_OK,
-            message: 'The product has been stored correctly',
+            message: 'El producto ha sido creado correctamente',
             productId: savedProduct._id
           });
         } else {
           return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
             status: COD_RESPONSE_HTTP_BAD_REQUEST,
-            message: 'The packageData must be numbers and positive',
+            message: 'Los datos del paquete deben ser números y positivos',
           });
         }
       } else if (description == 'Letter') {
@@ -75,25 +75,25 @@ async function createProduct(req, res) {
         const savedProduct = await product.save();
         res.status(COD_RESPONSE_HTTP_OK).json({
           status: COD_RESPONSE_HTTP_OK,
-          message: 'The product has been stored correctly',
+          message: 'El producto ha sido creado correctamente',
           productId: savedProduct._id
         });
       } else {
         res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
           status: COD_RESPONSE_HTTP_BAD_REQUEST,
-          message: 'Invalid description',
+          message: 'Tipo de envío no válido', //seria descripcion para el back 
         });
       }
     } else {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
-        message: 'This user does not exist',
+        message: 'Este usuario no existe',
       });
     }
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_ERROR).json({
       status: COD_RESPONSE_HTTP_ERROR,
-      message: 'Error creating product',
+      message: 'Error al crear el producto',
     });
   }
 }
@@ -107,13 +107,13 @@ async function getProductById(req, res) {
     });
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The product has been found',
+      message: 'El producto ha sido encontrado',
       product: product,
     });
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error finding this product',
+      message: 'Error al encontrar este producto',
     });
   }
 }
@@ -124,12 +124,12 @@ async function deleteProduct(req, res) {
     await Product.findOneAndDelete({ _id: productId });
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The product has been deleted',
+      message: 'El producto ha sido eliminado',
     });
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error removing this product',
+      message: 'Error al eliminar este producto',
     });
   }
 }
@@ -144,7 +144,7 @@ async function getAllProducts(req, res) {
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error getting products',
+      message: 'Error al obtener los productos',
     });
   }
 }
@@ -156,13 +156,13 @@ async function findClientProducts(req, res) {
 
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The products have been found',
+      message: 'Los productos han sido encontrados',
       products: products, 
     });
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error finding products of this client',
+      message: 'Error al encontrar los productos de este cliente',
     });
   }
 }
@@ -183,12 +183,12 @@ async function updateProduct(req, res) {
     );
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The products has been updated',
+      message: 'Los productos han sido actualizados',
     });
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error to update this product',
+      message: 'Error al actualizar este producto',
     });
   }
 }
@@ -198,7 +198,7 @@ async function sendProduct(req, res) {
     if (req.user.role !== 'userBase') {
       return res
         .status(COD_RESPONSE_HTTP_FORBIDDEN)
-        .send({ message: 'Access forbidden. Insufficient privileges.' });
+        .send({ message: 'Acceso denegado. Privilegios insuficientes' });
     }
 
     const { status, productId } = req.body;
@@ -206,7 +206,7 @@ async function sendProduct(req, res) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
         message:
-          'Invalid status value. Only "In Warehouse" status can be set using sendProduct.',
+          'Estado no válido. Solo se puede establecer el estado "En Almacén" utilizando "Recibir despacho"',
       });
     }
 
@@ -214,7 +214,7 @@ async function sendProduct(req, res) {
     if (!existingProduct) {
       return res.status(COD_RESPONSE_HTTP_NOT_FOUND).json({
         status: COD_RESPONSE_HTTP_NOT_FOUND,
-        message: 'Product not found',
+        message: 'Producto no encontrado',
       });
     }
 
@@ -222,7 +222,7 @@ async function sendProduct(req, res) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
         message:
-          'The product has already been sent and sentAt date is already set.',
+          'El producto ya ha sido enviado y la fecha de envío ya está establecida',
       });
     }
     const sentAt = existingProduct.sentAt || new Date();
@@ -234,18 +234,18 @@ async function sendProduct(req, res) {
 
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
-      message: 'The product has been sent',
+      message: 'El producto ha sido enviado.',
     });
   } catch (error) {
     if (error.name === 'ValidationError' && error.errors['status']) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         status: COD_RESPONSE_HTTP_BAD_REQUEST,
-        message: 'Invalid status value. Must be one of: In Warehouse',
+        message: 'Estado no válido. El estado debe ser: "En Almacén"',
       });
     }
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error sending this product',
+      message: 'Error al enviar este producto',
     });
   }
 }
@@ -259,20 +259,20 @@ async function receiveProduct(req, res) {
     if (role !== 'userBase') {
       return res
         .status(COD_RESPONSE_HTTP_FORBIDDEN)
-        .json({ message: 'Access forbidden. Insufficient privileges.' });
+        .json({ message: 'Acceso denegado. Privilegios insuficientes' });
     }
 
     const existingProduct = await Product.findById(productId);
     if (!existingProduct) {
       return res
         .status(COD_RESPONSE_HTTP_NOT_FOUND)
-        .json({ message: 'Product not found' });
+        .json({ message: 'Producto no encontrado' });
     }
 
     if (!existingProduct.sentAt) {
       return res
         .status(COD_RESPONSE_HTTP_BAD_REQUEST)
-        .json({ message: 'The product has not been sent yet.' });
+        .json({ message: 'El producto aún no ha sido enviado' });
     }
 
     const validStatuses = [
@@ -284,13 +284,13 @@ async function receiveProduct(req, res) {
     if (!validStatuses.includes(status)) {
       return res
         .status(COD_RESPONSE_HTTP_BAD_REQUEST)
-        .json({ message: 'Invalid status' });
+        .json({ message: 'Estado no válido.' });
     }
 
     if (existingProduct.status === status) {
       return res
         .status(COD_RESPONSE_HTTP_BAD_REQUEST)
-        .json({ message: `Product is already ${status}.` });
+        .json({ message: `El producto ya está ${status}.` });
     }
 
     const invalidTransitions = {
@@ -305,7 +305,7 @@ async function receiveProduct(req, res) {
       invalidTransitions[existingProduct.status].includes(status)
     ) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
-        message: `Product cannot transition from ${existingProduct.status} to ${status}.`,
+        message: `No se puede cambiar el estado del producto de ${existingProduct.status} a ${status}.`,
       });
     }
 
@@ -318,19 +318,19 @@ async function receiveProduct(req, res) {
     let successMessage = '';
     switch (status) {
       case 'Canceled':
-        successMessage = 'The product has been successfully canceled.';
+        successMessage = 'El producto ha sido cancelado con éxito.';
         break;
       case 'In Progress':
-        successMessage = 'The product is in progress.';
+        successMessage = 'El producto está en progreso';
         break;
       case 'In Transit':
-        successMessage = 'The product is in transit.';
+        successMessage = 'El producto está en  transito';
         break;
       case 'Delivered':
-        successMessage = 'The product has been delivered.';
+        successMessage = 'El producto ha sido entregado';
         break;
       default:
-        successMessage = 'The product has been received.';
+        successMessage = 'El producto ha sido recibido';
     }
 
     return res.status(COD_RESPONSE_HTTP_OK).json({
@@ -340,7 +340,7 @@ async function receiveProduct(req, res) {
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
       status: COD_RESPONSE_HTTP_BAD_REQUEST,
-      message: 'Error receiving this product',
+      message: 'Error al recibir este producto',
     });
   }
 }
