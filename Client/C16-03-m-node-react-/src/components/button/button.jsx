@@ -1,5 +1,5 @@
 function noAction() {
-  console.log("Button no recibe parámetro para onClick");
+  // console.log("Button no recibe parámetro para onClick");
 }
 
 export default function Button({

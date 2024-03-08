@@ -56,7 +56,7 @@ async function createProduct(req, res) {
           res.status(COD_RESPONSE_HTTP_OK).json({
             status: COD_RESPONSE_HTTP_OK,
             message: 'El producto ha sido creado correctamente',
-            productId: savedProduct._id
+            productId: savedProduct._id,
           });
         } else {
           return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
@@ -76,12 +76,12 @@ async function createProduct(req, res) {
         res.status(COD_RESPONSE_HTTP_OK).json({
           status: COD_RESPONSE_HTTP_OK,
           message: 'El producto ha sido creado correctamente',
-          productId: savedProduct._id
+          productId: savedProduct._id,
         });
       } else {
         res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
           status: COD_RESPONSE_HTTP_BAD_REQUEST,
-          message: 'Tipo de envío no válido', //seria descripcion para el back 
+          message: 'Tipo de envío no válido', //seria descripcion para el back
         });
       }
     } else {
@@ -157,7 +157,7 @@ async function findClientProducts(req, res) {
     return res.status(COD_RESPONSE_HTTP_OK).json({
       status: COD_RESPONSE_HTTP_OK,
       message: 'Los productos han sido encontrados',
-      products: products, 
+      products: products,
     });
   } catch (error) {
     return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
@@ -250,14 +250,13 @@ async function sendProduct(req, res) {
   }
 }
 
-
-    // Diccionario de traducción de estados
-    const stateTranslations = {
-      'Canceled': 'Cancelado',
-      'In Progress': 'En progreso',
-      'In Transit': 'En tránsito',
-      'Delivered': 'Entregado'
-    };
+// Diccionario de traducción de estados
+const stateTranslations = {
+  Canceled: 'Cancelado',
+  'In Progress': 'En progreso',
+  'In Transit': 'En tránsito',
+  Delivered: 'Entregado',
+};
 
 async function receiveProduct(req, res) {
   try {
@@ -296,14 +295,16 @@ async function receiveProduct(req, res) {
         .json({ message: 'Estado no válido.' });
     }
 
-  // Traducción del estado al español 
-   const translatedStatus = stateTranslations[status];
+    // Traducción del estado
+    const translatedStatus = stateTranslations[status];
 
     if (existingProduct.status === status) {
-      return res
-        .status(COD_RESPONSE_HTTP_BAD_REQUEST)
-        // .json({ message: `El producto ya está ${status}.` });
-        .json({ message: `El producto ya está ${translatedStatus}.` });
+      return (
+        res
+          .status(COD_RESPONSE_HTTP_BAD_REQUEST)
+          // .json({ message: `El producto ya está ${status}.` });
+          .json({ message: `El producto ya está ${translatedStatus}` })
+      );
     }
 
     const invalidTransitions = {
@@ -317,9 +318,11 @@ async function receiveProduct(req, res) {
       invalidTransitions[existingProduct.status] &&
       invalidTransitions[existingProduct.status].includes(status)
     ) {
+      const currentTranslatedStatus = stateTranslations[existingProduct.status];
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
         // message: `No se puede cambiar el estado del producto de ${existingProduct.status} a ${status}.`,
-        message: `No se puede cambiar el estado del producto de ${existingProduct.status} a ${translatedStatus}.`,
+        // message: `No se puede cambiar el estado del producto de ${existingProduct.status} a ${translatedStatus}.`,
+        message: `No se puede cambiar el estado del producto de "${currentTranslatedStatus}" a "${translatedStatus}"`,
       });
     }
 
