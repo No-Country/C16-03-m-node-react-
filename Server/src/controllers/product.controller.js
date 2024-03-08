@@ -250,6 +250,15 @@ async function sendProduct(req, res) {
   }
 }
 
+
+    // Diccionario de traducción de estados
+    const stateTranslations = {
+      'Canceled': 'Cancelado',
+      'In Progress': 'En progreso',
+      'In Transit': 'En tránsito',
+      'Delivered': 'Entregado'
+    };
+
 async function receiveProduct(req, res) {
   try {
     const { user, body } = req;
@@ -287,10 +296,14 @@ async function receiveProduct(req, res) {
         .json({ message: 'Estado no válido.' });
     }
 
+  // Traducción del estado al español 
+   const translatedStatus = stateTranslations[status];
+
     if (existingProduct.status === status) {
       return res
         .status(COD_RESPONSE_HTTP_BAD_REQUEST)
-        .json({ message: `El producto ya está ${status}.` });
+        // .json({ message: `El producto ya está ${status}.` });
+        .json({ message: `El producto ya está ${translatedStatus}.` });
     }
 
     const invalidTransitions = {
@@ -305,7 +318,8 @@ async function receiveProduct(req, res) {
       invalidTransitions[existingProduct.status].includes(status)
     ) {
       return res.status(COD_RESPONSE_HTTP_BAD_REQUEST).json({
-        message: `No se puede cambiar el estado del producto de ${existingProduct.status} a ${status}.`,
+        // message: `No se puede cambiar el estado del producto de ${existingProduct.status} a ${status}.`,
+        message: `No se puede cambiar el estado del producto de ${existingProduct.status} a ${translatedStatus}.`,
       });
     }
 
@@ -318,13 +332,13 @@ async function receiveProduct(req, res) {
     let successMessage = '';
     switch (status) {
       case 'Canceled':
-        successMessage = 'El producto ha sido cancelado con éxito.';
+        successMessage = 'El producto ha sido cancelado con éxito';
         break;
       case 'In Progress':
         successMessage = 'El producto está en progreso';
         break;
       case 'In Transit':
-        successMessage = 'El producto está en  transito';
+        successMessage = 'El producto está en tránsito';
         break;
       case 'Delivered':
         successMessage = 'El producto ha sido entregado';
